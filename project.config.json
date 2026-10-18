@@ -1,0 +1,17 @@
+{
+  "miniprogramRoot": "dist/weapp/",
+  "projectname": "wanglai",
+  "description": "一笔人情 — 人情往来，有来有往，账目两清",
+  "appid": "wx9d6b3ebfd65dd3d5",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "skylineRenderEnable": false
+  },
+  "compileType": "miniprogram",
+  "condition": {}
+}

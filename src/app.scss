@@ -1,0 +1,185 @@
+/* 一笔人情 · 主题层
+   中性灰底 + 白卡 + 正红点缀；数值用衬线表格数字
+   :root 供 H5，page 供小程序 */
+:root,
+page {
+  /* 基础色板 */
+  --paper: #f5f6f7;
+  --card: #ffffff;
+  --ink: #1b1b1f;
+  --ink-soft: #6b6f76;
+  --ink-faint: #a0a5ad;
+  --line: #edeef0;
+  --red: #a93226;
+  --red-soft: #f9ece9;
+  --jade: #17724f;
+  --jade-soft: #e9f3ee;
+  --serif: 'Songti SC', 'STSong', Georgia, serif;
+  --sans: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+
+  /* ===== NutUI 主题通道 ===== */
+  --nutui-color-primary: #a93226;
+  --nutui-color-primary-pressed: #92291f;
+  --nutui-color-primary-disabled: #dfb5af;
+  --nutui-color-primary-light: #f9ece9;
+  --nutui-color-title: #1b1b1f;
+  --nutui-color-text: #1b1b1f;
+  --nutui-color-text-help: #6b6f76;
+  --nutui-color-text-disabled: #a0a5ad;
+  --nutui-gray-7: #1b1b1f;
+  --nutui-black-10: #6b6f76;
+  --nutui-color-background: #f5f6f7;
+  --nutui-color-background-component: #ffffff;
+  --nutui-gray-5: #f5f6f7;
+  --nutui-gray-4: #f7f8fa;
+  --nutui-black-3: #ffffff;
+  --nutui-color-border: #edeef0;
+  --nutui-black-2: rgba(20, 20, 30, 0.06);
+  --nutui-line-component: #edeef0;
+  --nutui-color-danger: #a93226;
+  --nutui-color-success: #17724f;
+  --nutui-font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --nutui-cell-group-background-color: #ffffff;
+  --nutui-switch-active-background-color: #17724f;
+  /* 按钮：现代圆角 + 符合 iOS 触控高度（mini 24px 太矮，点不准） */
+  --nutui-button-border-radius: 16px;
+  --nutui-button-square-border-radius: 16px;
+  --nutui-button-default-height: 44px;
+  --nutui-button-default-font-size: 15px;
+  --nutui-button-mini-height: 32px;
+  --nutui-button-mini-font-size: 13px;
+  --nutui-button-small-height: 36px;
+  --nutui-button-small-font-size: 14px;
+  --nutui-button-large-height: 48px;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* H5 宿主没有 page 元素，基础排版同样要落到 body，否则两端字号/行高不一致 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* ---------- 数字（衬线表格数字） ---------- */
+.num,
+.amt {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+}
+.amt--in { color: var(--jade); }
+.amt--out { color: var(--red); }
+
+/* ---------- 收/出 印章徽标 ---------- */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 10rpx;
+  font-family: var(--serif);
+  font-size: 25rpx;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.seal--in { background: var(--jade-soft); color: var(--jade); }
+.seal--out { background: var(--red-soft); color: var(--red); }
+
+/* ---------- 往来条目行 ---------- */
+.entry-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  width: 100%;
+}
+.entry-row__mid {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+.entry-row__title {
+  font-size: 29rpx;
+  color: var(--ink);
+}
+.entry-row__sub {
+  font-size: 23rpx;
+  color: var(--ink-faint);
+}
+.entry-row__amt {
+  font-size: 32rpx;
+  flex-shrink: 0;
+}
+
+/* ---------- Cell 列表：收敛成整卡连续行（账本式） ---------- */
+.nut-cell-group {
+  margin: 0 32rpx 28rpx;
+  padding: 8rpx 0;
+  background: var(--card);
+  border-radius: 24rpx;
+  box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+}
+
+.nut-cell-group-title {
+  padding: 20rpx 28rpx 8rpx !important;
+  font-size: 27rpx !important;
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+
+.nut-cell-group-description {
+  padding: 0 28rpx 12rpx !important;
+}
+
+.nut-cell-group .nut-cell {
+  margin-bottom: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ---------- 描边按钮：NutUI 实心/描边共用文字 token，按类纠正 ---------- */
+.btn-line-danger {
+  color: var(--red) !important;
+  border-color: var(--red) !important;
+}
+.btn-line-default {
+  color: var(--ink-soft) !important;
+  border-color: var(--line) !important;
+}
+
+/* ---------- 分组标题右侧动作 ---------- */
+.sec-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.sec-head__more {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+
+/* ---------- 通用 ---------- */
+.row { display: flex; align-items: center; }
+.row--between { justify-content: space-between; }
+.flex1 { flex: 1; min-width: 0; }
+.ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.faint { color: var(--ink-faint); }
+.py-safe { padding-bottom: calc(40rpx + env(safe-area-inset-bottom)); }

@@ -1,0 +1,25 @@
+.pp {
+  padding-top: 20rpx;
+  padding-bottom: 120rpx;
+
+  &__search {
+    margin: 0 32rpx 8rpx;
+    --nutui-searchbar-background: transparent;
+  }
+
+  &__sorts {
+    display: flex;
+    gap: 28rpx;
+    padding: 8rpx 36rpx 16rpx;
+  }
+  &__sort {
+    font-size: 25rpx;
+    color: var(--ink-faint);
+  }
+  &__sort--on {
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  &__verdict { font-size: 23rpx; }
+}

@@ -1,0 +1,64 @@
+.ov {
+  padding-top: 24rpx;
+  padding-bottom: 220rpx;
+
+  &__hero {
+    margin: 0 32rpx 24rpx;
+    padding: 40rpx 32rpx 32rpx;
+    background: var(--card);
+    border-radius: 24rpx;
+    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+  }
+  &__label { display: block; font-size: 24rpx; color: var(--ink-soft); }
+  &__balance {
+    font-size: 84rpx;
+    line-height: 1.15;
+    margin-top: 8rpx;
+    color: var(--ink);
+  }
+  &__verdict { font-size: 26rpx; color: var(--ink-soft); margin-top: 4rpx; }
+  &__split {
+    display: flex;
+    align-items: center;
+    margin-top: 32rpx;
+    padding-top: 24rpx;
+    border-top: 1rpx solid var(--line);
+  }
+  &__stat { flex: 1; display: flex; flex-direction: column; }
+  &__stat--right { align-items: flex-end; }
+  &__stat-label { font-size: 24rpx; color: var(--ink-faint); }
+  &__stat-num { font-size: 34rpx; margin-top: 4rpx; }
+  &__stat-in { color: var(--jade); }
+  &__stat-out { color: var(--red); }
+  &__divider { width: 1rpx; height: 56rpx; background: var(--line); }
+  &__more { font-size: 24rpx; color: var(--ink-faint); }
+
+  &__actions {
+    display: flex;
+    gap: 24rpx;
+    margin: 0 32rpx 8rpx;
+
+    .nut-button {
+      flex: 1;
+      width: auto;
+      height: 88rpx;
+      font-size: 31rpx;
+      font-weight: 600;
+    }
+  }
+
+  &__fab {
+    position: fixed;
+    right: 40rpx;
+    bottom: calc(48rpx + env(safe-area-inset-bottom));
+    z-index: 50;
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10rpx 28rpx rgba(169, 50, 38, 0.26);
+  }
+}

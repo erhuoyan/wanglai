@@ -1,0 +1,30 @@
+.dt {
+  padding-top: 24rpx;
+  padding-bottom: 80rpx;
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48rpx 32rpx;
+    margin: 0 32rpx 24rpx;
+    background: var(--card);
+    border-radius: 24rpx;
+    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+  }
+  &__amount {
+    font-size: 88rpx;
+    line-height: 1.2;
+    margin-top: 24rpx;
+    color: var(--ink);
+  }
+  &__sub { font-size: 27rpx; color: var(--ink-soft); margin-top: 8rpx; }
+
+  &__actions {
+    display: flex;
+    gap: 24rpx;
+    margin: 24rpx 32rpx 0;
+
+    .nut-button { flex: 1; }
+  }
+}

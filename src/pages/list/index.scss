@@ -1,0 +1,34 @@
+.ls {
+  padding-top: 20rpx;
+  padding-bottom: 220rpx;
+
+  &__search {
+    margin: 0 32rpx 8rpx;
+    --nutui-searchbar-background: transparent;
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: 16rpx;
+    margin: 0 32rpx 20rpx;
+  }
+
+  &__sum { font-size: 25rpx; }
+  &__total { font-size: 23rpx; color: var(--ink-faint); margin-left: auto; }
+
+  &__fab {
+    position: fixed;
+    right: 40rpx;
+    bottom: calc(48rpx + env(safe-area-inset-bottom));
+    z-index: 50;
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10rpx 28rpx rgba(169, 50, 38, 0.26);
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B8372A"/>
+      <stop offset="100%" stop-color="#8F2A20"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="320" r="248" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="6"/>
+  <text x="320" y="432" text-anchor="middle"
+        font-family="Songti SC, STSong, SimSun, serif" font-size="340" font-weight="700"
+        fill="#FFFFFF">礼</text>
+  <rect x="238" y="492" width="164" height="14" rx="7" fill="#E8C97A" fill-opacity="0.92"/>
+</svg>

@@ -1,0 +1,22 @@
+.ev {
+  padding-top: 24rpx;
+  padding-bottom: 120rpx;
+
+  &__hero {
+    margin: 0 32rpx 24rpx;
+    padding: 40rpx 32rpx 32rpx;
+    background: var(--card);
+    border-radius: 24rpx;
+    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+  }
+  &__hero-label { display: block; font-size: 24rpx; color: var(--ink-soft); }
+  &__hero-num {
+    font-size: 76rpx;
+    line-height: 1.15;
+    margin-top: 8rpx;
+    color: var(--jade);
+  }
+  &__hero-sub { font-size: 26rpx; color: var(--ink-soft); }
+
+  &__amt { font-size: 32rpx; }
+}

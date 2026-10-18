@@ -1,0 +1,37 @@
+.st {
+  padding-top: 24rpx;
+  padding-bottom: 80rpx;
+
+  &__stats {
+    display: flex;
+    margin: 0 32rpx 24rpx;
+    padding: 36rpx 0;
+    background: var(--card);
+    border-radius: 24rpx;
+    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+  }
+  &__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__stat:first-child { border-right: 1rpx solid var(--line); }
+  &__num { font-size: 52rpx; }
+  &__label { font-size: 24rpx; margin-top: 6rpx; }
+
+  &__danger { margin: 32rpx 32rpx 0; }
+
+  &__about {
+    text-align: center;
+    margin-top: 64rpx;
+    display: flex;
+    flex-direction: column;
+    gap: 6rpx;
+  }
+  &__about-name {
+    font-family: var(--serif);
+    font-size: 32rpx;
+    font-weight: 600;
+  }
+}
