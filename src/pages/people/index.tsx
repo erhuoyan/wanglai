@@ -55,7 +55,7 @@ export default function People() {
               clickable
               leading={
                 <Avatar size='40' background='var(--red-soft)' color='var(--red)'>
-                  {r.person.name.slice(-2)}
+                  {r.person.name.slice(0, 1)}
                 </Avatar>
               }
               title={r.person.name}

@@ -3,21 +3,36 @@ import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Cell, CellGroup } from '@nutui/nutui-react-taro'
 import { useLedger } from '../../store/useLedger'
-import { groupGatherings, formatYuan, overallStats } from '../../utils/calc'
+import { groupGatheringsByYear, formatYuan, overallStats, eventBadge } from '../../utils/calc'
+import { lunarText } from '../../utils/lunar'
 import EmptyState from '../../components/EmptyState'
+import { Plus } from '@nutui/icons-react-taro'
 import './index.scss'
 
 export default function Events() {
   const { entries } = useLedger()
-  const gatherings = useMemo(() => groupGatherings(entries), [entries])
+  const yearGroups = useMemo(() => groupGatheringsByYear(entries), [entries])
+  const gatherings = useMemo(() => yearGroups.flatMap(g => g.gatherings), [yearGroups])
   const stats = useMemo(() => overallStats(entries), [entries])
+
+  const thisYear = String(new Date().getFullYear())
+  const yearInSum = useMemo(
+    () => entries.filter(e => e.type === 'in' && e.date.startsWith(thisYear)).reduce((s, e) => s + e.amount, 0),
+    [entries, thisYear]
+  )
 
   return (
     <View className='ev py-safe'>
       <View className='ev__hero'>
-        <Text className='ev__hero-label'>共 {gatherings.length} 场</Text>
-        <View className='ev__hero-num num'>{formatYuan(stats.inSum)}</View>
-        <Text className='ev__hero-sub'>累计收礼</Text>
+        <View className='ev__hero-main'>
+          <Text className='ev__hero-label'>累计收礼</Text>
+          <View className='ev__hero-num num'>{formatYuan(stats.inSum)}</View>
+        </View>
+        <View className='ev__hero-side'>
+          <Text className='ev__hero-in num'>+{formatYuan(yearInSum)}</Text>
+          <Text className='ev__hero-sub'>其中 · 今年</Text>
+          <Text className='ev__hero-count'>{gatherings.length} 场</Text>
+        </View>
       </View>
 
       {gatherings.length === 0 ? (
@@ -30,22 +45,50 @@ export default function Events() {
           />
         </CellGroup>
       ) : (
-        <CellGroup title='每一场'>
-          {gatherings.map(g => (
-            <Cell
-              key={g.key}
-              clickable
-              title={g.event}
-              description={`${g.date} · ${g.count} 人随礼`}
-              extra={<Text className='amt amt--in ev__amt'>+{formatYuan(g.total)}</Text>}
-              align='center'
-              onClick={() =>
-                Taro.navigateTo({ url: `/pages/gathering/index?key=${encodeURIComponent(g.key)}` })
-              }
-            />
-          ))}
-        </CellGroup>
+        yearGroups.map(grp => (
+          <CellGroup
+            key={grp.year}
+            title={
+              <View className='ev__year-head'>
+                <Text className='ev__year'>{grp.year}年</Text>
+                <Text className='ev__year-meta'>
+                  {grp.count} 场 · 收礼 {formatYuan(grp.total)}
+                </Text>
+              </View>
+            }
+          >
+            {grp.gatherings.map(g => {
+              const badge = eventBadge(g.event)
+              return (
+                <Cell
+                  key={g.key}
+                  clickable
+                  title={
+                    <View className='ev__task'>
+                      <View className={`ev__badge ev__badge--${badge.tone}`}>{badge.ch}</View>
+                      <View className='ev__info'>
+                        <Text className='ev__name'>{g.event}</Text>
+                        <Text className='ev__meta'>
+                          {g.date} · {lunarText(g.date)} · {g.count} 人随礼
+                        </Text>
+                      </View>
+                    </View>
+                  }
+                  extra={<Text className='amt amt--in ev__amt'>+{formatYuan(g.total)}</Text>}
+                  align='center'
+                  onClick={() =>
+                    Taro.navigateTo({ url: `/pages/gathering/index?key=${encodeURIComponent(g.key)}` })
+                  }
+                />
+              )
+            })}
+          </CellGroup>
+        ))
       )}
+
+      <View className='ev__fab' onClick={() => Taro.navigateTo({ url: '/pages/edit/index?type=in' })}>
+        <Plus color='#fff' width={28} height={28} />
+      </View>
     </View>
   )
 }

@@ -43,7 +43,7 @@ export default function Gathering() {
             clickable
             leading={
               <Avatar size='36' background='var(--jade-soft)' color='var(--jade)'>
-                {e.personName.slice(-2)}
+                {e.personName.slice(0, 1)}
               </Avatar>
             }
             title={e.personName}

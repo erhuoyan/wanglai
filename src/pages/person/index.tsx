@@ -39,7 +39,7 @@ export default function Person() {
     <View className='pr py-safe'>
       <View className='pr__hero'>
         <Avatar size='44' background='var(--red-soft)' color='var(--red)'>
-          {(person?.name || '？').slice(-2)}
+          {(person?.name || '？').slice(0, 1)}
         </Avatar>
         <View className='flex1 pr__hero-mid'>
           <Text className='pr__name'>{person?.name || '（已删）'}</Text>

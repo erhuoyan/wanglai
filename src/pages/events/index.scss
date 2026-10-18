@@ -1,22 +1,111 @@
 .ev {
   padding-top: 24rpx;
-  padding-bottom: 120rpx;
+  padding-bottom: 220rpx;
 
   &__hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     margin: 0 32rpx 24rpx;
     padding: 40rpx 32rpx 32rpx;
     background: var(--card);
     border-radius: 24rpx;
     box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
   }
-  &__hero-label { display: block; font-size: 24rpx; color: var(--ink-soft); }
+  &__hero-main { display: flex; flex-direction: column; }
+  &__hero-label { display: block; font-size: 24rpx; color: var(--ink-soft); margin-bottom: 8rpx; }
   &__hero-num {
     font-size: 76rpx;
     line-height: 1.15;
-    margin-top: 8rpx;
     color: var(--jade);
   }
-  &__hero-sub { font-size: 26rpx; color: var(--ink-soft); }
+  &__hero-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+  &__hero-in {
+    font-size: 34rpx;
+    color: var(--jade);
+  }
+  &__hero-sub { font-size: 24rpx; color: var(--ink-soft); margin-top: 4rpx; }
+  &__hero-count { font-size: 22rpx; color: var(--ink-faint); margin-top: 10rpx; }
 
-  &__amt { font-size: 32rpx; }
+  &__task {
+    display: flex;
+    align-items: center;
+    gap: 18rpx;
+    min-width: 0;
+  }
+  &__badge {
+    width: 68rpx;
+    height: 68rpx;
+    border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 32rpx;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  &__badge--red {
+    background: var(--red-soft);
+    color: var(--red);
+  }
+  &__badge--gold {
+    background: #f9f2e0;
+    color: #a98537;
+  }
+  &__badge--ink {
+    background: #eceef1;
+    color: #5f6670;
+  }
+  &__info { display: flex; flex-direction: column; min-width: 0; }
+  &__name {
+    font-size: 31rpx;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  &__meta {
+    font-size: 23rpx;
+    color: var(--ink-faint);
+    margin-top: 5rpx;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__amt { font-size: 32rpx; flex-shrink: 0; padding-left: 12rpx; }
+
+  &__year-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__year {
+    font-family: var(--serif);
+    font-size: 32rpx;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  &__year-meta {
+    font-size: 22rpx;
+    color: var(--ink-faint);
+  }
+
+  &__fab {
+    position: fixed;
+    right: 40rpx;
+    bottom: calc(48rpx + env(safe-area-inset-bottom));
+    z-index: 50;
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10rpx 28rpx rgba(169, 50, 38, 0.26);
+  }
 }

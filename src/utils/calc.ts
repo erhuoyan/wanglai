@@ -137,6 +137,27 @@ export function peopleIOwe(rows: PersonLedger[]): PersonLedger[] {
   return rows.filter(r => r.balance > 0).sort((a, b) => b.balance - a.balance)
 }
 
+/** 事由徽标：字符 + 色系（red 红事 / gold 喜庆类 / ink 白事） */
+interface EventBadge {
+  ch: string
+  tone: 'red' | 'gold' | 'ink'
+}
+const EVENT_BADGES: Record<string, EventBadge> = {
+  婚宴: { ch: '囍', tone: 'red' },
+  满月: { ch: '弥', tone: 'red' },
+  乔迁: { ch: '宅', tone: 'red' },
+  寿宴: { ch: '寿', tone: 'gold' },
+  丧事: { ch: '奠', tone: 'ink' },
+  升学: { ch: '学', tone: 'red' },
+  开业: { ch: '财', tone: 'gold' },
+  年节: { ch: '节', tone: 'red' },
+  其他: { ch: '礼', tone: 'red' }
+}
+
+export function eventBadge(event: string): EventBadge {
+  return EVENT_BADGES[event] || EVENT_BADGES['其他']
+}
+
 export interface Gathering {
   key: string      // event|date，用作路由参数
   event: string    // 事由：婚宴 / 满月 / 乔迁…
@@ -169,6 +190,26 @@ export function groupGatherings(entries: Entry[]): Gathering[] {
 /** 按 key 取某一场事 */
 export function findGathering(entries: Entry[], key: string): Gathering | undefined {
   return groupGatherings(entries).find(g => g.key === key)
+}
+
+/** 按年份分组归类：{year, gatherings, total, count} 按年降序 */
+export interface YearGatheringGroup {
+  year: string
+  gatherings: Gathering[]
+  total: number
+  count: number
+}
+
+export function groupGatheringsByYear(entries: Entry[]): YearGatheringGroup[] {
+  const map: Record<string, YearGatheringGroup> = {}
+  for (const g of groupGatherings(entries)) {
+    const year = g.date.slice(0, 4)
+    if (!map[year]) map[year] = { year, gatherings: [], total: 0, count: 0 }
+    map[year].gatherings.push(g)
+    map[year].total += g.total
+    map[year].count += g.count
+  }
+  return Object.values(map).sort((a, b) => Number(b.year) - Number(a.year))
 }
 
 /** 差额状态 */

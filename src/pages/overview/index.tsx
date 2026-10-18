@@ -95,7 +95,7 @@ export default function Overview() {
             <Cell
               key={r.person.id}
               clickable
-              leading={<Avatar size='36' background='var(--red-soft)' color='var(--red)'>{r.person.name.slice(-2)}</Avatar>}
+              leading={<Avatar size='36' background='var(--red-soft)' color='var(--red)'>{r.person.name.slice(0, 1)}</Avatar>}
               title={r.person.name}
               description={`已收多 ${formatYuan(r.balance)}`}
               extra={
