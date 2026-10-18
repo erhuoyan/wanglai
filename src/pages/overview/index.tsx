@@ -1,24 +1,19 @@
 import { useMemo } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { Button, Cell, CellGroup, Avatar } from '@nutui/nutui-react-taro'
+import { Button, Cell, CellGroup } from '@nutui/nutui-react-taro'
 import { Plus, ArrowRight } from '@nutui/icons-react-taro'
 import { useLedger } from '../../store/useLedger'
-import {
-  overallStats, overallVerdict, sortEntries, ledgerByPerson,
-  formatYuanGrouped, formatYuan, peopleIOwe
-} from '../../utils/calc'
+import { overallStats, overallVerdict, sortEntries, formatYuanGrouped } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
 import './index.scss'
 
 export default function Overview() {
-  const { entries, persons } = useLedger()
+  const { entries } = useLedger()
 
   const stats = useMemo(() => overallStats(entries), [entries])
   const recent = useMemo(() => sortEntries(entries).slice(0, 3), [entries])
-  const ledger = useMemo(() => ledgerByPerson(entries, persons), [entries, persons])
-  const owing = useMemo(() => peopleIOwe(ledger).slice(0, 3), [ledger])
 
   const goAdd = (type?: string) => {
     Taro.navigateTo({ url: `/pages/edit/index${type ? '?type=' + type : ''}` })
@@ -78,42 +73,6 @@ export default function Overview() {
             ))}
           </CellGroup>
         </>
-      )}
-
-      {/* 该回礼：收得多的先还 */}
-      {owing.length > 0 && (
-        <CellGroup title={
-          <View className='sec-head' onClick={() => Taro.switchTab({ url: '/pages/people/index' })}>
-            <Text>该回礼</Text>
-            <View className='sec-head__more'>
-              <Text>全部</Text>
-              <ArrowRight color='var(--ink-faint)' width={11} height={11} />
-            </View>
-          </View>
-        }>
-          {owing.map(r => (
-            <Cell
-              key={r.person.id}
-              clickable
-              leading={<Avatar size='36' background='var(--red-soft)' color='var(--red)'>{r.person.name.slice(0, 1)}</Avatar>}
-              title={r.person.name}
-              description={`已收多 ${formatYuan(r.balance)}`}
-              extra={
-                <Button
-                  size='mini'
-                  type='primary'
-                  onClick={(ev) => {
-                    ev.stopPropagation()
-                    Taro.navigateTo({
-                      url: `/pages/edit/index?type=out&personId=${r.person.id}&amount=${r.balance}`
-                    })
-                  }}
-                >回礼</Button>
-              }
-              onClick={() => Taro.navigateTo({ url: `/pages/person/index?id=${r.person.id}` })}
-            />
-          ))}
-        </CellGroup>
       )}
 
       <View className='ov__fab' onClick={() => goAdd()}>

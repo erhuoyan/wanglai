@@ -6,6 +6,7 @@ export default defineAppConfig({
     'pages/events/index',
     'pages/settings/index',
     'pages/gathering/index',
+    'pages/event-edit/index',
     'pages/edit/index',
     'pages/detail/index',
     'pages/person/index'
@@ -34,7 +35,7 @@ export default defineAppConfig({
       },
       {
         pagePath: 'pages/events/index',
-        text: '场合',
+        text: '事件',
         iconPath: 'assets/tab/events.png',
         selectedIconPath: 'assets/tab/events-on.png'
       },

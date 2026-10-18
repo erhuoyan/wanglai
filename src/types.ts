@@ -7,10 +7,11 @@ export interface Entry {
   personName: string // 快照：人删了账还在
   type: EntryType
   amount: number // 分
-  date: string // YYYY-MM-DD
-  event: string
+  date: string // YYYY-MM-DD（收付日期）
+  event: string // 事由分类（婚宴/满月/乔迁…）
   relation: string // 快照
   note: string
+  gatheringId?: string // 收礼所属事件；随礼不挂
   createdAt: number
 }
 
@@ -19,6 +20,21 @@ export interface Person {
   name: string
   relation: string
   note: string
+  createdAt: number
+}
+
+export interface EventInput {
+  id?: string
+  type: string
+  date: string
+  title?: string
+}
+
+export interface EventEntity {
+  id: string
+  date: string       // 事由日期 YYYY-MM-DD
+  type: string       // 事由分类（婚宴/满月/乔迁…）
+  title?: string     // 自定义名，如「小宝升学宴」
   createdAt: number
 }
 

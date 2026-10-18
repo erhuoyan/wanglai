@@ -10,8 +10,8 @@ import { Plus } from '@nutui/icons-react-taro'
 import './index.scss'
 
 export default function Events() {
-  const { entries } = useLedger()
-  const yearGroups = useMemo(() => groupGatheringsByYear(entries), [entries])
+  const { entries, events } = useLedger()
+  const yearGroups = groupGatheringsByYear(entries, events)
   const gatherings = useMemo(() => yearGroups.flatMap(g => g.gatherings), [yearGroups])
   const stats = useMemo(() => overallStats(entries), [entries])
 
@@ -38,10 +38,10 @@ export default function Events() {
       {gatherings.length === 0 ? (
         <CellGroup>
           <EmptyState
-            title='还没有收礼的场合'
-            description='记一笔「收礼」，就会按事由和日期归成一场'
-            actionText='记一笔收礼'
-            onAction={() => Taro.navigateTo({ url: '/pages/edit/index?type=in' })}
+            title='还没有建过事件'
+            description='先建一场事（婚宴、满月…），再往里记谁随了多少'
+            actionText='新建事件'
+            onAction={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}
           />
         </CellGroup>
       ) : (
@@ -67,9 +67,9 @@ export default function Events() {
                     <View className='ev__task'>
                       <View className={`ev__badge ev__badge--${badge.tone}`}>{badge.ch}</View>
                       <View className='ev__info'>
-                        <Text className='ev__name'>{g.event}</Text>
+                        <Text className='ev__name'>{g.title || g.event}</Text>
                         <Text className='ev__meta'>
-                          {g.date} · {lunarText(g.date)} · {g.count} 人随礼
+                          {g.title ? `${g.event} · ` : ''}{g.date} · {lunarText(g.date)} · {g.count} 人
                         </Text>
                       </View>
                     </View>
@@ -86,8 +86,9 @@ export default function Events() {
         ))
       )}
 
-      <View className='ev__fab' onClick={() => Taro.navigateTo({ url: '/pages/edit/index?type=in' })}>
-        <Plus color='#fff' width={28} height={28} />
+      <View className='ev__fab' onClick={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}>
+        <Plus color='#fff' width={22} height={22} />
+        <Text className='ev__fab-text'>新建事件</Text>
       </View>
     </View>
   )

@@ -1,5 +1,5 @@
 // 一笔人情 · 纯函数（不依赖 Taro，Node 下可直接测试）
-import type { Entry, Person, PersonLedger, Stats, BalanceState, EntryType } from '../types'
+import type { Entry, Person, PersonLedger, Stats, BalanceState, EntryType, EventEntity } from '../types'
 
 export const EVENTS = ['婚宴', '满月', '乔迁', '寿宴', '丧事', '升学', '开业', '年节', '其他']
 export const RELATIONS = ['亲戚', '朋友', '同事', '同学', '邻居', '乡党', '其他']
@@ -159,26 +159,77 @@ export function eventBadge(event: string): EventBadge {
 }
 
 export interface Gathering {
-  key: string      // event|date，用作路由参数
+  key: string      // event|事由日期 或 事件 id，用作路由参数
   event: string    // 事由：婚宴 / 满月 / 乔迁…
-  date: string     // 我办这件事的日期
+  title?: string   // 自定义名（事件挂上时带）
+  eventId: string  // 事件 id；隐式归场为空
+  date: string     // 事由日期（缺省=收付日期）
   total: number    // 收礼合计（分）
   count: number    // 到场随礼人数
   entries: Entry[] // 按金额降序
 }
 
-/** 事件维度：把我办的每场事收敛出来（只统计收礼），按日期降序 */
-export function groupGatherings(entries: Entry[]): Gathering[] {
+/** 事由日期：收礼取所属事件日期（旧数据回退到收付日期） */
+export function gatherDateOf(e: Entry, events: EventEntity[] = []): string {
+  const ev = e.gatheringId ? events.find(x => x.id === e.gatheringId) : undefined
+  return ev?.date || e.date
+}
+
+/** 事件维度：优先挂 eventId 聚合；未迁移的旧记录回退到「事由+事由日期」 */
+export function groupGatherings(entries: Entry[], events: EventEntity[] = []): Gathering[] {
+  const eventById = new Map(events.map(e => [e.id, e]))
   const map: Record<string, Gathering> = {}
+
   for (const e of entries) {
     if (e.type !== 'in') continue
-    const key = `${e.event}|${e.date}`
-    if (!map[key]) map[key] = { key, event: e.event, date: e.date, total: 0, count: 0, entries: [] }
+    const gd = gatherDateOf(e, events)
+    let key: string
+    if (e.gatheringId && eventById.has(e.gatheringId)) {
+      key = e.gatheringId
+    } else {
+      key = `${e.event}|${gd}`
+    }
+    if (!map[key]) {
+      map[key] = {
+        key,
+        event: e.event,
+        title: undefined,
+        eventId: '',
+        date: gd,
+        total: 0,
+        count: 0,
+        entries: []
+      }
+    }
+    if (e.gatheringId && eventById.has(e.gatheringId)) {
+      const ev = eventById.get(e.gatheringId)!
+      map[key].event = ev.type
+      map[key].title = ev.title
+      map[key].eventId = ev.id
+      map[key].date = ev.date
+    }
     const g = map[key]
     g.total += e.amount
     g.count += 1
     g.entries.push(e)
   }
+
+  // 空的事件也放出来（比如未来的婚礼），排在最前即可
+  for (const ev of events) {
+    if (!map[ev.id]) {
+      map[ev.id] = {
+        key: ev.id,
+        event: ev.type,
+        title: ev.title,
+        eventId: ev.id,
+        date: ev.date,
+        total: 0,
+        count: 0,
+        entries: []
+      }
+    }
+  }
+
   const list = Object.values(map)
   for (const g of list) {
     g.entries.sort((a, b) => b.amount - a.amount || (b.createdAt > a.createdAt ? 1 : -1))
@@ -188,11 +239,10 @@ export function groupGatherings(entries: Entry[]): Gathering[] {
 }
 
 /** 按 key 取某一场事 */
-export function findGathering(entries: Entry[], key: string): Gathering | undefined {
-  return groupGatherings(entries).find(g => g.key === key)
+export function findGathering(entries: Entry[], events: EventEntity[], key: string): Gathering | undefined {
+  return groupGatherings(entries, events).find(g => g.key === key)
 }
 
-/** 按年份分组归类：{year, gatherings, total, count} 按年降序 */
 export interface YearGatheringGroup {
   year: string
   gatherings: Gathering[]
@@ -200,9 +250,9 @@ export interface YearGatheringGroup {
   count: number
 }
 
-export function groupGatheringsByYear(entries: Entry[]): YearGatheringGroup[] {
+export function groupGatheringsByYear(entries: Entry[], events: EventEntity[] = []): YearGatheringGroup[] {
   const map: Record<string, YearGatheringGroup> = {}
-  for (const g of groupGatherings(entries)) {
+  for (const g of groupGatherings(entries, events)) {
     const year = g.date.slice(0, 4)
     if (!map[year]) map[year] = { year, gatherings: [], total: 0, count: 0 }
     map[year].gatherings.push(g)

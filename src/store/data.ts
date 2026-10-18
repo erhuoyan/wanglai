@@ -2,6 +2,7 @@
 import Taro from '@tarojs/taro'
 import type { Entry, Person } from '../types'
 import { uuid } from '../utils/calc'
+import { getEvent } from './events'
 
 const KEY_ENTRIES = 'wl_entries'
 const KEY_PERSONS = 'wl_persons'
@@ -48,15 +49,26 @@ export interface EntryInput {
   type: 'in' | 'out'
   amount: number // 分
   date: string
-  event: string
+  event: string // 事由分类
   relation: string
   note?: string
+  /** 收礼必须归属的事件 */
+  gatheringId?: string
 }
 
 export function upsertEntry(input: EntryInput): Entry {
   if (!input.amount || input.amount <= 0) throw new Error('金额要大于 0')
   if (!input.date) throw new Error('请选择日期')
   const person = ensurePerson(input.personName, input.relation)
+  let gatheringId: string | undefined
+  let eventType = input.event || '其他'
+  if (input.type === 'in') {
+    if (!input.gatheringId) throw new Error('请选择这笔收礼属于哪个事件')
+    const ev = getEvent(input.gatheringId)
+    if (!ev) throw new Error('所选事件不存在')
+    gatheringId = ev.id
+    eventType = ev.type
+  }
   const entries = readEntries()
   const id = input.id || uuid('e')
   const idx = entries.findIndex(e => e.id === id)
@@ -67,15 +79,15 @@ export function upsertEntry(input: EntryInput): Entry {
     type: input.type,
     amount: Math.round(input.amount),
     date: input.date,
-    event: input.event || '其他',
+    event: eventType,
     relation: person.relation,
     note: (input.note || '').trim(),
+    gatheringId,
     createdAt: idx >= 0 ? entries[idx].createdAt : Date.now()
   }
   if (idx >= 0) entries[idx] = clean
   else entries.push(clean)
   writeEntries(entries)
-  // 改人名后旧往来人可能已无账目，顺手清掉
   pruneOrphanPersons()
   return clean
 }

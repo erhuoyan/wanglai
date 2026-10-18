@@ -31,3 +31,14 @@
     font-size: 24rpx;
   }
 }
+
+.ga {
+  &__actions {
+    display: flex;
+    gap: 20rpx;
+    margin: 24rpx 32rpx 0;
+
+    .nut-button { flex: 1; height: 84rpx; font-size: 29rpx; }
+  }
+  &__legacy { font-size: 23rpx; text-align: center; width: 100%; }
+}

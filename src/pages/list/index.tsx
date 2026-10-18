@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { Cell, CellGroup, Segmented, Button, SearchBar } from '@nutui/nutui-react-taro'
+import { Cell, CellGroup, SearchBar } from '@nutui/nutui-react-taro'
 import { Plus } from '@nutui/icons-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { filterEntries, groupByMonth, formatYuan, type Filter } from '../../utils/calc'
@@ -37,23 +37,21 @@ export default function List() {
       </View>
 
       <View className='ls__filters'>
-        <Segmented
-          value={type}
-          options={[
-            { label: '全部', value: 'all' },
-            { label: '收礼', value: 'in' },
-            { label: '随礼', value: 'out' }
-          ]}
-          onChange={(v) => setType(v as Filter['type'])}
-        />
-        <Button
-          size='mini'
-          className={range === 'year' ? '' : 'btn-line-default'}
-          fill={range === 'year' ? 'solid' : 'outline'}
-          type={range === 'year' ? 'primary' : 'default'}
-          shape='round'
+        {([
+          ['all', '全部'],
+          ['in', '收礼'],
+          ['out', '随礼']
+        ] as [Filter['type'], string][]).map(([k, label]) => (
+          <Text
+            key={k}
+            className={`ls__chip ${type === k ? 'ls__chip--on' : ''}`}
+            onClick={() => setType(k)}
+          >{label}</Text>
+        ))}
+        <Text
+          className={`ls__chip ${range === 'year' ? 'ls__chip--on' : ''}`}
           onClick={() => setRange(range === 'year' ? 'all' : 'year')}
-        >今年</Button>
+        >今年</Text>
         <Text className='ls__total'>
           {filtered.length} 笔 · 净{total >= 0 ? '收' : '出'} {formatYuan(Math.abs(total))}
         </Text>

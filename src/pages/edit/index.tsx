@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react'
-import Taro, { useRouter } from '@tarojs/taro'
+import { useEffect, useMemo, useState } from 'react'
+import Taro, { useRouter, useDidShow } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Button, Cell, CellGroup, Input, TextArea, DatePicker, Dialog, Picker } from '@nutui/nutui-react-taro'
 import { upsertEntry, getEntry, deleteEntry, readPersons } from '../../store/data'
+import { readEvents } from '../../store/events'
 import { EVENTS, RELATIONS, yuanToCents, formatYuan } from '../../utils/calc'
 import {
   solarToLunar, lunarToSolar, lunarMonthsOf, lunarDaysOf,
@@ -39,6 +40,22 @@ export default function Edit() {
   const [eventVisible, setEventVisible] = useState(false)
   const [relationVisible, setRelationVisible] = useState(false)
 
+  // 收礼归属的事件（事件在「事件」页维护）
+  const [eventsVersion, setEventsVersion] = useState(0)
+  const events = useMemo(() => readEvents(), [eventsVersion])
+  const [eventId, setEventId] = useState(existing?.gatheringId || '')
+  const [eventPickVisible, setEventPickVisible] = useState(false)
+  const pickedEvent = useMemo(() => events.find(e => e.id === eventId), [events, eventId])
+
+  // 只有一场事件时自动选中，少点一次
+  useEffect(() => {
+    if (type !== 'in' || eventId || events.length !== 1) return
+    setEventId(events[0].id)
+    setEvent(events[0].type)
+  }, [type, eventId, events])
+
+  useDidShow(() => setEventsVersion(v => v + 1))
+
   const [lunarVisible, setLunarVisible] = useState(false)
   const lunarOfDate = useMemo(() => solarToLunar(date.getFullYear(), date.getMonth() + 1, date.getDate()), [date])
   const [lunarSel, setLunarSel] = useState(lunarOfDate)
@@ -66,7 +83,8 @@ export default function Edit() {
 
   const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
   const cents = yuanToCents(amountText)
-  const canSave = !!personName.trim() && cents !== null && cents > 0
+  const canSave = !!personName.trim() && cents !== null && cents > 0 &&
+    (type === 'out' || !!eventId)
 
   const onSave = () => {
     if (!personName.trim()) return Taro.showToast({ title: '请写往来人', icon: 'none' })
@@ -80,7 +98,8 @@ export default function Edit() {
         date: dateStr,
         event,
         relation,
-        note
+        note,
+        gatheringId: type === 'in' ? eventId : undefined
       })
       Taro.showToast({ title: existing ? '已更新' : '已记下', icon: 'success' })
       setTimeout(() => Taro.navigateBack(), 600)
@@ -156,7 +175,9 @@ export default function Edit() {
           </View>
         </Cell>
         <Cell title='关系' extra={<Text>{relation}</Text>} clickable onClick={() => setRelationVisible(true)} />
-        <Cell title='事由' extra={<Text>{event}</Text>} clickable onClick={() => setEventVisible(true)} />
+        {type === 'out' && (
+          <Cell title='事由' extra={<Text>{event}</Text>} clickable onClick={() => setEventVisible(true)} />
+        )}
         <Cell
           title='日期'
           extra={
@@ -178,6 +199,20 @@ export default function Edit() {
             setLunarVisible(true)
           }}
         />
+        {type === 'in' && (
+          <Cell
+            title='事件'
+            extra={
+              <Text className={pickedEvent ? '' : 'faint'}>
+                {pickedEvent
+                  ? `${pickedEvent.title || pickedEvent.type} · ${pickedEvent.date}`
+                  : '选择事件'}
+              </Text>
+            }
+            clickable
+            onClick={() => setEventPickVisible(true)}
+          />
+        )}
       </CellGroup>
 
       <CellGroup>
@@ -270,6 +305,31 @@ export default function Edit() {
         onConfirm={(_options, values) => {
           setRelation(String(values[0]))
           setRelationVisible(false)
+        }}
+      />
+
+      <Picker
+        title='记到哪一场'
+        visible={eventPickVisible}
+        options={[[
+          ...events.map(ev => ({
+            label: `${ev.title || ev.type} · ${ev.date}`,
+            value: ev.id
+          })),
+          { label: '+ 新建事件', value: '__new__' }
+        ]]}
+        defaultValue={[eventId || (events[0]?.id ?? '__new__')]}
+        onClose={() => setEventPickVisible(false)}
+        onConfirm={(_options, values) => {
+          const v = String(values[0])
+          setEventPickVisible(false)
+          if (v === '__new__') {
+            Taro.navigateTo({ url: '/pages/event-edit/index' })
+          } else {
+            setEventId(v)
+            const ev = events.find(e => e.id === v)
+            if (ev) setEvent(ev.type)
+          }
         }}
       />
 

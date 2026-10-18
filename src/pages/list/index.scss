@@ -10,8 +10,19 @@
   &__filters {
     display: flex;
     align-items: center;
-    gap: 16rpx;
-    margin: 0 32rpx 20rpx;
+    gap: 28rpx;
+    margin: 0 36rpx 20rpx;
+  }
+
+  &__chip {
+    font-size: 27rpx;
+    color: var(--ink-faint);
+  }
+  &__chip--on {
+    color: var(--red);
+    font-weight: 600;
+    border-bottom: 3rpx solid var(--red);
+    padding-bottom: 6rpx;
   }
 
   &__sum { font-size: 25rpx; }

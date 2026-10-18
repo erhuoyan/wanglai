@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: '场合'
+  navigationBarTitleText: '事件'
 })
