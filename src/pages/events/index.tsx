@@ -85,10 +85,11 @@ export default function Events() {
         ))
       )}
 
-      <View className='ev__fab' onClick={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}>
-        <View className='ev__plus' />
-        <Text className='ev__fab-text'>新建</Text>
-      </View>
+      {gatherings.length > 0 && (
+        <View className='ev__add' onClick={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}>
+          <Text className='ev__add-text'>＋ 新建事件</Text>
+        </View>
+      )}
     </View>
   )
 }

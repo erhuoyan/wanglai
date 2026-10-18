@@ -1,6 +1,6 @@
 .ev {
   padding-top: 24rpx;
-  padding-bottom: 220rpx;
+  padding-bottom: 60rpx;
 
   &__hero {
     display: flex;
@@ -93,53 +93,16 @@
     font-size: 22rpx;
     color: var(--ink-faint);
   }
+}
 
-  &__fab {
-    position: fixed;
-    right: 40rpx;
-    bottom: calc(48rpx + env(safe-area-inset-bottom));
-    z-index: 50;
-    width: 116rpx;
-    height: 116rpx;
-    border-radius: 50%;
-    background: var(--red);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rpx;
-    box-shadow: 0 12rpx 30rpx rgba(169, 50, 38, 0.32);
-  }
-  &__plus {
-    position: relative;
-    width: 40rpx;
-    height: 40rpx;
-    margin-bottom: 4rpx;
-  }
-  &__plus::before,
-  &__plus::after {
-    content: '';
-    position: absolute;
-    background: #ffffff;
-    border-radius: 3rpx;
-  }
-  &__plus::before {
-    left: 0;
-    top: 17rpx;
-    width: 40rpx;
-    height: 6rpx;
-  }
-  &__plus::after {
-    left: 17rpx;
-    top: 0;
-    width: 6rpx;
-    height: 40rpx;
-  }
-  &__fab-text {
-    color: #fff;
-    font-size: 19rpx;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: 1rpx;
-  }
+.ev__add {
+  margin: 8rpx 32rpx 40rpx;
+  padding: 26rpx 0;
+  border: 1rpx dashed var(--line);
+  border-radius: 20rpx;
+  text-align: center;
+}
+.ev__add-text {
+  font-size: 27rpx;
+  color: var(--ink-soft);
 }

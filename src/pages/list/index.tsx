@@ -88,9 +88,6 @@ export default function List() {
         ))
       )}
 
-      <View className='ls__fab' onClick={() => Taro.navigateTo({ url: '/pages/edit/index' })}>
-        <View className='fab-plus' />
-      </View>
     </View>
   )
 }
