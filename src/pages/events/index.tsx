@@ -87,8 +87,8 @@ export default function Events() {
       )}
 
       <View className='ev__fab' onClick={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}>
-        <Plus color='#fff' width={22} height={22} />
-        <Text className='ev__fab-text'>新建事件</Text>
+        <Plus color='#fff' width={34} height={34} />
+        <Text className='ev__fab-text'>新建</Text>
       </View>
     </View>
   )

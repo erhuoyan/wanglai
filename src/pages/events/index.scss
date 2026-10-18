@@ -99,19 +99,22 @@
     right: 40rpx;
     bottom: calc(48rpx + env(safe-area-inset-bottom));
     z-index: 50;
-    height: 88rpx;
-    padding: 0 32rpx;
-    border-radius: 44rpx;
+    width: 116rpx;
+    height: 116rpx;
+    border-radius: 50%;
     background: var(--red);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10rpx;
-    box-shadow: 0 10rpx 28rpx rgba(169, 50, 38, 0.26);
+    gap: 2rpx;
+    box-shadow: 0 12rpx 30rpx rgba(169, 50, 38, 0.32);
   }
   &__fab-text {
     color: #fff;
-    font-size: 28rpx;
+    font-size: 19rpx;
     font-weight: 600;
+    line-height: 1;
+    letter-spacing: 1rpx;
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Taro, { useRouter, useDidShow } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Button, Cell, CellGroup, Input, TextArea, DatePicker, Dialog, Picker } from '@nutui/nutui-react-taro'
@@ -46,13 +46,6 @@ export default function Edit() {
   const [eventId, setEventId] = useState(existing?.gatheringId || '')
   const [eventPickVisible, setEventPickVisible] = useState(false)
   const pickedEvent = useMemo(() => events.find(e => e.id === eventId), [events, eventId])
-
-  // 只有一场事件时自动选中，少点一次
-  useEffect(() => {
-    if (type !== 'in' || eventId || events.length !== 1) return
-    setEventId(events[0].id)
-    setEvent(events[0].type)
-  }, [type, eventId, events])
 
   useDidShow(() => setEventsVersion(v => v + 1))
 
