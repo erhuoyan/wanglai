@@ -16,6 +16,8 @@ export default defineAppConfig({
     navigationBarTextStyle: 'black',
     backgroundColor: '#F5F6F7'
   },
+  // 扫码/进首页只加载所需组件，提升打开速度并减少初始体积
+  lazyCodeLoading: 'requiredComponents',
   tabBar: {
     color: '#8F949B',
     selectedColor: '#A93226',

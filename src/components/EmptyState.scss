@@ -73,5 +73,14 @@
 
   &__action {
     margin-top: 32rpx;
+    width: 75%;
+
+    .empty-state__cta {
+      height: 88rpx !important;
+      width: auto;
+      font-size: 30rpx !important;
+      font-weight: 600;
+      border-radius: 16rpx;
+    }
   }
 }

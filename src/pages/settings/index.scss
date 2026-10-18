@@ -20,7 +20,17 @@
   &__num { font-size: 52rpx; }
   &__label { font-size: 24rpx; margin-top: 6rpx; }
 
-  &__danger { margin: 32rpx 32rpx 0; }
+  &__danger {
+    margin: 32rpx 32rpx 0;
+
+    .nut-button {
+      height: 88rpx;
+      width: 100%;
+      font-size: 30rpx;
+      font-weight: 600;
+      border-radius: 16rpx;
+    }
+  }
 
   &__about {
     text-align: center;

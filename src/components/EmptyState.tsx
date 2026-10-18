@@ -26,7 +26,9 @@ export default function EmptyState({ title, description, actionText, onAction }:
       {description ? <Text className='empty-state__desc'>{description}</Text> : null}
       {actionText && onAction ? (
         <View className='empty-state__action'>
-          <Button size='small' type='primary' onClick={onAction}>{actionText}</Button>
+          <Button size='large' block type='primary' className='empty-state__cta' onClick={onAction}>
+            {actionText}
+          </Button>
         </View>
       ) : null}
     </View>
