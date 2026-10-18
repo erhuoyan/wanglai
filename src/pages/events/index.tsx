@@ -30,7 +30,7 @@ export default function Events() {
         </View>
         <View className='ev__hero-side'>
           <Text className='ev__hero-in num'>+{formatYuan(yearInSum)}</Text>
-          <Text className='ev__hero-sub'>其中 · 今年</Text>
+          <Text className='ev__hero-sub'>今年收礼</Text>
           <Text className='ev__hero-count'>{gatherings.length} 场</Text>
         </View>
       </View>
