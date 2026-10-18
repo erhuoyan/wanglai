@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Cell, CellGroup, SearchBar } from '@nutui/nutui-react-taro'
-import { Plus } from '@nutui/icons-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { filterEntries, groupByMonth, formatYuan, type Filter } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
@@ -90,7 +89,7 @@ export default function List() {
       )}
 
       <View className='ls__fab' onClick={() => Taro.navigateTo({ url: '/pages/edit/index' })}>
-        <Plus color='#fff' width={28} height={28} />
+        <View className='fab-plus' />
       </View>
     </View>
   )

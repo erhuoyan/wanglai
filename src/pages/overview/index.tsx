@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Button, Cell, CellGroup } from '@nutui/nutui-react-taro'
-import { Plus, ArrowRight } from '@nutui/icons-react-taro'
+import { ArrowRight } from '@nutui/icons-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { overallStats, overallVerdict, sortEntries, formatYuanGrouped } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
@@ -76,7 +76,7 @@ export default function Overview() {
       )}
 
       <View className='ov__fab' onClick={() => goAdd()}>
-        <Plus color='#fff' width={28} height={28} />
+        <View className='fab-plus' />
       </View>
     </View>
   )

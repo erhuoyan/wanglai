@@ -110,6 +110,31 @@
     gap: 2rpx;
     box-shadow: 0 12rpx 30rpx rgba(169, 50, 38, 0.32);
   }
+  &__plus {
+    position: relative;
+    width: 40rpx;
+    height: 40rpx;
+    margin-bottom: 4rpx;
+  }
+  &__plus::before,
+  &__plus::after {
+    content: '';
+    position: absolute;
+    background: #ffffff;
+    border-radius: 3rpx;
+  }
+  &__plus::before {
+    left: 0;
+    top: 17rpx;
+    width: 40rpx;
+    height: 6rpx;
+  }
+  &__plus::after {
+    left: 17rpx;
+    top: 0;
+    width: 6rpx;
+    height: 40rpx;
+  }
   &__fab-text {
     color: #fff;
     font-size: 19rpx;

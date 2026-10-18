@@ -207,3 +207,29 @@ body {
 .ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .faint { color: var(--ink-faint); }
 .py-safe { padding-bottom: calc(40rpx + env(safe-area-inset-bottom)); }
+
+/* ---------- 悬浮按钮的加号（CSS 绘制，避免图标组件在部分端不显示） ---------- */
+.fab-plus {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+}
+.fab-plus::before,
+.fab-plus::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 3rpx;
+}
+.fab-plus::before {
+  left: 0;
+  top: 17rpx;
+  width: 40rpx;
+  height: 6rpx;
+}
+.fab-plus::after {
+  left: 17rpx;
+  top: 0;
+  width: 6rpx;
+  height: 40rpx;
+}

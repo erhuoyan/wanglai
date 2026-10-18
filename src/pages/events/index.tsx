@@ -6,7 +6,6 @@ import { useLedger } from '../../store/useLedger'
 import { groupGatheringsByYear, formatYuan, overallStats, eventBadge } from '../../utils/calc'
 import { lunarText } from '../../utils/lunar'
 import EmptyState from '../../components/EmptyState'
-import { Plus } from '@nutui/icons-react-taro'
 import './index.scss'
 
 export default function Events() {
@@ -87,7 +86,7 @@ export default function Events() {
       )}
 
       <View className='ev__fab' onClick={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}>
-        <Plus color='#fff' width={34} height={34} />
+        <View className='ev__plus' />
         <Text className='ev__fab-text'>新建</Text>
       </View>
     </View>
