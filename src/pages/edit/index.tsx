@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Taro, { useRouter } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Button, Cell, CellGroup, Input, TextArea, DatePicker, Dialog, Picker } from '@nutui/nutui-react-taro'
 import { upsertEntry, getEntry, deleteEntry, readPersons } from '../../store/data'
 import { EVENTS, RELATIONS, yuanToCents, formatYuan } from '../../utils/calc'
+import {
+  solarToLunar, lunarToSolar, lunarMonthsOf, lunarDaysOf,
+  lunarDayName, lunarText
+} from '../../utils/lunar'
 import './index.scss'
 
 export default function Edit() {
@@ -34,6 +38,31 @@ export default function Edit() {
   const [dateVisible, setDateVisible] = useState(false)
   const [eventVisible, setEventVisible] = useState(false)
   const [relationVisible, setRelationVisible] = useState(false)
+
+  const [lunarVisible, setLunarVisible] = useState(false)
+  const lunarOfDate = useMemo(() => solarToLunar(date.getFullYear(), date.getMonth() + 1, date.getDate()), [date])
+  const [lunarSel, setLunarSel] = useState(lunarOfDate)
+
+  const lunarYearOptions = useMemo(
+    () => Array.from({ length: 201 }, (_, i) => ({ label: `${1900 + i}年`, value: 1900 + i })),
+    []
+  )
+  const lunarMonthOptions = useMemo(
+    () => lunarMonthsOf(lunarSel.year).map(m => ({
+      label: m.label,
+      value: m.isLeap ? `${m.month}L` : String(m.month)
+    })),
+    [lunarSel.year]
+  )
+  const lunarDayOptions = useMemo(
+    () => Array.from(
+      { length: lunarDaysOf(lunarSel.year, lunarSel.month, lunarSel.isLeap) },
+      (_, i) => ({ label: lunarDayName(i + 1), value: i + 1 })
+    ),
+    [lunarSel.year, lunarSel.month, lunarSel.isLeap]
+  )
+
+  const AMOUNT_PRESETS = [100, 200, 300, 500, 600, 800, 1000, 1200, 2000]
 
   const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
   const cents = yuanToCents(amountText)
@@ -100,22 +129,55 @@ export default function Edit() {
           value={amountText}
           onChange={(v) => setAmountText(v)}
         />
+        <View className='ed__presets'>
+          {AMOUNT_PRESETS.map(v => (
+            <Text
+              key={v}
+              className={`ed__preset ${amountText === String(v) ? 'ed__preset--on' : ''}`}
+              onClick={() => setAmountText(String(v))}
+            >{v}</Text>
+          ))}
+        </View>
       </View>
 
       <CellGroup>
-        <Cell title='往来人'>
-          <Input
-            plain
-            placeholder='姓名'
-            align='right'
-            maxLength={12}
-            value={personName}
-            onChange={(v) => setPersonName(v)}
-          />
+        <Cell>
+          <View className='ed__row'>
+            <Text className='ed__row-label'>往来人</Text>
+            <Input
+              plain
+              className='ed__row-input'
+              placeholder='姓名'
+              align='right'
+              maxLength={12}
+              value={personName}
+              onChange={(v) => setPersonName(v)}
+            />
+          </View>
         </Cell>
         <Cell title='关系' extra={<Text>{relation}</Text>} clickable onClick={() => setRelationVisible(true)} />
         <Cell title='事由' extra={<Text>{event}</Text>} clickable onClick={() => setEventVisible(true)} />
-        <Cell title='日期' extra={<Text>{dateStr}</Text>} clickable onClick={() => setDateVisible(true)} />
+        <Cell
+          title='日期'
+          extra={
+            <View className='ed__date'>
+              <Text>{dateStr}</Text>
+              <Text className='faint ed__lunar'>{lunarText(dateStr)}</Text>
+            </View>
+          }
+          clickable
+          onClick={() => setDateVisible(true)}
+        />
+        <Cell
+          title='按农历选'
+          extra={<Text className='ed__lunar-entry'>农历 {lunarText(dateStr)}</Text>}
+          clickable
+          onClick={() => {
+            const l = solarToLunar(date.getFullYear(), date.getMonth() + 1, date.getDate())
+            setLunarSel(l)
+            setLunarVisible(true)
+          }}
+        />
       </CellGroup>
 
       <CellGroup>
@@ -154,6 +216,38 @@ export default function Edit() {
           const [y, m, d] = values.map(Number)
           setDate(new Date(y, m - 1, d))
           setDateVisible(false)
+        }}
+      />
+      <Picker
+        title='农历日期'
+        visible={lunarVisible}
+        options={[lunarYearOptions, lunarMonthOptions, lunarDayOptions]}
+        defaultValue={[
+          lunarSel.year,
+          lunarSel.isLeap ? `${lunarSel.month}L` : String(lunarSel.month),
+          lunarSel.day
+        ]}
+        onChange={(args) => {
+          const v = args.value as (string | number | null)[]
+          const y = Number(v[0])
+          const mk = String(v[1])
+          const isLeap = mk.endsWith('L')
+          const m = Number(mk.replace('L', ''))
+          const days = lunarDaysOf(y, m, isLeap)
+          const d = Math.min(Number(v[2]) || 1, days)
+          setLunarSel({ year: y, month: m, day: d, isLeap })
+        }}
+        onClose={() => setLunarVisible(false)}
+        onConfirm={(_opts, selected) => {
+          const v = selected as (string | number | null)[]
+          const y = Number(v[0])
+          const mk = String(v[1])
+          const isLeap = mk.endsWith('L')
+          const m = Number(mk.replace('L', ''))
+          const d = Number(v[2])
+          const solar = lunarToSolar(y, m, d, isLeap)
+          setDate(new Date(solar.y, solar.m - 1, solar.d))
+          setLunarVisible(false)
         }}
       />
       <Picker

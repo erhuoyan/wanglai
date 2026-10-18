@@ -5,6 +5,7 @@ import { Button, Cell, CellGroup, Dialog } from '@nutui/nutui-react-taro'
 import { Edit as EditIcon, Del } from '@nutui/icons-react-taro'
 import { getEntry, deleteEntry } from '../../store/data'
 import { formatYuan } from '../../utils/calc'
+import { lunarText } from '../../utils/lunar'
 import type { Entry } from '../../types'
 import './index.scss'
 
@@ -56,7 +57,7 @@ export default function Detail() {
         <Cell title='往来人' extra={entry.personName} />
         <Cell title='关系' extra={entry.relation} />
         <Cell title='事由' extra={entry.event} />
-        <Cell title='日期' extra={entry.date} />
+        <Cell title='日期' extra={`${entry.date} ${lunarText(entry.date)}`} />
         {entry.note && <Cell title='备注' extra={entry.note} />}
       </CellGroup>
 

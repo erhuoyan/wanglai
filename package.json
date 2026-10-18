@@ -12,7 +12,8 @@
     "dev:h5": "npm run build:h5 -- --watch",
     "dev:alipay": "npm run build:alipay -- --watch",
     "dev:tt": "npm run build:tt -- --watch",
-    "test": "node --test tests/*.cjs"
+    "test": "node --test tests/*.cjs && node --import tsx --test tests/*.test.ts",
+    "gen:lunar": "tsx tools/gen-lunar-table.ts"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.0",
