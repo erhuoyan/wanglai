@@ -15,23 +15,29 @@ const srcDir = path.join(root, 'src/assets/icons/src')
 const iconOut = path.join(root, 'src/assets/icons')
 const tabOut = path.join(root, 'src/assets/tab')
 
-const TABS = [
-  ['ledger', 'ledger'],
-  ['list', 'list'],
-  ['people', 'people'],
-  ['events', 'events'],
-  ['gear', 'gear']
-]
+/* 古风图标：另一套源与输出，结构与可爱版一致 */
+const tradSrcDir = path.join(root, 'src/assets/icons-trad/src')
+const tradIconOut = path.join(root, 'src/assets/icons-trad')
+const tradTabOut = path.join(root, 'src/assets/tab-trad')
+
+const TABS = ['ledger', 'list', 'people', 'events', 'gear']
 
 const PALETTES = {
   off: { __LINE__: '#B3A3AA', __ACCENT__: '#FFD1D8', __SOFT__: 'none' },
   on: { __LINE__: '#C0394F', __ACCENT__: '#FFD1D8', __SOFT__: '#FFE7EA' }
 }
 
+const TRAD_PALETTES = {
+  off: { __LINE__: '#8C8177', __ACCENT__: '#C0A16B', __SOFT__: 'none' },
+  on: { __LINE__: '#9E2B25', __ACCENT__: '#B08D57', __SOFT__: '#F6EFE2' }
+}
+
+const APP_ICONS = ['arrow', 'pencil', 'trash', 'search', 'plus', 'export', 'copy', 'import', 'sparkle']
+
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wanglai-icons-'))
 
 function render(svg, out, width, height) {
-  const tmp = path.join(tmpDir, `${path.basename(out)}.svg`)
+  const tmp = path.join(tmpDir, `${out.replace(/[\\/]/g, '_')}.svg`)
   fs.writeFileSync(tmp, svg)
   fs.mkdirSync(path.dirname(out), { recursive: true })
   execFileSync('rsvg-convert', ['-w', String(width), '-h', String(height), '-o', out, tmp])
@@ -51,22 +57,40 @@ try {
   process.exit(1)
 }
 
-for (const [source, target] of TABS) {
-  const svg = fs.readFileSync(path.join(srcDir, 'tab', `${source}.svg`), 'utf8')
-  render(withPalette(svg, PALETTES.off), path.join(tabOut, `${target}.png`), 81, 81)
-  render(withPalette(svg, PALETTES.on), path.join(tabOut, `${target}-on.png`), 81, 81)
-}
+let count = 0
 
-const APP_ICONS = ['arrow', 'pencil', 'trash', 'search', 'plus', 'export', 'copy', 'import', 'sparkle']
+/* ---------- 卡通 ---------- */
+for (const name of TABS) {
+  const svg = fs.readFileSync(path.join(srcDir, 'tab', `${name}.svg`), 'utf8')
+  render(withPalette(svg, PALETTES.off), path.join(tabOut, `${name}.png`), 81, 81)
+  render(withPalette(svg, PALETTES.on), path.join(tabOut, `${name}-on.png`), 81, 81)
+  count += 2
+}
 
 for (const name of APP_ICONS) {
   const svg = fs.readFileSync(path.join(srcDir, `${name}.svg`), 'utf8')
   render(svg, path.join(iconOut, `${name}.png`), 144, 144)
+  count += 1
 }
 
+/* ---------- 古风 ---------- */
+for (const name of TABS) {
+  const svg = fs.readFileSync(path.join(tradSrcDir, 'tab', `${name}.svg`), 'utf8')
+  render(withPalette(svg, TRAD_PALETTES.off), path.join(tradTabOut, `${name}.png`), 81, 81)
+  render(withPalette(svg, TRAD_PALETTES.on), path.join(tradTabOut, `${name}-on.png`), 81, 81)
+  count += 2
+}
+
+for (const name of APP_ICONS) {
+  const svg = fs.readFileSync(path.join(tradSrcDir, `${name}.svg`), 'utf8')
+  render(svg, path.join(tradIconOut, `${name}.png`), 144, 144)
+  count += 1
+}
+
+/* ---------- 吉祥物（仅卡通） ---------- */
 const mascot = fs.readFileSync(path.join(srcDir, 'cat-mascot.svg'), 'utf8')
 render(mascot, path.join(iconOut, 'cat-mascot.png'), 400, 400)
 render(fs.readFileSync(path.join(srcDir, 'cat-face.svg'), 'utf8'), path.join(iconOut, 'cat-face.png'), 240, 240)
 
 fs.rmSync(tmpDir, { recursive: true, force: true })
-console.log(`已生成 ${TABS.length * 2} 个 tab 图标、${APP_ICONS.length} 个应用图标和 2 个猫咪插画`)
+console.log(`已生成 ${count} 个图标（卡通 + 古风）与 2 个猫咪插画`)

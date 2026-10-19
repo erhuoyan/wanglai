@@ -3,6 +3,7 @@ import devConfig from './dev'
 import prodConfig from './prod'
 
 export default defineConfig(async (merge) => {
+  const outputRoot = `dist/${process.env.TARO_ENV || 'weapp'}`
   const baseConfig = {
     projectName: 'wanglai',
     logger: {
@@ -18,10 +19,18 @@ export default defineConfig(async (merge) => {
     },
     sourceRoot: 'src',
     // 分平台输出，避免 weapp/h5/alipay/tt 互相覆盖
-    outputRoot: `dist/${process.env.TARO_ENV || 'weapp'}`,
+    outputRoot,
     plugins: [],
     defineConstants: {},
-    copy: { patterns: [], options: {} },
+    // tab 图标随外观切换（setTabBarItem），三套都要以 assets/<set>/ 的形式落到产物里
+    copy: {
+      patterns: [
+        { from: 'src/assets/tab', to: `${outputRoot}/assets/tab` },
+        { from: 'src/assets/tab-classic', to: `${outputRoot}/assets/tab-classic` },
+        { from: 'src/assets/tab-trad', to: `${outputRoot}/assets/tab-trad` }
+      ],
+      options: {}
+    },
     framework: 'react',
     compiler: 'webpack5',
     cache: { enable: false },

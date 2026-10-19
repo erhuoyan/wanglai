@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import Taro from '@tarojs/taro'
 
-export type ThemeId = 'classic' | 'album' | 'cartoon' | 'elder'
+export type ThemeId = 'cartoon' | 'classic' | 'album'
 
 export interface ThemeMeta {
   id: ThemeId
@@ -28,15 +28,9 @@ export const THEMES: ThemeMeta[] = [
   },
   {
     id: 'album',
-    name: '典雅',
-    desc: '宣纸朱红，像一本老礼簿',
-    swatch: ['#f3eee6', '#a93226']
-  },
-  {
-    id: 'elder',
-    name: '大字',
-    desc: '字大、对比强，长辈看得清',
-    swatch: ['#fffdf8', '#b02318']
+    name: '古风',
+    desc: '宣纸墨线，朱印礼簿，长辈也看得清',
+    swatch: ['#f3eee6', '#9e2b25']
   }
 ]
 
@@ -65,35 +59,54 @@ const CHROME: Record<ThemeId, {
   tabBg: string
   tabColor: string
   tabOn: string
+  tabDir: string
 }> = {
-  classic: {
-    bg: '#F5F6F7',
-    front: '#000000',
-    tabBg: '#FFFFFF',
-    tabColor: '#7E838A',
-    tabOn: '#A93226'
-  },
-  album: {
-    bg: '#F3EEE6',
-    front: '#000000',
-    tabBg: '#FFFCF7',
-    tabColor: '#7E736B',
-    tabOn: '#A93226'
-  },
   cartoon: {
     bg: '#FFF7F3',
     front: '#000000',
     tabBg: '#FFFFFF',
     tabColor: '#7C6A72',
-    tabOn: '#C0394F'
+    tabOn: '#C0394F',
+    tabDir: 'assets/tab'
   },
-  elder: {
-    bg: '#FFFDF8',
+  classic: {
+    bg: '#F5F6F7',
     front: '#000000',
     tabBg: '#FFFFFF',
-    tabColor: '#4A4A4A',
-    tabOn: '#B02318'
+    tabColor: '#8F949B',
+    tabOn: '#A93226',
+    tabDir: 'assets/tab-classic'
+  },
+  album: {
+    bg: '#F3EEE6',
+    front: '#000000',
+    tabBg: '#FFFCF7',
+    tabColor: '#8C8177',
+    tabOn: '#9E2B25',
+    tabDir: 'assets/tab-trad'
   }
+}
+
+const TAB_ITEMS = [
+  { name: 'ledger', text: '账本' },
+  { name: 'list', text: '流水' },
+  { name: 'people', text: '人情' },
+  { name: 'events', text: '事件' },
+  { name: 'gear', text: '设置' }
+]
+
+function applyTabIcons(id: ThemeId) {
+  const dir = CHROME[id].tabDir
+  TAB_ITEMS.forEach((item, index) => {
+    try {
+      Taro.setTabBarItem({
+        index,
+        text: item.text,
+        iconPath: `${dir}/${item.name}.png`,
+        selectedIconPath: `${dir}/${item.name}-on.png`
+      })
+    } catch { /* 端上不支持时沿用 app.config 的默认图标 */ }
+  })
 }
 
 function applyChrome(id: ThemeId) {
@@ -112,6 +125,7 @@ function applyChrome(id: ThemeId) {
       borderStyle: 'white'
     })
   } catch { /* 同上 */ }
+  applyTabIcons(id)
   if (typeof document !== 'undefined' && document.body) {
     document.body.style.backgroundColor = c.bg
   }

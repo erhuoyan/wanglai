@@ -327,20 +327,20 @@ body {
   color: var(--ink-faint);
 }
 
-/* ---------- 手绘贴纸图标 ---------- */
-.cute-icon {
+/* ---------- 图标：素材随外观切换 ---------- */
+.app-icon {
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
 }
-.cute-icon--xs { width: 22rpx; height: 22rpx; }
-.cute-icon--sm { width: 32rpx; height: 32rpx; }
-.cute-icon--md { width: 40rpx; height: 40rpx; }
-.cute-icon--lg { width: 52rpx; height: 52rpx; }
-.cute-icon--xl { width: 68rpx; height: 68rpx; }
+.app-icon--xs { width: 22rpx; height: 22rpx; }
+.app-icon--sm { width: 32rpx; height: 32rpx; }
+.app-icon--md { width: 40rpx; height: 40rpx; }
+.app-icon--lg { width: 52rpx; height: 52rpx; }
+.app-icon--xl { width: 68rpx; height: 68rpx; }
 
 /* 按钮内图标与文字留一点呼吸 */
-.nut-button-wrap > .cute-icon {
+.nut-button-wrap > .app-icon {
   margin-right: 10rpx;
 }
 

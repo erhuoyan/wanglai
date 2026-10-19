@@ -5,7 +5,7 @@ import { Button, Cell, CellGroup, Dialog } from '@nutui/nutui-react-taro'
 import { getEntry, deleteEntry } from '../../store/data'
 import { formatYuan } from '../../utils/calc'
 import { lunarText } from '../../utils/lunar'
-import CuteIcon from '../../components/CuteIcon'
+import AppIcon from '../../components/AppIcon'
 import { themeClass, useTheme } from '../../store/theme'
 import type { Entry } from '../../types'
 import './index.scss'
@@ -68,10 +68,10 @@ export default function Detail() {
           shape='square'
           fill='outline'
           className='btn-line-default'
-          icon={<CuteIcon name='pencil' size='sm' />}
+          icon={<AppIcon name='pencil' size='sm' />}
           onClick={() => Taro.navigateTo({ url: `/pages/edit/index?id=${id}` })}
         >编辑</Button>
-        <Button shape='square' fill='outline' type='danger' className='btn-line-danger' icon={<CuteIcon name='trash' size='sm' />} onClick={onDelete}>删除</Button>
+        <Button shape='square' fill='outline' type='danger' className='btn-line-danger' icon={<AppIcon name='trash' size='sm' />} onClick={onDelete}>删除</Button>
       </View>
 
       <Dialog id='dt-dialog' />

@@ -6,7 +6,7 @@ import { useLedger } from '../../store/useLedger'
 import { overallStats, overallVerdict, sortEntries, formatYuanGrouped } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
-import CuteIcon from '../../components/CuteIcon'
+import AppIcon from '../../components/AppIcon'
 import { themeClass, useTheme } from '../../store/theme'
 import catFace from '../../assets/icons/cat-face.png'
 import './index.scss'
@@ -27,8 +27,8 @@ export default function Overview() {
       {/* 人情总账：贴纸钱包 */}
       <View className='ov__hero'>
         <View className='ov__tape' />
-        <CuteIcon name='sparkle' size='sm' className='ov__spark ov__spark--a' />
-        <CuteIcon name='sparkle' size='xs' className='ov__spark ov__spark--b' />
+        <AppIcon name='sparkle' size='sm' className='ov__spark ov__spark--a' />
+        <AppIcon name='sparkle' size='xs' className='ov__spark ov__spark--b' />
         <Text className='ov__label'>人情小账本</Text>
         <View className='ov__balance num'>{formatYuanGrouped(stats.balance)}</View>
         <Text className='ov__verdict'>{overallVerdict(stats)}</Text>
@@ -81,7 +81,7 @@ export default function Overview() {
               <Text>最近往来</Text>
               <View className='sec-head__more'>
                 <Text>看全部</Text>
-                <CuteIcon name='arrow' size='xs' />
+                <AppIcon name='arrow' size='xs' />
               </View>
             </View>
           }>

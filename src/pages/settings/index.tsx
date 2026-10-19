@@ -5,7 +5,7 @@ import { Button, Cell, CellGroup, Dialog, TextArea } from '@nutui/nutui-react-ta
 import { useLedger } from '../../store/useLedger'
 import { exportAll, importAll, clearAll, seedDemoOnce } from '../../store/data'
 import { overallStats } from '../../utils/calc'
-import CuteIcon from '../../components/CuteIcon'
+import AppIcon from '../../components/AppIcon'
 import { THEMES, setTheme, themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
@@ -111,28 +111,28 @@ export default function Settings() {
 
       <CellGroup title='数据备份'>
         <Cell
-          leading={<View className='st__ico st__ico--peach'><CuteIcon name='export' size='sm' /></View>}
+          leading={<View className='st__ico st__ico--peach'><AppIcon name='export' size='sm' /></View>}
           title='导出备份文件'
           description='生成 JSON 存到小程序文件夹'
           clickable
           onClick={onExport}
         />
         <Cell
-          leading={<View className='st__ico st__ico--butter'><CuteIcon name='copy' size='sm' /></View>}
+          leading={<View className='st__ico st__ico--butter'><AppIcon name='copy' size='sm' /></View>}
           title='复制备份到剪贴板'
           description='粘贴保存或传给家人'
           clickable
           onClick={onCopy}
         />
         <Cell
-          leading={<View className='st__ico st__ico--mint'><CuteIcon name='import' size='sm' /></View>}
+          leading={<View className='st__ico st__ico--mint'><AppIcon name='import' size='sm' /></View>}
           title='从文本导入'
           description='粘贴备份 JSON 恢复'
           clickable
           onClick={() => setImportVisible(true)}
         />
         <Cell
-          leading={<View className='st__ico st__ico--lilac'><CuteIcon name='sparkle' size='sm' /></View>}
+          leading={<View className='st__ico st__ico--lilac'><AppIcon name='sparkle' size='sm' /></View>}
           title='示例数据'
           description='载入一份演示往来，看看效果'
           clickable

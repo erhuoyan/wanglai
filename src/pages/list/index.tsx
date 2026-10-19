@@ -6,7 +6,7 @@ import { useLedger } from '../../store/useLedger'
 import { filterEntries, groupByMonth, formatYuan, type Filter } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
-import CuteIcon from '../../components/CuteIcon'
+import AppIcon from '../../components/AppIcon'
 import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
@@ -33,7 +33,7 @@ export default function List() {
         <SearchBar
           shape='round'
           placeholder='搜姓名、事由或备注'
-          leftIn={<CuteIcon name='search' size='sm' />}
+          leftIn={<AppIcon name='search' size='sm' />}
           value={keyword}
           onChange={(v) => setKeyword(v)}
         />

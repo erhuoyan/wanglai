@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81 81">
+  <path d="M40.5 14v6" stroke="__LINE__" stroke-width="2.6" stroke-linecap="square"/>
+  <path d="M30 20h21l-3 34H33z" fill="none" stroke="__LINE__" stroke-width="3" stroke-linejoin="miter"/>
+  <path d="M31 29h19M32 50h17" stroke="__ACCENT__" stroke-width="2.4" stroke-linecap="square"/>
+  <path d="M40.5 54v10" stroke="__ACCENT__" stroke-width="2.6" stroke-linecap="square"/>
+  <path d="M33 66h15" stroke="__ACCENT__" stroke-width="3" stroke-linecap="square"/>
+</svg>

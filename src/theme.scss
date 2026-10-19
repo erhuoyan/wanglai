@@ -1,151 +1,18 @@
 /* ============================================================
    外观皮肤层
-   - 每个皮肤挂在页面根节点：.theme-classic / album / cartoon / elder
+   - 每个皮肤挂在页面根节点：.theme-cartoon / theme-classic / theme-album
    - 只换 token（颜色、字体、圆角、投影），结构保持一致
    - 卡通专属装饰（胶带、橘猫、猫耳、爪印）在其余皮肤里隐藏
    ============================================================ */
 
 .theme-classic,
 .theme-album,
-.theme-cartoon,
-.theme-elder {
+.theme-cartoon {
   min-height: 100vh;
   box-sizing: border-box;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--ui-font);
-}
-
-/* ---------------- 简约：中性灰白，字正腔圆 ---------------- */
-.theme-classic {
-  --paper: #f5f6f7;
-  --card: #ffffff;
-  --ink: #1b1b1f;
-  --ink-soft: #6b6f76;
-  --ink-faint: #7e838a;
-  --line: #edeef0;
-  --outline: #e6e8ec;
-  --red: #a93226;
-  --red-bright: #c0392b;
-  --red-soft: #f9ece9;
-  --jade: #17724f;
-  --jade-bright: #2e8b64;
-  --jade-soft: #e9f3ee;
-  --blush-soft: #f9ece9;
-  --butter: #efe6d2;
-  --butter-soft: #f7f8fa;
-  --mint-soft: #e9f3ee;
-  --lilac-soft: #f1f1f7;
-  --sky-soft: #eff5fa;
-  --gold-soft: #f6efe0;
-
-  --ui-font: var(--sans);
-  --heading-font: var(--sans);
-  --button-font: var(--sans);
-  --num-font: var(--serif);
-  --num-weight: 600;
-  --card-radius: 24rpx;
-  --card-border-width: 1rpx;
-  --card-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.05);
-  --divider-height: 1rpx;
-  --divider-bg: var(--line);
-  --search-radius: 16rpx;
-  --search-height: 84rpx;
-  --button-shadow: none;
-  --button-active-shadow: none;
-  --button-primary-shadow: none;
-  --button-success-shadow: none;
-
-  --nutui-color-primary: #a93226;
-  --nutui-color-primary-pressed: #92291f;
-  --nutui-color-primary-disabled: #dfb5af;
-  --nutui-color-primary-light: #f9ece9;
-  --nutui-color-title: #1b1b1f;
-  --nutui-color-text: #1b1b1f;
-  --nutui-color-text-help: #6b6f76;
-  --nutui-color-text-disabled: #a0a5ad;
-  --nutui-gray-7: #1b1b1f;
-  --nutui-black-10: #6b6f76;
-  --nutui-color-background: #f5f6f7;
-  --nutui-color-background-component: #ffffff;
-  --nutui-gray-5: #f5f6f7;
-  --nutui-gray-4: #f7f8fa;
-  --nutui-black-3: #ffffff;
-  --nutui-color-border: #edeef0;
-  --nutui-line-component: #edeef0;
-  --nutui-color-danger: #a93226;
-  --nutui-color-success: #17724f;
-  --nutui-font-family: var(--sans);
-  --nutui-cell-group-background-color: #ffffff;
-  --nutui-switch-active-background-color: #17724f;
-  --nutui-button-border-radius: 32rpx;
-  --nutui-button-square-border-radius: 32rpx;
-}
-
-/* ---------------- 典雅：宣纸朱红，宋体数字 ---------------- */
-.theme-album {
-  --paper: #f3eee6;
-  --card: #fffcf7;
-  --ink: #241e1b;
-  --ink-soft: #6f655d;
-  --ink-faint: #7e736b;
-  --line: #e9e0d5;
-  --outline: #e9e0d5;
-  --red: #a93226;
-  --red-bright: #b23b2c;
-  --red-soft: #f8e9e5;
-  --jade: #1d6b4e;
-  --jade-bright: #237254;
-  --jade-soft: #e8f1eb;
-  --blush-soft: #fbede9;
-  --butter: #f0d9a8;
-  --butter-soft: #f9efd8;
-  --mint-soft: #e8f1eb;
-  --lilac-soft: #efecf6;
-  --sky-soft: #eef4f8;
-  --gold-soft: #f5ead4;
-
-  --ui-font: var(--sans);
-  --heading-font: var(--serif);
-  --button-font: var(--sans);
-  --num-font: var(--serif);
-  --num-weight: 600;
-  --card-radius: 28rpx;
-  --card-border-width: 1rpx;
-  --card-shadow: 0 12rpx 32rpx rgba(60, 42, 30, 0.05);
-  --divider-height: 1rpx;
-  --divider-bg: var(--line);
-  --search-radius: 100rpx;
-  --search-height: 84rpx;
-  --button-shadow: none;
-  --button-active-shadow: none;
-  --button-primary-shadow: none;
-  --button-success-shadow: none;
-
-  --nutui-color-primary: #a93226;
-  --nutui-color-primary-pressed: #92291f;
-  --nutui-color-primary-disabled: #dfb5af;
-  --nutui-color-primary-light: #f8e9e5;
-  --nutui-color-title: #241e1b;
-  --nutui-color-text: #241e1b;
-  --nutui-color-text-help: #6f655d;
-  --nutui-color-text-disabled: #a69a90;
-  --nutui-gray-7: #241e1b;
-  --nutui-black-10: #6f655d;
-  --nutui-color-background: #f3eee6;
-  --nutui-color-background-component: #fffcf7;
-  --nutui-gray-5: #f3eee6;
-  --nutui-gray-4: #f8f4ee;
-  --nutui-black-3: #fffcf7;
-  --nutui-color-border: #e9e0d5;
-  --nutui-line-component: #e9e0d5;
-  --nutui-color-danger: #a93226;
-  --nutui-color-success: #1d6b4e;
-  --nutui-font-family: var(--sans);
-  --nutui-cell-group-background-color: #fffcf7;
-  --nutui-switch-active-background-color: #1d6b4e;
-  --nutui-button-border-radius: 32rpx;
-  --nutui-button-square-border-radius: 32rpx;
 }
 
 /* ---------------- 卡通：糖果贴纸 + 橘猫（基础层默认） ---------------- */
@@ -220,72 +87,139 @@
   --nutui-button-square-border-radius: 48rpx;
 }
 
-/* ---------------- 大字：高对比 + 放大字号，给长辈 ---------------- */
-.theme-elder {
-  --paper: #fffdf8;
+/* ---------------- 简约：沿用里程碑版本的灰白账本 ---------------- */
+.theme-classic {
+  --paper: #f5f6f7;
   --card: #ffffff;
-  --ink: #1a1a1a;
-  --ink-soft: #4a4a4a;
-  --ink-faint: #5f5f5f;
-  --line: #dedede;
-  --outline: #cfcfcf;
-  --red: #b02318;
-  --red-bright: #c0392b;
-  --red-soft: #fbe9e6;
-  --jade: #146043;
-  --jade-bright: #1d7a56;
-  --jade-soft: #e8f2ec;
-  --blush-soft: #fbe9e6;
-  --butter: #efdcae;
-  --butter-soft: #fbf5e6;
-  --mint-soft: #e8f2ec;
-  --lilac-soft: #f0eff7;
-  --sky-soft: #eef5fa;
-  --gold-soft: #f8efd9;
+  --ink: #1b1b1f;
+  --ink-soft: #6b6f76;
+  --ink-faint: #7e838a;
+  --line: #edeef0;
+  --outline: #edeef0;
+  --red: #a93226;
+  --red-bright: #b23b2c;
+  --red-soft: #f9ece9;
+  --jade: #17724f;
+  --jade-bright: #2e8b64;
+  --jade-soft: #e9f3ee;
+  --blush-soft: #f9ece9;
+  --butter: #efe6d2;
+  --butter-soft: #f5f6f7;
+  --mint-soft: #e9f3ee;
+  --lilac-soft: #f3f2f8;
+  --sky-soft: #eff5fa;
+  --gold-soft: #f6efe0;
 
   --ui-font: var(--sans);
   --heading-font: var(--sans);
   --button-font: var(--sans);
-  --num-font: var(--sans);
-  --num-weight: 700;
-  --card-radius: 20rpx;
-  --card-border-width: 2rpx;
-  --card-shadow: 0 2rpx 0 rgba(0, 0, 0, 0.06);
-  --divider-height: 2rpx;
+  --num-font: var(--serif);
+  --num-weight: 600;
+  --card-radius: 24rpx;
+  --card-border-width: 0;
+  --card-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+  --divider-height: 1rpx;
   --divider-bg: var(--line);
-  --search-radius: 20rpx;
-  --search-height: 96rpx;
+  --search-radius: 100rpx;
+  --search-height: 84rpx;
   --button-shadow: none;
   --button-active-shadow: none;
   --button-primary-shadow: none;
   --button-success-shadow: none;
 
-  --nutui-color-primary: #b02318;
-  --nutui-color-primary-pressed: #8f1c13;
-  --nutui-color-primary-disabled: #e3b3ae;
-  --nutui-color-primary-light: #fbe9e6;
-  --nutui-color-title: #1a1a1a;
-  --nutui-color-text: #1a1a1a;
-  --nutui-color-text-help: #4a4a4a;
-  --nutui-color-text-disabled: #6f6f6f;
-  --nutui-gray-7: #1a1a1a;
-  --nutui-black-10: #4a4a4a;
-  --nutui-color-background: #fffdf8;
+  --nutui-color-primary: #a93226;
+  --nutui-color-primary-pressed: #92291f;
+  --nutui-color-primary-disabled: #dfb5af;
+  --nutui-color-primary-light: #f9ece9;
+  --nutui-color-title: #1b1b1f;
+  --nutui-color-text: #1b1b1f;
+  --nutui-color-text-help: #6b6f76;
+  --nutui-color-text-disabled: #a0a5ad;
+  --nutui-gray-7: #1b1b1f;
+  --nutui-black-10: #6b6f76;
+  --nutui-color-background: #f5f6f7;
   --nutui-color-background-component: #ffffff;
-  --nutui-gray-5: #fffdf8;
-  --nutui-gray-4: #faf7f0;
+  --nutui-gray-5: #f5f6f7;
+  --nutui-gray-4: #f7f8fa;
   --nutui-black-3: #ffffff;
-  --nutui-color-border: #dedede;
-  --nutui-line-component: #dedede;
-  --nutui-color-danger: #b02318;
-  --nutui-color-success: #146043;
+  --nutui-color-border: #edeef0;
+  --nutui-line-component: #edeef0;
+  --nutui-color-danger: #a93226;
+  --nutui-color-success: #17724f;
   --nutui-font-family: var(--sans);
   --nutui-cell-group-background-color: #ffffff;
-  --nutui-switch-active-background-color: #1d7a56;
-  --nutui-button-border-radius: 24rpx;
-  --nutui-button-square-border-radius: 24rpx;
-  --nutui-button-default-height: 104rpx;
-  --nutui-button-default-font-size: 34rpx;
+  --nutui-switch-active-background-color: #17724f;
+  --nutui-button-border-radius: 32rpx;
+  --nutui-button-square-border-radius: 32rpx;
+}
+
+/* ---------------- 古风：宣纸、墨线、朱印、金线 ---------------- */
+.theme-album {
+  --paper: #f3eee6;
+  --card: #fffcf7;
+  --ink: #2a2320;
+  --ink-soft: #6b6058;
+  --ink-faint: #7d7269;
+  --line: #e6dccd;
+  --outline: #ddcfba;
+  --red: #9e2b25;
+  --red-bright: #b23b2c;
+  --red-soft: #f6e8e2;
+  --jade: #2f5d50;
+  --jade-bright: #3a7263;
+  --jade-soft: #e9f0ec;
+  --blush-soft: #f6e8e2;
+  --butter: #d9bd85;
+  --butter-soft: #f7efdf;
+  --mint-soft: #e9f0ec;
+  --lilac-soft: #efecf3;
+  --sky-soft: #eef2f4;
+  --gold: #b08d57;
+  --gold-soft: #f2e7d1;
+
+  --ui-font: var(--sans);
+  --heading-font: var(--serif);
+  --button-font: var(--sans);
+  --num-font: var(--serif);
+  --num-weight: 600;
+  --card-radius: 12rpx;
+  --card-border-width: 1rpx;
+  --card-shadow: 0 6rpx 20rpx rgba(74, 55, 38, 0.06);
+  --divider-height: 1rpx;
+  --divider-bg: var(--line);
+  --search-radius: 10rpx;
+  --search-height: 88rpx;
+  --button-shadow: none;
+  --button-active-shadow: none;
+  --button-primary-shadow: none;
+  --button-success-shadow: none;
+
+  --nutui-color-primary: #9e2b25;
+  --nutui-color-primary-pressed: #85211c;
+  --nutui-color-primary-disabled: #d6b0a9;
+  --nutui-color-primary-light: #f6e8e2;
+  --nutui-color-title: #2a2320;
+  --nutui-color-text: #2a2320;
+  --nutui-color-text-help: #6b6058;
+  --nutui-color-text-disabled: #a2958a;
+  --nutui-gray-7: #2a2320;
+  --nutui-black-10: #6b6058;
+  --nutui-color-background: #f3eee6;
+  --nutui-color-background-component: #fffcf7;
+  --nutui-gray-5: #f3eee6;
+  --nutui-gray-4: #f8f4ee;
+  --nutui-black-3: #fffcf7;
+  --nutui-color-border: #e6dccd;
+  --nutui-line-component: #e6dccd;
+  --nutui-color-danger: #9e2b25;
+  --nutui-color-success: #2f5d50;
+  --nutui-font-family: var(--sans);
+  --nutui-cell-group-background-color: #fffcf7;
+  --nutui-switch-active-background-color: #3a7263;
+  --nutui-button-border-radius: 12rpx;
+  --nutui-button-square-border-radius: 12rpx;
+  --nutui-button-default-height: 96rpx;
+  --nutui-button-default-font-size: 31rpx;
 }
 
 /* ============================================================
@@ -295,63 +229,106 @@
 /* 胶带、橘猫、星星贴纸 */
 .theme-classic .ov__tape,
 .theme-album .ov__tape,
-.theme-elder .ov__tape,
 .theme-classic .ov__cat,
 .theme-album .ov__cat,
-.theme-elder .ov__cat,
 .theme-classic .ov__spark,
 .theme-album .ov__spark,
-.theme-elder .ov__spark,
 .theme-classic .ev__tape,
-.theme-album .ev__tape,
-.theme-elder .ev__tape {
+.theme-album .ev__tape {
   display: none;
 }
 
 /* 爪印、猫耳 */
 .theme-classic .nut-cell-group-title::before,
-.theme-album .nut-cell-group-title::before,
-.theme-elder .nut-cell-group-title::before {
+.theme-album .nut-cell-group-title::before {
   content: none;
 }
 .theme-classic .pa__ear,
-.theme-album .pa__ear,
-.theme-elder .pa__ear {
+.theme-album .pa__ear {
   display: none;
 }
 .theme-classic .ov__fab::before,
 .theme-classic .ov__fab::after,
 .theme-album .ov__fab::before,
-.theme-album .ov__fab::after,
-.theme-elder .ov__fab::before,
-.theme-elder .ov__fab::after {
+.theme-album .ov__fab::after {
   content: none;
 }
 
-/* 悬浮按钮：圆润带投影，不再有硬边与耳朵 */
+/* 印章上的高光：卡通专用 */
+.theme-classic .seal::after,
+.theme-album .seal::after,
+.theme-classic .ov__mark::after,
+.theme-album .ov__mark::after {
+  content: none;
+}
+
+/* 悬浮按钮：回归常规投影，不再有硬边与耳朵 */
 .theme-classic .ov__fab,
-.theme-album .ov__fab,
-.theme-elder .ov__fab {
+.theme-album .ov__fab {
   border-width: 0;
   background: var(--red);
   box-shadow: 0 8rpx 24rpx rgba(30, 20, 20, 0.2);
 }
 
-/* 首页封面：默认白卡，典雅换成朱红礼簿 */
+/* 首页 / 事件页封面：普通卡 */
 .theme-classic .ov__hero,
-.theme-album .ov__hero,
-.theme-elder .ov__hero {
+.theme-classic .ev__hero {
   background: var(--card);
-  border-width: var(--card-border-width);
+  border: var(--card-border-width) solid var(--outline);
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
   animation: none;
 }
-.theme-album .ov__hero {
-  background: linear-gradient(155deg, #b23b2c 0%, #93281c 58%, #7a2117 100%);
-  color: #fdf3e7;
+.theme-classic .ov__label { color: var(--ink-soft); }
+.theme-classic .ov__balance {
+  background: none;
+  padding: 0;
 }
-.theme-album .ov__label { color: rgba(253, 243, 231, 0.78); }
+.theme-classic .ov__stat {
+  background: var(--paper);
+  border-color: transparent;
+}
+.theme-classic .ev__hero::after { content: none; }
+.theme-classic .ev__hero-num {
+  background: none;
+  padding: 0;
+}
+
+/* 首页：朱红礼簿封面 */
+.theme-album .ov__hero {
+  background: linear-gradient(150deg, #a8362c 0%, #8c231d 62%, #711a15 100%);
+  border: var(--card-border-width) solid var(--outline);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  color: #fdf3e7;
+  animation: none;
+}
+.theme-album .ov__hero::before {
+  content: '';
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  bottom: 10rpx;
+  left: 10rpx;
+  border: 1rpx solid rgba(255, 236, 214, 0.22);
+  border-radius: 6rpx;
+  pointer-events: none;
+}
+.theme-album .ov__hero::after {
+  content: '礼';
+  position: absolute;
+  right: 20rpx;
+  bottom: -18rpx;
+  font-family: var(--serif);
+  font-size: 150rpx;
+  line-height: 1;
+  color: rgba(255, 240, 220, 0.08);
+  pointer-events: none;
+}
+.theme-album .ov__label {
+  color: rgba(253, 243, 231, 0.78);
+  letter-spacing: 6rpx;
+}
 .theme-album .ov__balance {
   color: #fff8ee;
   background: none;
@@ -360,223 +337,308 @@
 .theme-album .ov__verdict { color: rgba(253, 243, 231, 0.8); }
 .theme-album .ov__stat {
   background: transparent;
-  border-color: rgba(255, 246, 232, 0.18);
-  border-radius: 16rpx;
+  border: 1rpx solid rgba(255, 246, 232, 0.2);
+  border-radius: 6rpx;
 }
-.theme-album .ov__stat-label { color: rgba(253, 243, 231, 0.68); }
+.theme-album .ov__stat-label {
+  color: rgba(253, 243, 231, 0.7);
+  letter-spacing: 2rpx;
+}
 .theme-album .ov__stat-in { color: #d7ebde; }
 .theme-album .ov__stat-out { color: #ffd2c8; }
 
-.theme-classic .ov__label,
-.theme-elder .ov__label { color: var(--ink-soft); }
-.theme-classic .ov__balance,
-.theme-elder .ov__balance {
-  background: none;
-  padding: 0;
-}
-.theme-classic .ov__stat,
-.theme-elder .ov__stat {
-  background: var(--paper);
-  border-color: transparent;
-}
-
-/* 印章 / 小徽标：去掉歪斜和描边 */
-.theme-classic .seal,
-.theme-album .seal,
-.theme-elder .seal {
-  width: 46rpx;
-  height: 46rpx;
-  border-width: 0;
-  border-radius: 10rpx;
-  font-size: 25rpx;
-  transform: none;
-}
-.theme-classic .ov__mark,
-.theme-album .ov__mark,
-.theme-elder .ov__mark {
-  border-width: 0;
-  border-radius: 12rpx;
-  transform: none;
-}
-.theme-classic .ov__mark,
-.theme-album .ov__mark { width: 56rpx; height: 56rpx; }
-
-/* 两笔动作卡：从贴纸卡退回普通卡
-   页面里是 .ov__actions .ov__action，这里必须同样深入到两级才会覆盖 */
-.theme-classic .ov__actions .ov__action,
-.theme-album .ov__actions .ov__action,
-.theme-elder .ov__actions .ov__action {
-  border-width: var(--card-border-width);
-  border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow);
-}
-
-/* 事件封面 */
-.theme-classic .ev__hero,
-.theme-elder .ev__hero {
-  background: var(--card);
-  border-width: var(--card-border-width);
-  border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow);
-  animation: none;
-}
-.theme-classic .ev__hero::after,
-.theme-elder .ev__hero::after { content: none; }
-.theme-classic .ev__hero-num,
-.theme-elder .ev__hero-num {
-  background: none;
-  padding: 0;
-}
+/* 事件页：黛青封面 */
 .theme-album .ev__hero {
-  background: linear-gradient(155deg, #237254 0%, #18563e 62%, #124632 100%);
-  color: #f4faf5;
+  background: linear-gradient(150deg, #38695c 0%, #2b5349 62%, #23443b 100%);
+  border: var(--card-border-width) solid var(--outline);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  color: #f2f7f3;
   animation: none;
 }
-.theme-album .ev__hero-label { color: rgba(244, 250, 245, 0.76); }
+.theme-album .ev__hero::after {
+  content: '宴';
+  position: absolute;
+  right: 18rpx;
+  bottom: -22rpx;
+  font-family: var(--serif);
+  font-size: 150rpx;
+  line-height: 1;
+  color: rgba(240, 250, 242, 0.08);
+}
+.theme-album .ev__hero-label {
+  color: rgba(242, 247, 243, 0.76);
+  letter-spacing: 6rpx;
+}
 .theme-album .ev__hero-num {
-  color: #f6fcf7;
+  color: #f6fbf7;
   background: none;
   padding: 0;
 }
 .theme-album .ev__hero-side {
   background: transparent;
-  border-color: rgba(223, 240, 226, 0.24);
+  border: 1rpx solid rgba(223, 240, 226, 0.24);
+  border-radius: 6rpx;
 }
-.theme-album .ev__hero-in { color: #f2dfb6; }
-.theme-album .ev__hero-sub { color: rgba(244, 250, 245, 0.72); }
-.theme-album .ev__hero-count { color: rgba(244, 250, 245, 0.62); }
+.theme-album .ev__hero-in { color: #e8d5a9; }
+.theme-album .ev__hero-sub { color: rgba(242, 247, 243, 0.72); }
+.theme-album .ev__hero-count { color: rgba(242, 247, 243, 0.6); }
 
-/* 详情 / 收礼明细 / 往来人：卡片语言统一 */
-.theme-classic .dt__hero,
-.theme-album .dt__hero,
-.theme-elder .dt__hero,
-.theme-classic .ga__hero,
-.theme-album .ga__hero,
-.theme-elder .ga__hero,
-.theme-classic .pr__hero,
-.theme-album .pr__hero,
-.theme-elder .pr__hero,
-.theme-classic .st__stats,
-.theme-album .st__stats,
-.theme-elder .st__stats,
-.theme-classic .ed__amount,
-.theme-album .ed__amount,
-.theme-elder .ed__amount,
-.theme-classic .pr__sums,
-.theme-album .pr__sums,
-.theme-elder .pr__sums {
+/* 事件徽标、设置页图标块、关于印章：去掉粗描边与歪斜 */
+.theme-classic .ev__badge,
+.theme-album .ev__badge {
+  border-width: 0;
+  border-radius: 8rpx;
+  transform: none;
+}
+.theme-album .ev__badge {
+  border: 1rpx solid currentColor;
+  border-radius: 4rpx;
+}
+.theme-classic .ev__badge::after,
+.theme-album .ev__badge::after {
+  content: none;
+}
+.theme-classic .st__ico,
+.theme-album .st__ico {
+  border-width: 0;
+  border-radius: 10rpx;
+  transform: none;
+}
+.theme-album .st__ico {
+  border: 1rpx solid currentColor;
+  border-radius: 4rpx;
+}
+.theme-classic .st__mark,
+.theme-album .st__mark {
+  border-width: 0;
+  border-radius: 8rpx;
+  transform: none;
+  box-shadow: none;
+}
+.theme-album .st__mark {
+  border-radius: 4rpx;
+  background: var(--red);
+  color: #fff6ec;
+}
+
+/* 空态插画：非卡通皮肤换成账页 + 朱印 */
+.theme-classic .empty-state__mascot,
+.theme-album .empty-state__mascot {
+  display: none;
+}
+.theme-classic .empty-state__art,
+.theme-album .empty-state__art {
+  position: relative;
+  width: 148rpx;
+  height: 184rpx;
+  animation: none;
+}
+.theme-classic .empty-state__art::before,
+.theme-album .empty-state__art::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 132rpx;
+  height: 176rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 12rpx rgba(60, 42, 30, 0.05);
+}
+.theme-classic .empty-state__art::after,
+.theme-album .empty-state__art::after {
+  content: '礼';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60rpx;
+  height: 60rpx;
+  background: var(--red);
+  border-radius: 8rpx;
+  color: #fff6ec;
+  font-family: var(--serif);
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 60rpx;
+  text-align: center;
+  transform: rotate(-4deg);
+}
+.theme-album .empty-state__art::after {
+  border-radius: 2rpx;
+}
+
+/* 新建事件：虚线卡收薄 */
+.theme-classic .ev__add,
+.theme-album .ev__add {
+  border-width: 1rpx;
+  border-radius: 12rpx;
+}
+.theme-album .ev__add {
+  border-radius: 4rpx;
+}
+
+/* 印章 / 徽标：方角，不带歪斜 */
+.theme-classic .seal,
+.theme-album .seal {
+  width: 46rpx;
+  height: 46rpx;
+  border-width: 0;
+  border-radius: 8rpx;
+  font-size: 25rpx;
+  transform: none;
+}
+.theme-album .seal {
+  border: 1rpx solid currentColor;
+  border-radius: 4rpx;
+}
+.theme-classic .ov__mark,
+.theme-album .ov__mark {
+  width: 56rpx;
+  height: 56rpx;
+  border-width: 0;
+  border-radius: 8rpx;
+  transform: none;
+}
+.theme-album .ov__mark {
+  border: 1rpx solid currentColor;
+  border-radius: 4rpx;
+}
+
+/* 两笔动作卡：普通卡
+   页面里是 .ov__actions .ov__action，这里必须同样深入到两级才会覆盖 */
+.theme-classic .ov__actions .ov__action,
+.theme-album .ov__actions .ov__action {
   border-width: var(--card-border-width);
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
 }
+
+/* 各类内容卡 */
+.theme-classic .dt__hero,
+.theme-album .dt__hero,
+.theme-classic .ga__hero,
+.theme-album .ga__hero,
+.theme-classic .pr__hero,
+.theme-album .pr__hero,
+.theme-classic .st__stats,
+.theme-album .st__stats,
+.theme-classic .pr__sums,
+.theme-album .pr__sums {
+  border-width: var(--card-border-width);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+.theme-album .dt__hero,
+.theme-album .ga__hero,
+.theme-album .pr__hero {
+  border-color: var(--outline);
+}
+.theme-album .dt__hero--in,
+.theme-album .dt__hero--out {
+  background: var(--card);
+}
 .theme-classic .dt__hero--in,
 .theme-classic .dt__hero--out,
-.theme-elder .dt__hero--in,
-.theme-elder .dt__hero--out {
-  background: var(--card);
-}
 .theme-classic .ga__hero,
-.theme-elder .ga__hero,
 .theme-classic .pr__hero,
-.theme-elder .pr__hero,
-.theme-classic .ed__amount,
-.theme-elder .ed__amount {
+.theme-classic .ed__amount {
   background: var(--card);
 }
-.theme-album .ga__hero,
-.theme-album .ed__amount {
+.theme-album .ga__hero {
   background: linear-gradient(180deg, var(--paper) 0%, var(--card) 62%);
 }
 
-/* 分段控件：糖果底槽换成中性底槽 */
+/* 记一笔：金额与分段 */
+.theme-classic .ed__amount,
+.theme-album .ed__amount {
+  border-width: var(--card-border-width);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+.theme-classic .ed__amount { background: var(--card); }
+.theme-album .ed__amount {
+  background: var(--card);
+  border-color: var(--outline);
+}
 .theme-classic .ls__chips,
-.theme-album .ls__chips,
-.theme-elder .ls__chips,
 .theme-classic .pp__sorts,
-.theme-album .pp__sorts,
-.theme-elder .pp__sorts,
 .theme-classic .ed__switch,
-.theme-album .ed__switch,
-.theme-elder .ed__switch {
+.theme-album .ls__chips,
+.theme-album .pp__sorts,
+.theme-album .ed__switch {
   background: var(--paper);
   border-width: var(--card-border-width);
-  border-radius: 16rpx;
+  border-color: var(--outline);
+  border-radius: 12rpx;
 }
 .theme-classic .ls__chip,
-.theme-album .ls__chip,
-.theme-elder .ls__chip,
 .theme-classic .pp__sort,
-.theme-album .pp__sort,
-.theme-elder .pp__sort,
 .theme-classic .ed__half,
-.theme-album .ed__half,
-.theme-elder .ed__half {
-  border-radius: 12rpx;
+.theme-album .ls__chip,
+.theme-album .pp__sort,
+.theme-album .ed__half {
+  border-radius: 8rpx;
+  font-family: var(--button-font);
   font-weight: 600;
 }
 .theme-classic .ls__chip--on,
-.theme-album .ls__chip--on,
-.theme-elder .ls__chip--on,
 .theme-classic .pp__sort--on,
-.theme-album .pp__sort--on,
-.theme-elder .pp__sort--on,
 .theme-classic .ed__half--out,
 .theme-classic .ed__half--in,
+.theme-album .ls__chip--on,
+.theme-album .pp__sort--on,
 .theme-album .ed__half--out,
-.theme-album .ed__half--in,
-.theme-elder .ed__half--out,
-.theme-elder .ed__half--in {
-  border-radius: 10rpx;
+.theme-album .ed__half--in {
+  border-radius: 6rpx;
   box-shadow: none;
 }
 .theme-classic .ls__year,
-.theme-album .ls__year,
-.theme-elder .ls__year,
 .theme-classic .ed__preset,
-.theme-album .ed__preset,
-.theme-elder .ed__preset {
+.theme-album .ls__year,
+.theme-album .ed__preset {
   border-width: var(--card-border-width);
-  border-radius: 10rpx;
+  border-color: var(--outline);
+  border-radius: 8rpx;
+  font-family: var(--ui-font);
 }
 
-/* 空态卡片 */
+/* 空态按钮 */
 .theme-classic .empty-state__cta,
-.theme-album .empty-state__cta,
-.theme-elder .empty-state__cta {
+.theme-album .empty-state__cta {
   border-radius: 16rpx !important;
 }
+.theme-album .empty-state__cta {
+  border-radius: 6rpx !important;
+}
 
-/* ============================================================
-   大字：只放大可读性关键处，保持结构不变
-   ============================================================ */
-.theme-elder .entry-row { gap: 24rpx; }
-.theme-elder .entry-row__name { font-size: 37rpx; }
-.theme-elder .entry-row__event { font-size: 25rpx; padding: 4rpx 16rpx; }
-.theme-elder .entry-row__time { font-size: 28rpx; }
-.theme-elder .entry-row__amt { font-size: 40rpx; }
-/* 基础层是 .nut-cell-group .nut-cell，这里要多一级才盖得住 */
-.theme-elder .nut-cell-group .nut-cell { padding: 34rpx 28rpx !important; }
-.theme-elder .nut-cell-group-title { font-size: 35rpx !important; }
-.theme-elder .nut-cell-group-description { font-size: 27rpx !important; }
-.theme-elder .nut-cell-title { font-size: 33rpx; }
-.theme-elder .nut-cell-description { font-size: 27rpx; line-height: 1.5; }
-.theme-elder .nut-cell-extra { font-size: 30rpx; }
-.theme-elder .nut-searchbar-input { font-size: 32rpx; }
-.theme-elder .ls__chip,
-.theme-elder .pp__sort { font-size: 29rpx; padding: 18rpx 26rpx; }
-.theme-elder .ls__year { font-size: 28rpx; padding: 16rpx 24rpx; }
-.theme-elder .ls__count,
-.theme-elder .ls__net { font-size: 28rpx; }
-.theme-elder .sec-head__more { font-size: 28rpx; }
-.theme-elder .ov__label { font-size: 29rpx; }
-.theme-elder .ov__balance { font-size: 104rpx; }
-.theme-elder .ov__verdict { font-size: 31rpx; }
-.theme-elder .ov__stat-label { font-size: 27rpx; }
-.theme-elder .ov__stat-num { font-size: 39rpx; }
-.theme-elder .ov__actions .ov__action { height: 132rpx; }
-.theme-elder .ov__action .nut-button-title { font-size: 36rpx; }
-.theme-elder .ov__action .nut-button-desc { font-size: 26rpx; }
-.theme-elder .ov__mark { width: 66rpx; height: 66rpx; font-size: 33rpx; }
-.theme-elder .nut-button { font-size: 34rpx; height: 104rpx; }
-.theme-elder .empty-state__title { font-size: 34rpx; }
-.theme-elder .empty-state__desc { font-size: 28rpx; }
+/* ---------------- 古风专属装饰 ---------------- */
+/* 分组标题：一方朱印 */
+.theme-album .nut-cell-group-title::before {
+  content: '';
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 16rpx;
+  border-radius: 2rpx;
+  background: var(--red);
+  box-shadow: none;
+  vertical-align: 1rpx;
+}
+/* 卡片：外框 + 内金线，像装裱 */
+.theme-album .nut-cell-group {
+  box-shadow:
+    inset 0 0 0 5rpx var(--card),
+    inset 0 0 0 6rpx rgba(176, 141, 87, 0.28),
+    var(--card-shadow);
+}
+.theme-album .nut-searchbar-content {
+  border-radius: var(--search-radius) !important;
+  border-color: var(--outline) !important;
+}
+.theme-album .ga__event,
+.theme-album .pr__name,
+.theme-album .st__about-name {
+  letter-spacing: 2rpx;
+}
