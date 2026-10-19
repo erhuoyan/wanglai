@@ -1,7 +1,7 @@
-// 空态：纯 CSS 绘制「空白账页」图形，零图片资源、零外链
-// 不用 NutUI Empty —— 其默认插画是京东吉祥物，运行时从京东 CDN 加载
-import { View, Text } from '@tarojs/components'
+// 空态：软乎乎的「红包小人」，本地 PNG，不拉外链插画
+import { View, Text, Image } from '@tarojs/components'
 import { Button } from '@nutui/nutui-react-taro'
+import emptyMascot from '../assets/icons/empty-mascot.png'
 import './EmptyState.scss'
 
 interface Props {
@@ -15,12 +15,7 @@ export default function EmptyState({ title, description, actionText, onAction }:
   return (
     <View className='empty-state'>
       <View className='empty-state__art'>
-        <View className='empty-state__page'>
-          <View className='empty-state__rule' />
-          <View className='empty-state__rule empty-state__rule--short' />
-          <View className='empty-state__rule' />
-        </View>
-        <View className='empty-state__seal'>礼</View>
+        <Image className='empty-state__mascot' src={emptyMascot} mode='aspectFit' />
       </View>
       <Text className='empty-state__title'>{title}</Text>
       {description ? <Text className='empty-state__desc'>{description}</Text> : null}

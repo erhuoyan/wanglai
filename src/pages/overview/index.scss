@@ -59,6 +59,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10rpx 28rpx rgba(169, 50, 38, 0.26);
+    box-shadow:
+      0 10rpx 28rpx rgba(169, 50, 38, 0.26),
+      0 0 0 8rpx rgba(243, 183, 174, 0.28);
   }
 }

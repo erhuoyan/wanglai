@@ -39,9 +39,10 @@
     min-width: 0;
   }
   &__badge {
+    position: relative;
     width: 68rpx;
     height: 68rpx;
-    border-radius: 16rpx;
+    border-radius: 20rpx 16rpx 18rpx 15rpx;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,6 +50,20 @@
     font-size: 32rpx;
     font-weight: 700;
     flex-shrink: 0;
+    overflow: hidden;
+    transform: rotate(-3deg);
+    box-shadow: inset 0 -4rpx 0 rgba(20, 20, 30, 0.05);
+  }
+  &__badge::after {
+    content: '';
+    position: absolute;
+    left: 11rpx;
+    top: 9rpx;
+    width: 17rpx;
+    height: 9rpx;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: rotate(-24deg);
   }
   &__badge--red {
     background: var(--red-soft);
@@ -96,10 +111,15 @@
 }
 
 .ev__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
   margin: 8rpx 32rpx 40rpx;
   padding: 26rpx 0;
   border: 1rpx dashed var(--line);
   border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.55);
   text-align: center;
 }
 .ev__add-text {

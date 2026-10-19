@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81 81">
+  <circle cx="40.5" cy="40.5" r="33" fill="__SOFT__"/>
+  <g fill="none" stroke="__LINE__" stroke-width="4.8" stroke-linecap="round">
+    <circle cx="40.5" cy="40.5" r="13.5"/>
+    <path d="M40.5 16.5v7"/>
+    <path d="M40.5 57.5v7"/>
+    <path d="M16.5 40.5h7"/>
+    <path d="M57.5 40.5h7"/>
+    <path d="M23.5 23.5l5 5"/>
+    <path d="M52.5 52.5l5 5"/>
+    <path d="M57.5 23.5l-5 5"/>
+    <path d="M28.5 52.5l-5 5"/>
+  </g>
+  <circle cx="36" cy="40" r="2.4" fill="__LINE__"/>
+  <circle cx="45" cy="40" r="2.4" fill="__LINE__"/>
+  <path d="M37.5 45q3 3 6 0" fill="none" stroke="__LINE__" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="31.5" cy="45" r="2.8" fill="__ACCENT__"/>
+  <circle cx="49.5" cy="45" r="2.8" fill="__ACCENT__"/>
+</svg>

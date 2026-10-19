@@ -2,10 +2,10 @@ import { useState } from 'react'
 import Taro, { useDidShow, useRouter } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Button, Cell, CellGroup, Dialog } from '@nutui/nutui-react-taro'
-import { Edit as EditIcon, Del } from '@nutui/icons-react-taro'
 import { getEntry, deleteEntry } from '../../store/data'
 import { formatYuan } from '../../utils/calc'
 import { lunarText } from '../../utils/lunar'
+import CuteIcon from '../../components/CuteIcon'
 import type { Entry } from '../../types'
 import './index.scss'
 
@@ -66,10 +66,10 @@ export default function Detail() {
           shape='square'
           fill='outline'
           className='btn-line-default'
-          icon={<EditIcon />}
+          icon={<CuteIcon name='pencil' size='sm' />}
           onClick={() => Taro.navigateTo({ url: `/pages/edit/index?id=${id}` })}
         >编辑</Button>
-        <Button shape='square' fill='outline' type='danger' className='btn-line-danger' icon={<Del />} onClick={onDelete}>删除</Button>
+        <Button shape='square' fill='outline' type='danger' className='btn-line-danger' icon={<CuteIcon name='trash' size='sm' />} onClick={onDelete}>删除</Button>
       </View>
 
       <Dialog id='dt-dialog' />

@@ -5,6 +5,7 @@ import { Cell, CellGroup, Avatar, SearchBar } from '@nutui/nutui-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { ledgerByPerson, formatYuan, relationVerdict } from '../../utils/calc'
 import EmptyState from '../../components/EmptyState'
+import CuteIcon from '../../components/CuteIcon'
 import './index.scss'
 
 type SortKey = 'balance' | 'count' | 'recent'
@@ -28,6 +29,7 @@ export default function People() {
         <SearchBar
           shape='round'
           placeholder='搜索往来人'
+          leftIn={<CuteIcon name='search' size='sm' />}
           value={keyword}
           onChange={(v) => setKeyword(v)}
         />

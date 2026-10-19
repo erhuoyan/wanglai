@@ -6,6 +6,7 @@ import { useLedger } from '../../store/useLedger'
 import { groupGatheringsByYear, formatYuan, overallStats, eventBadge } from '../../utils/calc'
 import { lunarText } from '../../utils/lunar'
 import EmptyState from '../../components/EmptyState'
+import CuteIcon from '../../components/CuteIcon'
 import './index.scss'
 
 export default function Events() {
@@ -87,7 +88,8 @@ export default function Events() {
 
       {gatherings.length > 0 && (
         <View className='ev__add' onClick={() => Taro.navigateTo({ url: '/pages/event-edit/index' })}>
-          <Text className='ev__add-text'>＋ 新建事件</Text>
+          <CuteIcon name='plus' size='sm' />
+          <Text className='ev__add-text'>新建事件</Text>
         </View>
       )}
     </View>

@@ -14,6 +14,12 @@ page {
   --red-soft: #f9ece9;
   --jade: #17724f;
   --jade-soft: #e9f3ee;
+  /* 可爱向的柔光色：只做装饰，不改变收/支语义色 */
+  --blush: #f3b7ae;
+  --blush-soft: #fbede9;
+  --butter-soft: #fff2d9;
+  --mint-soft: #e9f3ee;
+  --lilac-soft: #f0ecfa;
   --serif: 'Songti SC', 'STSong', Georgia, serif;
   --sans: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
 
@@ -81,17 +87,31 @@ body {
 
 /* ---------- 收/出 印章徽标 ---------- */
 .seal {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 44rpx;
   height: 44rpx;
-  border-radius: 10rpx;
+  border-radius: 14rpx 16rpx 13rpx 17rpx;
   font-family: var(--serif);
   font-size: 25rpx;
   font-weight: 700;
   line-height: 1;
   flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: inset 0 -3rpx 0 rgba(20, 20, 30, 0.05);
+}
+.seal::after {
+  content: '';
+  position: absolute;
+  left: 7rpx;
+  top: 6rpx;
+  width: 12rpx;
+  height: 7rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  transform: rotate(-22deg);
 }
 .seal--in { background: var(--jade-soft); color: var(--jade); }
 .seal--out { background: var(--red-soft); color: var(--red); }
@@ -200,6 +220,23 @@ body {
   color: var(--ink-faint);
 }
 
+/* ---------- 手绘贴纸图标 ---------- */
+.cute-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.cute-icon--xs { width: 22rpx; height: 22rpx; }
+.cute-icon--sm { width: 30rpx; height: 30rpx; }
+.cute-icon--md { width: 38rpx; height: 38rpx; }
+.cute-icon--lg { width: 50rpx; height: 50rpx; }
+.cute-icon--xl { width: 64rpx; height: 64rpx; }
+
+/* 按钮内图标与文字留一点呼吸 */
+.nut-button-wrap > .cute-icon {
+  margin-right: 8rpx;
+}
+
 /* ---------- 通用 ---------- */
 .row { display: flex; align-items: center; }
 .row--between { justify-content: space-between; }
@@ -219,7 +256,7 @@ body {
   content: '';
   position: absolute;
   background: #ffffff;
-  border-radius: 3rpx;
+  border-radius: 100rpx;
 }
 .fab-plus::before {
   left: 0;

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81 81">
+  <circle cx="40.5" cy="40.5" r="33" fill="__SOFT__"/>
+  <g fill="none" stroke="__LINE__" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="22" y="37" width="37" height="28" rx="8"/>
+    <rect x="18" y="26" width="45" height="13" rx="6"/>
+  </g>
+  <path d="M40.5 26C32 17.5 24.5 19 26.5 23.8 28 27.6 35 27.3 40.5 26z" fill="__ACCENT__" stroke="__LINE__" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M40.5 26C49 17.5 56.5 19 54.5 23.8 53 27.6 46 27.3 40.5 26z" fill="__ACCENT__" stroke="__LINE__" stroke-width="3.5" stroke-linejoin="round"/>
+  <circle cx="40.5" cy="26" r="3" fill="__LINE__"/>
+  <circle cx="33" cy="48" r="2.6" fill="__LINE__"/>
+  <circle cx="48" cy="48" r="2.6" fill="__LINE__"/>
+  <path d="M36 54q4.5 4 9 0" fill="none" stroke="__LINE__" stroke-width="3.4" stroke-linecap="round"/>
+  <circle cx="27" cy="52" r="3.2" fill="__ACCENT__"/>
+  <circle cx="54" cy="52" r="3.2" fill="__ACCENT__"/>
+</svg>

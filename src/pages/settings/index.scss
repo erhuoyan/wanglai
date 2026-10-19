@@ -20,6 +20,20 @@
   &__num { font-size: 52rpx; }
   &__label { font-size: 24rpx; margin-top: 6rpx; }
 
+  &__ico {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 20rpx 17rpx 19rpx 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  &__ico--peach { background: var(--blush-soft); }
+  &__ico--butter { background: var(--butter-soft); }
+  &__ico--mint { background: var(--mint-soft); }
+  &__ico--lilac { background: var(--lilac-soft); }
+
   &__danger {
     margin: 32rpx 32rpx 0;
 

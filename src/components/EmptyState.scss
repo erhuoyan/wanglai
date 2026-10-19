@@ -2,60 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 72rpx 60rpx 80rpx;
+  padding: 64rpx 60rpx 76rpx;
 
   &__art {
-    position: relative;
     width: 176rpx;
     height: 200rpx;
-    margin-bottom: 32rpx;
+    margin-bottom: 24rpx;
+    animation: empty-float 3.6s ease-in-out infinite;
   }
 
-  /* 一页账纸 */
-  &__page {
-    position: absolute;
-    left: 0;
-    top: 8rpx;
-    width: 148rpx;
-    height: 184rpx;
-    background: #ffffff;
-    border: 2rpx solid var(--line);
-    border-radius: 12rpx;
-    box-shadow: 0 4rpx 16rpx rgba(20, 20, 30, 0.05);
-    padding: 34rpx 24rpx;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 18rpx;
-  }
-
-  &__rule {
-    height: 8rpx;
-    border-radius: 4rpx;
-    background: var(--line);
-  }
-
-  &__rule--short {
-    width: 62%;
-  }
-
-  /* 朱印 */
-  &__seal {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 68rpx;
-    height: 68rpx;
-    border-radius: 12rpx;
-    background: var(--red);
-    color: #ffffff;
-    font-family: var(--serif);
-    font-size: 36rpx;
-    font-weight: 700;
-    line-height: 68rpx;
-    text-align: center;
-    transform: rotate(-6deg);
-    box-shadow: 0 4rpx 14rpx rgba(169, 50, 38, 0.22);
+  &__mascot {
+    width: 100%;
+    height: 100%;
   }
 
   &__title {
@@ -82,5 +40,15 @@
       font-weight: 600;
       border-radius: 16rpx;
     }
+  }
+}
+
+@keyframes empty-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8rpx);
   }
 }

@@ -2,11 +2,11 @@ import { useMemo } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Button, Cell, CellGroup } from '@nutui/nutui-react-taro'
-import { ArrowRight } from '@nutui/icons-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { overallStats, overallVerdict, sortEntries, formatYuanGrouped } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
+import CuteIcon from '../../components/CuteIcon'
 import './index.scss'
 
 export default function Overview() {
@@ -62,7 +62,7 @@ export default function Overview() {
               <Text>最近往来</Text>
               <View className='sec-head__more'>
                 <Text>看全部</Text>
-                <ArrowRight color='var(--ink-faint)' width={11} height={11} />
+                <CuteIcon name='arrow' size='xs' />
               </View>
             </View>
           }>
