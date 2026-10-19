@@ -64,8 +64,9 @@ for (const name of APP_ICONS) {
   render(svg, path.join(iconOut, `${name}.png`), 144, 144)
 }
 
-const mascot = fs.readFileSync(path.join(srcDir, 'empty-mascot.svg'), 'utf8')
-render(mascot, path.join(iconOut, 'empty-mascot.png'), 528, 600)
+const mascot = fs.readFileSync(path.join(srcDir, 'cat-mascot.svg'), 'utf8')
+render(mascot, path.join(iconOut, 'cat-mascot.png'), 400, 400)
+render(fs.readFileSync(path.join(srcDir, 'cat-face.svg'), 'utf8'), path.join(iconOut, 'cat-face.png'), 240, 240)
 
 fs.rmSync(tmpDir, { recursive: true, force: true })
-console.log(`已生成 ${TABS.length * 2} 个 tab 图标、${APP_ICONS.length} 个应用图标和 1 个空态插画`)
+console.log(`已生成 ${TABS.length * 2} 个 tab 图标、${APP_ICONS.length} 个应用图标和 2 个猫咪插画`)

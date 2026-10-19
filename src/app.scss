@@ -199,15 +199,20 @@ body {
   color: var(--ink) !important;
 }
 
+/* 分组标题的小爪印：一个肉垫 + 三个脚趾，纯 CSS，跨端稳定 */
 .nut-cell-group-title::before {
   content: '';
   display: inline-block;
-  width: 14rpx;
-  height: 14rpx;
-  margin-right: 12rpx;
+  width: 12rpx;
+  height: 10rpx;
+  margin-right: 16rpx;
   border-radius: 50%;
-  background: var(--butter);
-  vertical-align: 2rpx;
+  background: #f2c46b;
+  box-shadow:
+    -10rpx -9rpx 0 -2rpx #f2c46b,
+    0 -12rpx 0 -2rpx #f2c46b,
+    10rpx -9rpx 0 -2rpx #f2c46b;
+  vertical-align: 1rpx;
 }
 
 .nut-cell-group-description {

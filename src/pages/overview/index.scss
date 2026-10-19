@@ -44,8 +44,8 @@
     opacity: 0.9;
     animation: spark-twinkle 2.8s ease-in-out infinite;
   }
-  &__spark--a { top: 156rpx; right: 44rpx; }
-  &__spark--b { top: 122rpx; right: 112rpx; animation-delay: 0.9s; }
+  &__spark--a { top: 146rpx; right: 40rpx; }
+  &__spark--b { top: 154rpx; right: 118rpx; animation-delay: 0.9s; }
 
   &__label {
     display: block;
@@ -95,27 +95,15 @@
   &__stat-out { color: var(--red); }
   &__divider { display: none; }
 
-  /* 斜贴的「礼」字贴纸 */
-  &__stamp {
+    /* 斜贴的猫咪贴纸 */
+  &__cat {
     position: absolute;
     right: 30rpx;
-    top: 28rpx;
-    width: 86rpx;
-    height: 86rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3rpx dashed rgba(192, 57, 79, 0.45);
-    border-radius: 30rpx 26rpx 32rpx 24rpx;
-    background: rgba(255, 255, 255, 0.55);
+    top: 22rpx;
+    width: 96rpx;
+    height: 96rpx;
     transform: rotate(8deg);
     animation: stamp-pop 520ms cubic-bezier(0.24, 1.4, 0.4, 1) 120ms both;
-  }
-  &__stamp-text {
-    font-family: var(--round);
-    font-size: 46rpx;
-    font-weight: 700;
-    color: rgba(192, 57, 79, 0.52);
   }
 
   /* 两笔动作：胖白卡 + 印章 */
@@ -225,6 +213,27 @@
   }
 }
 
+/* 悬浮按钮长一对猫耳 */
+.ov__fab::before,
+.ov__fab::after {
+  content: '';
+  position: absolute;
+  top: -14rpx;
+  width: 0;
+  height: 0;
+  border-left: 17rpx solid transparent;
+  border-right: 17rpx solid transparent;
+  border-bottom: 30rpx solid var(--red-bright);
+}
+.ov__fab::before {
+  left: 8rpx;
+  transform: rotate(-10deg);
+}
+.ov__fab::after {
+  right: 8rpx;
+  transform: rotate(10deg);
+}
+
 @keyframes spark-twinkle {
   0%,
   100% {
@@ -239,7 +248,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ov__hero,
-  .ov__stamp,
+  .ov__cat,
   .ov__spark {
     animation: none;
   }

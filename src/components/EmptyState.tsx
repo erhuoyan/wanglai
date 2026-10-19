@@ -1,7 +1,7 @@
-// 空态：软乎乎的「红包小人」，本地 PNG，不拉外链插画
+// 空态：软乎乎的「礼猫抱红包」，本地 PNG，不拉外链插画
 import { View, Text, Image } from '@tarojs/components'
 import { Button } from '@nutui/nutui-react-taro'
-import emptyMascot from '../assets/icons/empty-mascot.png'
+import catMascot from '../assets/icons/cat-mascot.png'
 import './EmptyState.scss'
 
 interface Props {
@@ -15,7 +15,7 @@ export default function EmptyState({ title, description, actionText, onAction }:
   return (
     <View className='empty-state'>
       <View className='empty-state__art'>
-        <Image className='empty-state__mascot' src={emptyMascot} mode='aspectFit' />
+        <Image className='empty-state__mascot' src={catMascot} mode='aspectFit' />
       </View>
       <Text className='empty-state__title'>{title}</Text>
       {description ? <Text className='empty-state__desc'>{description}</Text> : null}

@@ -1,0 +1,33 @@
+/* 猫耳头像：耳朵垫在头像后面，只露出两个尖 */
+.pa {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.pa__ear {
+  position: absolute;
+  top: -13rpx;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  border-left: 11rpx solid transparent;
+  border-right: 11rpx solid transparent;
+  border-bottom: 20rpx solid var(--blush);
+}
+
+.pa__ear--l {
+  left: 3rpx;
+  transform: rotate(-14deg);
+}
+
+.pa__ear--r {
+  right: 3rpx;
+  transform: rotate(14deg);
+}
+
+.pa__head {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+}

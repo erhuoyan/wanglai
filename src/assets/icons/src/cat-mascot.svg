@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 影子 -->
+  <ellipse cx="100" cy="186" rx="54" ry="9" fill="#F6E8E1"/>
+
+  <!-- 尾巴 -->
+  <path d="M150 158c24-2 34-18 28-38" fill="none" stroke="#EBD3C6" stroke-width="18" stroke-linecap="round"/>
+  <path d="M150 158c24-2 34-18 28-38" fill="none" stroke="#FFF1E0" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- 身体 -->
+  <path d="M54 180c0-34 20-54 46-54s46 20 46 54z" fill="#FFF1E0" stroke="#EBD3C6" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- 红包 -->
+  <g transform="rotate(-4 100 152)">
+    <rect x="64" y="126" width="72" height="48" rx="10" fill="#F1687A" stroke="#C0394F" stroke-width="3"/>
+    <path d="M64 136l36 26 36-26" fill="none" stroke="#FFDFE4" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M100 148l3.4 6.2 6.6 1-4.8 4.7 1.1 6.6L100 163.4l-6.3 3.1 1.1-6.6-4.8-4.7 6.6-1z" fill="#FFFFFF"/>
+  </g>
+
+  <!-- 前爪 -->
+  <ellipse cx="76" cy="168" rx="15" ry="11" fill="#FFF1E0" stroke="#EBD3C6" stroke-width="3"/>
+  <ellipse cx="124" cy="168" rx="15" ry="11" fill="#FFF1E0" stroke="#EBD3C6" stroke-width="3"/>
+
+  <!-- 耳朵 -->
+  <path d="M62 64L56 18l36 28z" fill="#FFF1E0" stroke="#EBD3C6" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M138 64l6-46-36 28z" fill="#FFF1E0" stroke="#EBD3C6" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M67 57l-4-27 22 16z" fill="#FFD1D8"/>
+  <path d="M133 57l4-27-22 16z" fill="#FFD1D8"/>
+
+  <!-- 头 -->
+  <circle cx="100" cy="92" r="46" fill="#FFF1E0" stroke="#EBD3C6" stroke-width="3"/>
+
+  <!-- 胡须 -->
+  <g stroke="#E3C9BA" stroke-width="3" stroke-linecap="round">
+    <path d="M56 92H42M56 101H44"/>
+    <path d="M144 92h14M144 101h12"/>
+  </g>
+
+  <!-- 腮红 -->
+  <ellipse cx="72" cy="108" rx="9" ry="5.5" fill="#FFD1D8"/>
+  <ellipse cx="128" cy="108" rx="9" ry="5.5" fill="#FFD1D8"/>
+
+  <!-- 眼睛 -->
+  <circle cx="84" cy="92" r="5.4" fill="#5B4B52"/>
+  <circle cx="116" cy="92" r="5.4" fill="#5B4B52"/>
+  <circle cx="85.8" cy="90" r="1.8" fill="#FFFFFF"/>
+  <circle cx="117.8" cy="90" r="1.8" fill="#FFFFFF"/>
+
+  <!-- 鼻子与嘴 -->
+  <path d="M96 102q4-3 8 0-4 5-8 0z" fill="#F1687A"/>
+  <path d="M100 107q-3 6-9 4M100 107q3 6 9 4" fill="none" stroke="#5B4B52" stroke-width="3" stroke-linecap="round"/>
+</svg>

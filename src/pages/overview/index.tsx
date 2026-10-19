@@ -1,12 +1,13 @@
 import { useMemo } from 'react'
 import Taro from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 import { Button, Cell, CellGroup } from '@nutui/nutui-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { overallStats, overallVerdict, sortEntries, formatYuanGrouped } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
 import CuteIcon from '../../components/CuteIcon'
+import catFace from '../../assets/icons/cat-face.png'
 import './index.scss'
 
 export default function Overview() {
@@ -40,9 +41,7 @@ export default function Overview() {
             <Text className='num ov__stat-num ov__stat-out'>-{formatYuanGrouped(stats.outSum)}</Text>
           </View>
         </View>
-        <View className='ov__stamp'>
-          <Text className='ov__stamp-text'>礼</Text>
-        </View>
+        <Image className='ov__cat' src={catFace} mode='aspectFit' />
       </View>
 
       {/* 一键记两笔 */}
