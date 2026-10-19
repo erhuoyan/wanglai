@@ -12,19 +12,19 @@ export interface ThemeMeta {
   swatch: [string, string]
 }
 
-/** 默认卡通：保持当前版本观感；其余皮肤在设置里一键切换 */
+/** 默认简约：与里程碑版本一致；其余皮肤在设置里一键切换 */
 export const THEMES: ThemeMeta[] = [
-  {
-    id: 'cartoon',
-    name: '卡通',
-    desc: '糖果色贴纸，还有一只橘猫',
-    swatch: ['#fff7f3', '#f1687a']
-  },
   {
     id: 'classic',
     name: '简约',
     desc: '白卡灰底，数字清晰，适合日常记账',
     swatch: ['#f5f6f7', '#a93226']
+  },
+  {
+    id: 'cartoon',
+    name: '卡通',
+    desc: '糖果色贴纸，还有一只橘猫',
+    swatch: ['#fff7f3', '#f1687a']
   },
   {
     id: 'album',
@@ -44,9 +44,9 @@ function isThemeId(value: unknown): value is ThemeId {
 function read(): ThemeId {
   try {
     const saved = Taro.getStorageSync(KEY)
-    return isThemeId(saved) ? saved : 'cartoon'
+    return isThemeId(saved) ? saved : 'classic'
   } catch {
-    return 'cartoon'
+    return 'classic'
   }
 }
 

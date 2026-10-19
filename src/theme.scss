@@ -506,13 +506,59 @@
   border-radius: 4rpx;
 }
 
-/* 两笔动作卡：普通卡
+/* 两笔动作卡
    页面里是 .ov__actions .ov__action，这里必须同样深入到两级才会覆盖 */
-.theme-classic .ov__actions .ov__action,
+
+/* 简约：还原里程碑的实心双按钮（朱红 / 玉绿） */
+.theme-classic .ov__actions .ov__action {
+  height: 88rpx;
+  border-width: 0;
+  border-radius: 16rpx;
+  box-shadow: none;
+}
+.theme-classic .ov__actions .ov__action--out {
+  background: var(--red) !important;
+  color: #ffffff !important;
+}
+.theme-classic .ov__actions .ov__action--in {
+  background: var(--jade) !important;
+  color: #ffffff !important;
+}
+.theme-classic .ov__actions .ov__mark,
+.theme-classic .ov__actions .nut-button-desc {
+  display: none;
+}
+.theme-classic .ov__actions .nut-button-wrap {
+  justify-content: center;
+}
+.theme-classic .ov__actions .nut-button-has-desc .nut-button-children {
+  align-items: center;
+  text-align: center;
+}
+.theme-classic .ov__actions .nut-button-title {
+  color: #ffffff !important;
+  font-size: 31rpx;
+  font-weight: 600;
+}
+
+/* 古风：纸卡 + 淡彩底，文字与描边同色 */
 .theme-album .ov__actions .ov__action {
-  border-width: var(--card-border-width);
-  border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow);
+  border-width: 1rpx;
+  border-radius: 6rpx;
+  box-shadow: none;
+}
+.theme-album .ov__actions .ov__action--out {
+  background: var(--red-soft);
+  border-color: var(--red);
+}
+.theme-album .ov__actions .ov__action--in {
+  background: var(--jade-soft);
+  border-color: var(--jade);
+}
+.theme-album .ov__actions .ov__mark {
+  border: 1rpx solid currentColor;
+  border-radius: 2rpx;
+  background: transparent;
 }
 
 /* 各类内容卡 */

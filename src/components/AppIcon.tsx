@@ -19,6 +19,15 @@ import inkExport from '../assets/icons-trad/export.png'
 import inkCopy from '../assets/icons-trad/copy.png'
 import inkImport from '../assets/icons-trad/import.png'
 import inkSparkle from '../assets/icons-trad/sparkle.png'
+import neatArrow from '../assets/icons-classic/arrow.png'
+import neatPencil from '../assets/icons-classic/pencil.png'
+import neatTrash from '../assets/icons-classic/trash.png'
+import neatSearch from '../assets/icons-classic/search.png'
+import neatPlus from '../assets/icons-classic/plus.png'
+import neatExport from '../assets/icons-classic/export.png'
+import neatCopy from '../assets/icons-classic/copy.png'
+import neatImport from '../assets/icons-classic/import.png'
+import neatSparkle from '../assets/icons-classic/sparkle.png'
 
 const CUTE = {
   arrow: cuteArrow,
@@ -44,6 +53,24 @@ const INK = {
   sparkle: inkSparkle
 }
 
+const NEAT = {
+  arrow: neatArrow,
+  pencil: neatPencil,
+  trash: neatTrash,
+  search: neatSearch,
+  plus: neatPlus,
+  export: neatExport,
+  copy: neatCopy,
+  import: neatImport,
+  sparkle: neatSparkle
+}
+
+const SETS = {
+  cartoon: CUTE,
+  classic: NEAT,
+  album: INK
+}
+
 export type AppIconName = keyof typeof CUTE
 export type AppIconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -55,7 +82,7 @@ interface Props {
 
 export default function AppIcon({ name, size = 'md', className = '' }: Props) {
   const theme = useTheme()
-  const src = theme === 'cartoon' ? CUTE[name] : INK[name]
+  const src = SETS[theme][name]
   return (
     <Image
       className={`app-icon app-icon--${size}${className ? ` ${className}` : ''}`}
