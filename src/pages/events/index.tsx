@@ -24,6 +24,7 @@ export default function Events() {
   return (
     <View className='ev py-safe'>
       <View className='ev__hero'>
+        <View className='ev__tape' />
         <View className='ev__hero-main'>
           <Text className='ev__hero-label'>累计收礼</Text>
           <View className='ev__hero-num num'>{formatYuan(stats.inSum)}</View>

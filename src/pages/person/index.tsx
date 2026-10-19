@@ -1,12 +1,13 @@
 import { useMemo } from 'react'
 import Taro, { useRouter } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { Avatar, Button, Cell, CellGroup, Dialog } from '@nutui/nutui-react-taro'
+import { Button, Cell, CellGroup, Dialog } from '@nutui/nutui-react-taro'
 import { deletePersonDeep } from '../../store/data'
 import { useLedger } from '../../store/useLedger'
 import { filterEntries, sortEntries, formatYuan, relationVerdict, balanceState } from '../../utils/calc'
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
+import PersonAvatar from '../../components/PersonAvatar'
 import './index.scss'
 
 export default function Person() {
@@ -38,9 +39,7 @@ export default function Person() {
   return (
     <View className='pr py-safe'>
       <View className='pr__hero'>
-        <Avatar size='44' background='var(--red-soft)' color='var(--red)'>
-          {(person?.name || '？').slice(0, 1)}
-        </Avatar>
+        <PersonAvatar name={person?.name || '？'} size='44' />
         <View className='flex1 pr__hero-mid'>
           <Text className='pr__name'>{person?.name || '（已删）'}</Text>
           <Text className='faint pr__sub'>{person?.relation} · {list.length} 笔往来</Text>

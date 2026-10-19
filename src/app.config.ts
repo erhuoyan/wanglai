@@ -12,16 +12,16 @@ export default defineAppConfig({
     'pages/person/index'
   ],
   window: {
-    navigationBarBackgroundColor: '#F5F6F7',
+    navigationBarBackgroundColor: '#FFF7F3',
     navigationBarTitleText: '一笔人情',
     navigationBarTextStyle: 'black',
-    backgroundColor: '#F5F6F7'
+    backgroundColor: '#FFF7F3'
   },
   // 扫码/进首页只加载所需组件，提升打开速度并减少初始体积
   lazyCodeLoading: 'requiredComponents',
   tabBar: {
-    color: '#8F949B',
-    selectedColor: '#A93226',
+    color: '#7C6A72',
+    selectedColor: '#C0394F',
     backgroundColor: '#FFFFFF',
     borderStyle: 'white',
     list: [

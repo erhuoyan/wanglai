@@ -2,35 +2,100 @@
   padding-top: 24rpx;
   padding-bottom: 60rpx;
 
+  /* 事件钱包：薄荷奶油 + 胶带 */
   &__hero {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 0 32rpx 24rpx;
-    padding: 40rpx 32rpx 32rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    overflow: hidden;
+    margin: 0 28rpx 30rpx;
+    padding: 48rpx 34rpx 34rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 40rpx;
+    background: linear-gradient(150deg, #e6f8f1 0%, #f4fbf7 52%, #fff3de 100%);
+    box-shadow: 0 12rpx 0 rgba(240, 220, 212, 0.6);
+    animation: card-pop 380ms cubic-bezier(0.24, 1.3, 0.4, 1) both;
   }
-  &__hero-main { display: flex; flex-direction: column; }
-  &__hero-label { display: block; font-size: 24rpx; color: var(--ink-soft); margin-bottom: 8rpx; }
-  &__hero-num {
-    font-size: 76rpx;
-    line-height: 1.15;
+  &__tape {
+    position: absolute;
+    top: -10rpx;
+    right: 56rpx;
+    width: 128rpx;
+    height: 34rpx;
+    border-radius: 4rpx;
+    background: rgba(191, 226, 255, 0.8);
+    transform: rotate(5deg);
+  }
+  &__tape::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.55) 0,
+      rgba(255, 255, 255, 0.55) 6rpx,
+      transparent 6rpx,
+      transparent 16rpx
+    );
+  }
+  &__hero::after {
+    content: '宴';
+    position: absolute;
+    right: 14rpx;
+    bottom: -40rpx;
+    font-family: var(--round);
+    font-size: 168rpx;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(27, 122, 98, 0.07);
+    transform: rotate(-8deg);
+    pointer-events: none;
+  }
+  &__hero-main { display: flex; flex-direction: column; position: relative; z-index: 1; }
+  &__hero-label {
+    display: block;
+    font-family: var(--round);
+    font-size: 25rpx;
+    font-weight: 700;
+    letter-spacing: 2rpx;
     color: var(--jade);
+    margin-bottom: 6rpx;
+  }
+  &__hero-num {
+    display: inline-block;
+    font-size: 78rpx;
+    line-height: 1.16;
+    color: var(--ink);
+    background: linear-gradient(transparent 66%, rgba(63, 191, 158, 0.28) 66%, rgba(63, 191, 158, 0.28) 92%, transparent 92%);
+    padding: 0 4rpx;
   }
   &__hero-side {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
+    padding: 14rpx 20rpx;
+    border: 3rpx solid rgba(255, 255, 255, 0.9);
+    border-radius: 22rpx;
+    background: rgba(255, 255, 255, 0.66);
   }
   &__hero-in {
     font-size: 34rpx;
     color: var(--jade);
   }
-  &__hero-sub { font-size: 24rpx; color: var(--ink-soft); margin-top: 4rpx; }
-  &__hero-count { font-size: 22rpx; color: var(--ink-faint); margin-top: 10rpx; }
+  &__hero-sub {
+    font-size: 22rpx;
+    color: var(--ink-soft);
+    margin-top: 2rpx;
+  }
+  &__hero-count {
+    font-size: 21rpx;
+    color: var(--ink-faint);
+    margin-top: 6rpx;
+  }
 
   &__task {
     display: flex;
@@ -40,29 +105,29 @@
   }
   &__badge {
     position: relative;
-    width: 68rpx;
-    height: 68rpx;
-    border-radius: 20rpx 16rpx 18rpx 15rpx;
+    width: 72rpx;
+    height: 72rpx;
+    border: 4rpx solid currentColor;
+    border-radius: 24rpx 20rpx 22rpx 19rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--serif);
-    font-size: 32rpx;
+    font-family: var(--round);
+    font-size: 34rpx;
     font-weight: 700;
     flex-shrink: 0;
     overflow: hidden;
-    transform: rotate(-3deg);
-    box-shadow: inset 0 -4rpx 0 rgba(20, 20, 30, 0.05);
+    transform: rotate(-4deg);
   }
   &__badge::after {
     content: '';
     position: absolute;
-    left: 11rpx;
+    left: 12rpx;
     top: 9rpx;
     width: 17rpx;
     height: 9rpx;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     transform: rotate(-24deg);
   }
   &__badge--red {
@@ -70,17 +135,18 @@
     color: var(--red);
   }
   &__badge--gold {
-    background: #f9f2e0;
-    color: #a98537;
+    background: var(--gold-soft);
+    color: #8f6a2c;
   }
   &__badge--ink {
-    background: #eceef1;
+    background: #eef0f4;
     color: #5f6670;
   }
   &__info { display: flex; flex-direction: column; min-width: 0; }
   &__name {
+    font-family: var(--round);
     font-size: 31rpx;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--ink);
   }
   &__meta {
@@ -90,7 +156,7 @@
     font-variant-numeric: tabular-nums;
   }
 
-  &__amt { font-size: 32rpx; flex-shrink: 0; padding-left: 12rpx; }
+  &__amt { font-size: 34rpx; flex-shrink: 0; padding-left: 12rpx; }
 
   &__year-head {
     display: flex;
@@ -99,9 +165,9 @@
     width: 100%;
   }
   &__year {
-    font-family: var(--serif);
+    font-family: var(--round);
     font-size: 32rpx;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--ink);
   }
   &__year-meta {
@@ -115,14 +181,31 @@
   align-items: center;
   justify-content: center;
   gap: 10rpx;
-  margin: 8rpx 32rpx 40rpx;
-  padding: 26rpx 0;
-  border: 1rpx dashed var(--line);
-  border-radius: 20rpx;
-  background: rgba(255, 255, 255, 0.55);
+  margin: 8rpx 28rpx 40rpx;
+  padding: 28rpx 0;
+  border: 4rpx dashed var(--outline);
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.7);
   text-align: center;
 }
 .ev__add-text {
-  font-size: 27rpx;
+  font-family: var(--round);
+  font-size: 28rpx;
+  font-weight: 700;
   color: var(--ink-soft);
+}
+
+@keyframes card-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(10rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev__hero { animation: none; }
 }

@@ -3,27 +3,44 @@
   padding-bottom: 80rpx;
 
   &__hero {
-    margin: 0 32rpx 24rpx;
-    padding: 40rpx 32rpx 32rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    position: relative;
+    margin: 0 28rpx 26rpx;
+    padding: 42rpx 34rpx 36rpx;
+    overflow: hidden;
+    border: 4rpx solid var(--outline);
+    border-radius: 40rpx;
+    background: linear-gradient(150deg, #e9f9f3 0%, #ffffff 64%);
+    box-shadow: 0 12rpx 0 rgba(240, 220, 212, 0.55);
+  }
+  &__hero::after {
+    content: '';
+    position: absolute;
+    top: 16rpx;
+    right: 18rpx;
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 230, 168, 0.5), rgba(255, 230, 168, 0) 70%);
+    pointer-events: none;
   }
   &__event {
     display: block;
-    font-family: var(--serif);
-    font-size: 34rpx;
-    font-weight: 600;
+    font-family: var(--round);
+    font-size: 36rpx;
+    font-weight: 700;
   }
   &__total {
-    font-size: 76rpx;
-    line-height: 1.15;
-    margin-top: 8rpx;
+    font-size: 80rpx;
+    line-height: 1.16;
+    margin-top: 10rpx;
     color: var(--jade);
   }
-  &__meta { font-size: 26rpx; color: var(--ink-soft); }
+  &__meta {
+    font-size: 25rpx;
+    color: var(--ink-soft);
+  }
 
-  &__amt { font-size: 32rpx; }
+  &__amt { font-size: 34rpx; }
 
   &__foot {
     margin: 8rpx 36rpx 0;
@@ -36,9 +53,9 @@
   &__actions {
     display: flex;
     gap: 20rpx;
-    margin: 24rpx 32rpx 0;
+    margin: 26rpx 28rpx 0;
 
-    .nut-button { flex: 1; height: 84rpx; font-size: 29rpx; }
+    .nut-button { flex: 1; height: 88rpx; font-size: 29rpx; }
   }
   &__legacy { font-size: 23rpx; text-align: center; width: 100%; }
 }

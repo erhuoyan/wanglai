@@ -2,55 +2,78 @@
   padding-top: 24rpx;
   padding-bottom: 80rpx;
 
+  /* 收 / 出 分段开关：奶油底槽 + 纸白滑块 */
   &__switch {
     display: flex;
-    gap: 16rpx;
-    margin: 0 32rpx 24rpx;
+    margin: 0 28rpx 24rpx;
+    padding: 6rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 100rpx;
+    background: var(--butter-soft);
   }
   &__half {
     flex: 1;
-    height: 88rpx;
-    border-radius: 16rpx;
+    height: 82rpx;
+    border-radius: 100rpx;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: var(--round);
     font-size: 31rpx;
-    background: var(--card);
-    border: 1rpx solid var(--line);
+    font-weight: 700;
     color: var(--ink-soft);
   }
   &__half--out {
-    background: var(--red-soft);
-    border-color: var(--red);
+    background: var(--card);
     color: var(--red);
-    font-weight: 600;
+    box-shadow: 0 4rpx 0 rgba(240, 220, 212, 0.8);
   }
   &__half--in {
-    background: var(--jade-soft);
-    border-color: var(--jade);
+    background: var(--card);
     color: var(--jade);
-    font-weight: 600;
+    box-shadow: 0 4rpx 0 rgba(240, 220, 212, 0.8);
   }
 
   &__amount {
-    margin: 0 32rpx 24rpx;
-    padding: 32rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    margin: 0 28rpx 24rpx;
+    padding: 30rpx 32rpx 26rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 36rpx;
+    background: linear-gradient(160deg, #fff6f9 0%, #ffffff 55%);
+    box-shadow: 0 10rpx 0 rgba(240, 220, 212, 0.55);
   }
-  &__amount-label { font-size: 24rpx; color: var(--ink-soft); display: block; margin-bottom: 8rpx; }
+  &__amount-label {
+    font-family: var(--round);
+    font-size: 24rpx;
+    font-weight: 700;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 4rpx;
+  }
+  &__amount-row {
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+  }
+  &__currency {
+    font-family: var(--round);
+    font-size: 44rpx;
+    font-weight: 700;
+    color: var(--ink-faint);
+    line-height: 1;
+  }
   &__amount-input {
+    flex: 1;
     --nutui-input-font-size: 72rpx;
     --nutui-input-color: var(--ink);
     --nutui-input-padding: 0;
     height: 96rpx;
 
-    /* H5 内层 weui-input / 小程序原生 input 都要吃到衬线 */
+    /* H5 内层 weui-input / 小程序原生 input 都要吃到圆体 */
     input,
     .weui-input {
-      font-family: var(--serif) !important;
-      font-weight: 600;
+      font-family: var(--round) !important;
+      font-weight: 700;
       height: 96rpx;
       line-height: 96rpx;
     }
@@ -58,15 +81,14 @@
 
   &__foot {
     display: flex;
-    gap: 24rpx;
-    margin: 24rpx 32rpx 0;
+    gap: 22rpx;
+    margin: 26rpx 28rpx 0;
 
     .nut-button {
       flex: 1;
       width: auto;
-      height: 88rpx;
+      height: 92rpx;
       font-size: 31rpx;
-      font-weight: 600;
     }
   }
 
@@ -93,25 +115,26 @@
     gap: 14rpx;
     margin-top: 20rpx;
     padding-top: 20rpx;
-    border-top: 1rpx solid var(--line);
+    border-top: 4rpx dashed var(--outline);
   }
   &__preset {
     flex: 1;
     min-width: 108rpx;
     text-align: center;
-    padding: 14rpx 0;
-    border-radius: 12rpx;
-    background: var(--paper);
-    border: 1rpx solid var(--line);
+    padding: 20rpx 0;
+    border: 4rpx solid var(--outline);
+    border-radius: 18rpx;
+    background: var(--card);
     color: var(--ink-soft);
-    font-family: var(--serif);
+    font-family: var(--round);
     font-size: 27rpx;
+    font-weight: 700;
   }
   &__preset--on {
-    background: var(--red-soft);
     border-color: var(--red);
+    background: var(--red-soft);
     color: var(--red);
-    font-weight: 600;
+    box-shadow: 0 4rpx 0 rgba(240, 220, 212, 0.7);
   }
 
   /* 日期与农历 */

@@ -6,28 +6,40 @@
     display: flex;
     align-items: center;
     gap: 24rpx;
-    padding: 32rpx;
-    margin: 0 32rpx 24rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    padding: 34rpx 30rpx;
+    margin: 0 28rpx 22rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 36rpx;
+    background: linear-gradient(150deg, #fff0f3 0%, #fff9f1 60%, #f0faf6 100%);
+    box-shadow: 0 10rpx 0 rgba(240, 220, 212, 0.55);
   }
   &__hero-mid { display: flex; flex-direction: column; }
-  &__name { font-size: 34rpx; font-weight: 600; }
+  &__name {
+    font-family: var(--round);
+    font-size: 36rpx;
+    font-weight: 700;
+  }
   &__sub { font-size: 24rpx; margin-top: 4rpx; }
-  &__verdict { font-size: 26rpx; font-weight: 600; }
+  &__verdict { font-size: 26rpx; font-weight: 700; }
 
   &__sums {
     display: flex;
-    margin: 0 32rpx 16rpx;
-    background: var(--card);
-    border: 1rpx solid var(--line);
-    border-radius: 20rpx;
+    margin: 0 28rpx 22rpx;
     padding: 24rpx 0;
+    border: 4rpx solid var(--outline);
+    border-radius: 30rpx;
+    background: var(--card);
+    box-shadow: 0 8rpx 0 rgba(240, 220, 212, 0.55);
   }
   &__sum { flex: 1; display: flex; flex-direction: column; align-items: center; }
-  &__sum--mid { border-left: 1rpx solid var(--line); border-right: 1rpx solid var(--line); }
-  &__sum-label { font-size: 24rpx; margin-bottom: 6rpx; }
+  &__sum--mid {
+    border-left: 4rpx dashed var(--outline);
+    border-right: 4rpx dashed var(--outline);
+  }
+  &__sum-label {
+    font-size: 23rpx;
+    margin-bottom: 6rpx;
+  }
 
-  &__danger { margin: 32rpx 32rpx 0; }
+  &__danger { margin: 32rpx 28rpx 0; }
 }

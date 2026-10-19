@@ -4,11 +4,12 @@
 
   &__stats {
     display: flex;
-    margin: 0 32rpx 24rpx;
-    padding: 36rpx 0;
+    margin: 0 28rpx 28rpx;
+    padding: 32rpx 0 28rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 36rpx;
     background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    box-shadow: 0 10rpx 0 rgba(240, 220, 212, 0.55);
   }
   &__stat {
     flex: 1;
@@ -16,46 +17,67 @@
     flex-direction: column;
     align-items: center;
   }
-  &__stat:first-child { border-right: 1rpx solid var(--line); }
-  &__num { font-size: 52rpx; }
-  &__label { font-size: 24rpx; margin-top: 6rpx; }
+  &__stat:first-child { border-right: 4rpx dashed var(--outline); }
+  &__num { font-size: 58rpx; line-height: 1.1; }
+  &__label {
+    font-size: 23rpx;
+    margin-top: 8rpx;
+  }
 
   &__ico {
-    width: 64rpx;
-    height: 64rpx;
-    border-radius: 20rpx 17rpx 19rpx 16rpx;
+    width: 68rpx;
+    height: 68rpx;
+    border: 4rpx solid currentColor;
+    border-radius: 24rpx 20rpx 22rpx 19rpx;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transform: rotate(-3deg);
   }
-  &__ico--peach { background: var(--blush-soft); }
-  &__ico--butter { background: var(--butter-soft); }
-  &__ico--mint { background: var(--mint-soft); }
-  &__ico--lilac { background: var(--lilac-soft); }
+  &__ico--peach { background: var(--blush-soft); color: var(--red); }
+  &__ico--butter { background: var(--butter-soft); color: #a98537; }
+  &__ico--mint { background: var(--mint-soft); color: var(--jade); }
+  &__ico--lilac { background: var(--lilac-soft); color: #5c4f86; }
 
   &__danger {
-    margin: 32rpx 32rpx 0;
+    margin: 32rpx 28rpx 0;
 
     .nut-button {
-      height: 88rpx;
+      height: 92rpx;
       width: 100%;
       font-size: 30rpx;
-      font-weight: 600;
-      border-radius: 16rpx;
     }
   }
 
   &__about {
     text-align: center;
-    margin-top: 64rpx;
+    margin-top: 74rpx;
     display: flex;
     flex-direction: column;
-    gap: 6rpx;
+    align-items: center;
+    gap: 8rpx;
+  }
+  &__mark {
+    width: 76rpx;
+    height: 76rpx;
+    margin-bottom: 12rpx;
+    border: 4rpx solid var(--red);
+    border-radius: 26rpx 22rpx 25rpx 21rpx;
+    background: var(--red-soft);
+    color: var(--red);
+    font-family: var(--round);
+    font-size: 40rpx;
+    font-weight: 700;
+    line-height: 70rpx;
+    transform: rotate(-6deg);
+    box-shadow: 0 6rpx 0 rgba(240, 220, 212, 0.7);
   }
   &__about-name {
-    font-family: var(--serif);
-    font-size: 32rpx;
-    font-weight: 600;
+    font-family: var(--round);
+    font-size: 34rpx;
+    font-weight: 700;
   }
+  &__about-line { font-size: 24rpx; color: var(--ink-soft); }
+  &__about-note { font-size: 22rpx; color: var(--ink-faint); }
 }

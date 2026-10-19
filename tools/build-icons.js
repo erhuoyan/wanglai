@@ -24,8 +24,8 @@ const TABS = [
 ]
 
 const PALETTES = {
-  off: { __LINE__: '#B4AAA6', __ACCENT__: '#F0C2B9', __SOFT__: 'none' },
-  on: { __LINE__: '#A93226', __ACCENT__: '#F6C9C0', __SOFT__: '#FBEDE9' }
+  off: { __LINE__: '#B3A3AA', __ACCENT__: '#FFD1D8', __SOFT__: 'none' },
+  on: { __LINE__: '#C0394F', __ACCENT__: '#FFD1D8', __SOFT__: '#FFE7EA' }
 }
 
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'wanglai-icons-'))

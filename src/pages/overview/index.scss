@@ -2,65 +2,245 @@
   padding-top: 24rpx;
   padding-bottom: 220rpx;
 
+  /* 贴纸钱包：奶油渐变 + 粗描边 + 硬投影 */
   &__hero {
-    margin: 0 32rpx 24rpx;
-    padding: 40rpx 32rpx 32rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    position: relative;
+    overflow: hidden;
+    margin: 0 28rpx 28rpx;
+    padding: 44rpx 34rpx 30rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 40rpx;
+    background: linear-gradient(150deg, #ffe9ef 0%, #fff3de 58%, #eaf8f2 100%);
+    box-shadow: 0 12rpx 0 rgba(240, 220, 212, 0.6);
+    animation: card-pop 380ms cubic-bezier(0.24, 1.3, 0.4, 1) both;
   }
-  &__label { display: block; font-size: 24rpx; color: var(--ink-soft); }
+
+  /* 手账胶带 */
+  &__tape {
+    position: absolute;
+    top: -10rpx;
+    left: 44rpx;
+    width: 132rpx;
+    height: 34rpx;
+    border-radius: 4rpx;
+    background: rgba(255, 214, 122, 0.72);
+    transform: rotate(-6deg);
+  }
+  &__tape::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.5) 0,
+      rgba(255, 255, 255, 0.5) 6rpx,
+      transparent 6rpx,
+      transparent 16rpx
+    );
+  }
+
+  &__spark {
+    position: absolute;
+    opacity: 0.9;
+    animation: spark-twinkle 2.8s ease-in-out infinite;
+  }
+  &__spark--a { top: 156rpx; right: 44rpx; }
+  &__spark--b { top: 122rpx; right: 112rpx; animation-delay: 0.9s; }
+
+  &__label {
+    display: block;
+    font-family: var(--round);
+    font-size: 25rpx;
+    font-weight: 700;
+    letter-spacing: 2rpx;
+    color: var(--red);
+  }
   &__balance {
-    font-size: 84rpx;
-    line-height: 1.15;
-    margin-top: 8rpx;
+    display: inline-block;
+    font-size: 92rpx;
+    line-height: 1.18;
+    margin-top: 12rpx;
     color: var(--ink);
+    /* 记号笔高亮 */
+    background: linear-gradient(transparent 64%, rgba(255, 214, 122, 0.85) 64%, rgba(255, 214, 122, 0.85) 92%, transparent 92%);
+    padding: 0 6rpx;
   }
-  &__verdict { font-size: 26rpx; color: var(--ink-soft); margin-top: 4rpx; }
+  &__verdict {
+    display: block;
+    font-size: 26rpx;
+    color: var(--ink-soft);
+    margin-top: 10rpx;
+  }
   &__split {
     display: flex;
-    align-items: center;
-    margin-top: 32rpx;
-    padding-top: 24rpx;
-    border-top: 1rpx solid var(--line);
+    gap: 16rpx;
+    margin-top: 30rpx;
   }
-  &__stat { flex: 1; display: flex; flex-direction: column; }
+  &__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 18rpx 22rpx;
+    border: 3rpx solid rgba(255, 255, 255, 0.9);
+    border-radius: 24rpx;
+    background: rgba(255, 255, 255, 0.62);
+  }
   &__stat--right { align-items: flex-end; }
-  &__stat-label { font-size: 24rpx; color: var(--ink-faint); }
+  &__stat-label {
+    font-size: 22rpx;
+    color: var(--ink-soft);
+  }
   &__stat-num { font-size: 34rpx; margin-top: 4rpx; }
   &__stat-in { color: var(--jade); }
   &__stat-out { color: var(--red); }
-  &__divider { width: 1rpx; height: 56rpx; background: var(--line); }
-  &__more { font-size: 24rpx; color: var(--ink-faint); }
+  &__divider { display: none; }
 
+  /* 斜贴的「礼」字贴纸 */
+  &__stamp {
+    position: absolute;
+    right: 30rpx;
+    top: 28rpx;
+    width: 86rpx;
+    height: 86rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3rpx dashed rgba(192, 57, 79, 0.45);
+    border-radius: 30rpx 26rpx 32rpx 24rpx;
+    background: rgba(255, 255, 255, 0.55);
+    transform: rotate(8deg);
+    animation: stamp-pop 520ms cubic-bezier(0.24, 1.4, 0.4, 1) 120ms both;
+  }
+  &__stamp-text {
+    font-family: var(--round);
+    font-size: 46rpx;
+    font-weight: 700;
+    color: rgba(192, 57, 79, 0.52);
+  }
+
+  /* 两笔动作：胖白卡 + 印章 */
   &__actions {
     display: flex;
-    gap: 24rpx;
-    margin: 0 32rpx 8rpx;
+    gap: 20rpx;
+    margin: 0 28rpx 14rpx;
 
-    .nut-button {
+    .ov__action {
       flex: 1;
       width: auto;
-      height: 88rpx;
-      font-size: 31rpx;
-      font-weight: 600;
+      height: 116rpx;
+      padding: 0 22rpx;
+      justify-content: flex-start;
+      border: 4rpx solid var(--outline);
+      border-radius: 30rpx;
+      background: var(--card);
+      box-shadow: 0 8rpx 0 rgba(240, 220, 212, 0.6);
+    }
+    .nut-button-wrap {
+      justify-content: flex-start;
+      width: 100%;
+    }
+    .nut-button-has-desc .nut-button-children {
+      align-items: flex-start;
+      text-align: left;
+    }
+    .nut-button-title {
+      font-family: var(--round);
+      font-size: 32rpx;
+      font-weight: 700;
+      line-height: 1.24;
+    }
+    .nut-button-desc {
+      font-size: 21rpx;
+      line-height: 1.3;
+      margin-top: 4rpx;
+      opacity: 1;
+      color: var(--ink-faint);
     }
   }
+  &__action--out { color: var(--red) !important; }
+  &__action--in { color: var(--jade) !important; }
+  &__mark {
+    width: 62rpx;
+    height: 62rpx;
+    margin-right: 18rpx;
+    border: 4rpx solid currentColor;
+    border-radius: 22rpx 18rpx 20rpx 17rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--round);
+    font-size: 30rpx;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+    transform: rotate(-4deg);
+  }
+  &__mark--out { background: var(--red-soft); color: var(--red); }
+  &__mark--in { background: var(--jade-soft); color: var(--jade); }
 
   &__fab {
     position: fixed;
     right: 40rpx;
     bottom: calc(48rpx + env(safe-area-inset-bottom));
     z-index: 50;
-    width: 104rpx;
-    height: 104rpx;
+    width: 108rpx;
+    height: 108rpx;
+    border: 4rpx solid #ffd9df;
     border-radius: 50%;
-    background: var(--red);
+    background: var(--red-bright);
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow:
-      0 10rpx 28rpx rgba(169, 50, 38, 0.26),
-      0 0 0 8rpx rgba(243, 183, 174, 0.28);
+      0 8rpx 0 #e8b7be,
+      0 16rpx 30rpx rgba(241, 104, 122, 0.28);
+  }
+  &__fab:active {
+    transform: translateY(4rpx);
+    box-shadow:
+      0 4rpx 0 #e8b7be,
+      0 10rpx 22rpx rgba(241, 104, 122, 0.24);
+  }
+}
+
+@keyframes card-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(10rpx);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes stamp-pop {
+  0% {
+    opacity: 0;
+    transform: rotate(-14deg) scale(1.4);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(8deg) scale(1);
+  }
+}
+
+@keyframes spark-twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(0.82) rotate(-12deg);
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ov__hero,
+  .ov__stamp,
+  .ov__spark {
+    animation: none;
   }
 }

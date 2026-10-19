@@ -3,22 +3,31 @@
   padding-bottom: 120rpx;
 
   &__search {
-    margin: 0 32rpx 8rpx;
+    margin: 0 28rpx 12rpx;
     --nutui-searchbar-background: transparent;
   }
 
   &__sorts {
-    display: flex;
-    gap: 28rpx;
-    padding: 8rpx 36rpx 16rpx;
+    display: inline-flex;
+    margin: 0 28rpx 14rpx;
+    padding: 6rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 100rpx;
+    background: var(--butter-soft);
   }
   &__sort {
-    font-size: 25rpx;
-    color: var(--ink-faint);
+    padding: 18rpx 24rpx;
+    border-radius: 100rpx;
+    font-family: var(--round);
+    font-size: 24rpx;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink-soft);
   }
   &__sort--on {
+    background: var(--card);
     color: var(--red);
-    font-weight: 600;
+    box-shadow: 0 4rpx 0 rgba(240, 220, 212, 0.7);
   }
 
   &__verdict { font-size: 23rpx; }

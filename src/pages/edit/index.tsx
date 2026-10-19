@@ -132,15 +132,18 @@ export default function Edit() {
       {/* 金额 */}
       <View className='ed__amount'>
         <Text className='ed__amount-label'>金额（元）</Text>
-        <Input
-          type='digit'
-          placeholder='0'
-          align='left'
-          clearable
-          className='ed__amount-input'
-          value={amountText}
-          onChange={(v) => setAmountText(v)}
-        />
+        <View className='ed__amount-row'>
+          <Text className='ed__currency'>¥</Text>
+          <Input
+            type='digit'
+            placeholder='0'
+            align='left'
+            clearable
+            className='ed__amount-input'
+            value={amountText}
+            onChange={(v) => setAmountText(v)}
+          />
+        </View>
         <View className='ed__presets'>
           {AMOUNT_PRESETS.map(v => (
             <Text

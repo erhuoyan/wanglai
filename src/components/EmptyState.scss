@@ -17,7 +17,9 @@
   }
 
   &__title {
-    font-size: 29rpx;
+    font-family: var(--round);
+    font-size: 30rpx;
+    font-weight: 700;
     color: var(--ink-soft);
   }
 
@@ -34,11 +36,11 @@
     width: 75%;
 
     .empty-state__cta {
-      height: 88rpx !important;
+      height: 92rpx !important;
       width: auto;
-      font-size: 30rpx !important;
-      font-weight: 600;
-      border-radius: 16rpx;
+      font-size: 31rpx !important;
+      font-weight: 700;
+      border-radius: 100rpx !important;
     }
   }
 }

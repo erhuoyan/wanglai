@@ -1,62 +1,72 @@
-/* 一笔人情 · 主题层
-   中性灰底 + 白卡 + 正红点缀；数值用衬线表格数字
-   :root 供 H5，page 供小程序 */
+/* 一笔人情 · 主题层（卡通贴纸版）
+   牛奶粉底 + 白卡 + 珊瑚/薄荷；圆体数字，粗描边 + 硬投影 */
 :root,
 page {
   /* 基础色板 */
-  --paper: #f5f6f7;
+  --paper: #fff7f3;
   --card: #ffffff;
-  --ink: #1b1b1f;
-  --ink-soft: #6b6f76;
-  --ink-faint: #a0a5ad;
-  --line: #edeef0;
-  --red: #a93226;
-  --red-soft: #f9ece9;
-  --jade: #17724f;
-  --jade-soft: #e9f3ee;
-  /* 可爱向的柔光色：只做装饰，不改变收/支语义色 */
-  --blush: #f3b7ae;
-  --blush-soft: #fbede9;
-  --butter-soft: #fff2d9;
-  --mint-soft: #e9f3ee;
-  --lilac-soft: #f0ecfa;
-  --serif: 'Songti SC', 'STSong', Georgia, serif;
+  --ink: #3a2e33;
+  --ink-soft: #6e5f66;
+  --ink-faint: #7c6a72;
+  --line: #f2e2db;
+  --outline: #f0dcd4;
+  /* 收/支语义色：文字色保证对比度，亮色只做填充 */
+  --red: #c0394f;
+  --red-bright: #f1687a;
+  --red-soft: #ffe7ea;
+  --jade: #1b7a62;
+  --jade-bright: #3fbf9e;
+  --jade-soft: #e2f6f0;
+  /* 装饰色 */
+  --blush: #ffd1d8;
+  --blush-soft: #ffe7ea;
+  --butter: #ffe6a8;
+  --butter-soft: #fff5da;
+  --lilac: #e7e0fc;
+  --lilac-soft: #f3efff;
+  --sky: #dceffb;
+  --sky-soft: #f0f8fe;
+  --mint-soft: #e2f6f0;
+  --gold: #b98a2e;
+  --gold-soft: #fdf0d2;
+  --round: 'Yuanti SC', 'Hiragino Sans GB', 'PingFang SC', sans-serif;
   --sans: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
 
   /* ===== NutUI 主题通道 ===== */
-  --nutui-color-primary: #a93226;
-  --nutui-color-primary-pressed: #92291f;
-  --nutui-color-primary-disabled: #dfb5af;
-  --nutui-color-primary-light: #f9ece9;
-  --nutui-color-title: #1b1b1f;
-  --nutui-color-text: #1b1b1f;
-  --nutui-color-text-help: #6b6f76;
-  --nutui-color-text-disabled: #a0a5ad;
-  --nutui-gray-7: #1b1b1f;
-  --nutui-black-10: #6b6f76;
-  --nutui-color-background: #f5f6f7;
+  --nutui-color-primary: #c0394f;
+  --nutui-color-primary-pressed: #a62f43;
+  --nutui-color-primary-disabled: #eab6bd;
+  --nutui-color-primary-light: #ffe7ea;
+  --nutui-color-title: #3a2e33;
+  --nutui-color-text: #3a2e33;
+  --nutui-color-text-help: #6e5f66;
+  --nutui-color-text-disabled: #a89aa0;
+  --nutui-gray-7: #3a2e33;
+  --nutui-black-10: #6e5f66;
+  --nutui-color-background: #fff7f3;
   --nutui-color-background-component: #ffffff;
-  --nutui-gray-5: #f5f6f7;
-  --nutui-gray-4: #f7f8fa;
+  --nutui-gray-5: #fff7f3;
+  --nutui-gray-4: #fffaf7;
   --nutui-black-3: #ffffff;
-  --nutui-color-border: #edeef0;
-  --nutui-black-2: rgba(20, 20, 30, 0.06);
-  --nutui-line-component: #edeef0;
-  --nutui-color-danger: #a93226;
-  --nutui-color-success: #17724f;
+  --nutui-color-border: #f2e2db;
+  --nutui-black-2: rgba(58, 46, 51, 0.07);
+  --nutui-line-component: #f2e2db;
+  --nutui-color-danger: #c0394f;
+  --nutui-color-success: #1b7a62;
   --nutui-font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
   --nutui-cell-group-background-color: #ffffff;
-  --nutui-switch-active-background-color: #17724f;
-  /* 按钮：现代圆角 + 符合 iOS 触控高度（mini 24px 太矮，点不准） */
-  --nutui-button-border-radius: 16px;
-  --nutui-button-square-border-radius: 16px;
-  --nutui-button-default-height: 44px;
-  --nutui-button-default-font-size: 15px;
-  --nutui-button-mini-height: 32px;
-  --nutui-button-mini-font-size: 13px;
-  --nutui-button-small-height: 36px;
-  --nutui-button-small-font-size: 14px;
-  --nutui-button-large-height: 48px;
+  --nutui-switch-active-background-color: #3fbf9e;
+  /* 按钮：矮胖胶囊 + 48px 触控高度
+     注意：这里的值必须写 rpx。px 会被 pxtransform 折成 rem，H5/小程序上都会缩半 */
+  --nutui-button-border-radius: 999rpx;
+  --nutui-button-square-border-radius: 48rpx;
+  --nutui-button-default-height: 96rpx;
+  --nutui-button-default-font-size: 32rpx;
+  --nutui-button-mini-height: 64rpx;
+  --nutui-button-mini-font-size: 26rpx;
+  --nutui-button-small-height: 76rpx;
+  --nutui-button-small-font-size: 28rpx;
+  --nutui-button-large-height: 104rpx;
 
   background: var(--paper);
   color: var(--ink);
@@ -74,11 +84,11 @@ body {
   line-height: 1.6;
 }
 
-/* ---------- 数字（衬线表格数字） ---------- */
+/* ---------- 数字（圆体、表格数字） ---------- */
 .num,
 .amt {
-  font-family: var(--serif);
-  font-weight: 600;
+  font-family: var(--round);
+  font-weight: 700;
   font-variant-numeric: tabular-nums lining-nums;
   letter-spacing: -0.01em;
 }
@@ -91,26 +101,27 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 14rpx 16rpx 13rpx 17rpx;
-  font-family: var(--serif);
-  font-size: 25rpx;
+  width: 52rpx;
+  height: 52rpx;
+  border: 4rpx solid currentColor;
+  border-radius: 18rpx 16rpx 19rpx 15rpx;
+  font-family: var(--round);
+  font-size: 28rpx;
   font-weight: 700;
   line-height: 1;
   flex-shrink: 0;
   overflow: hidden;
-  box-shadow: inset 0 -3rpx 0 rgba(20, 20, 30, 0.05);
+  transform: rotate(-3deg);
 }
 .seal::after {
   content: '';
   position: absolute;
-  left: 7rpx;
-  top: 6rpx;
-  width: 12rpx;
+  left: 8rpx;
+  top: 7rpx;
+  width: 13rpx;
   height: 7rpx;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.75);
   transform: rotate(-22deg);
 }
 .seal--in { background: var(--jade-soft); color: var(--jade); }
@@ -128,17 +139,18 @@ body {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 5rpx;
+  gap: 6rpx;
 }
 .entry-row__line {
   display: flex;
   align-items: center;
-  gap: 14rpx;
+  gap: 12rpx;
   min-width: 0;
 }
 .entry-row__name {
-  font-size: 30rpx;
-  font-weight: 600;
+  font-family: var(--round);
+  font-size: 31rpx;
+  font-weight: 700;
   color: var(--ink);
   overflow: hidden;
   white-space: nowrap;
@@ -146,13 +158,12 @@ body {
 }
 .entry-row__event {
   flex-shrink: 0;
-  font-size: 20rpx;
+  font-size: 21rpx;
   color: var(--ink-soft);
-  background: var(--paper);
-  border: 1rpx solid var(--line);
+  background: var(--butter-soft);
   border-radius: 100rpx;
-  padding: 2rpx 14rpx;
-  line-height: 1.45;
+  padding: 3rpx 14rpx;
+  line-height: 1.4;
 }
 .entry-row__time {
   font-size: 23rpx;
@@ -163,45 +174,118 @@ body {
   text-overflow: ellipsis;
 }
 .entry-row__amt {
-  font-size: 32rpx;
+  font-size: 34rpx;
   flex-shrink: 0;
 }
 
-/* ---------- Cell 列表：收敛成整卡连续行（账本式） ---------- */
+/* ---------- Cell 列表：贴纸卡 + 虚线分隔 ---------- */
 .nut-cell-group {
-  margin: 0 32rpx 28rpx;
+  position: relative;
+  margin: 0 28rpx 28rpx;
   padding: 8rpx 0;
   background: var(--card);
-  border-radius: 24rpx;
-  box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+  border: 4rpx solid var(--outline);
+  border-radius: 36rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 0 rgba(240, 220, 212, 0.55);
 }
 
 .nut-cell-group-title {
-  padding: 20rpx 28rpx 8rpx !important;
-  font-size: 27rpx !important;
-  font-weight: 600;
+  margin: 10rpx 0 0 !important;
+  padding: 24rpx 30rpx 8rpx !important;
+  font-family: var(--round);
+  font-size: 30rpx !important;
+  font-weight: 700 !important;
   color: var(--ink) !important;
 }
 
+.nut-cell-group-title::before {
+  content: '';
+  display: inline-block;
+  width: 14rpx;
+  height: 14rpx;
+  margin-right: 12rpx;
+  border-radius: 50%;
+  background: var(--butter);
+  vertical-align: 2rpx;
+}
+
 .nut-cell-group-description {
-  padding: 0 28rpx 12rpx !important;
+  padding: 0 30rpx 10rpx !important;
+  font-size: 23rpx !important;
+  color: var(--ink-faint) !important;
 }
 
 .nut-cell-group .nut-cell {
   margin-bottom: 0;
+  padding: 28rpx !important;
   border-radius: 0;
   box-shadow: none;
   background: transparent;
 }
 
-/* ---------- 描边按钮：NutUI 实心/描边共用文字 token，按类纠正 ---------- */
+.nut-cell-divider {
+  padding: 0 30rpx !important;
+}
+.nut-cell-divider-inner {
+  height: 2rpx !important;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--outline) 0,
+    var(--outline) 8rpx,
+    transparent 8rpx,
+    transparent 18rpx
+  ) !important;
+}
+
+/* ---------- 搜索：胖胶囊输入框 ---------- */
+.nut-searchbar {
+  padding: 0 !important;
+}
+.nut-searchbar-content {
+  height: 88rpx !important;
+  padding: 0 28rpx !important;
+  border: 4rpx solid var(--outline) !important;
+  border-radius: 100rpx !important;
+  background: var(--card) !important;
+  box-shadow: 0 6rpx 0 rgba(240, 220, 212, 0.5);
+}
+.nut-searchbar-focus .nut-searchbar-content {
+  border-color: var(--red-bright) !important;
+  box-shadow: 0 6rpx 0 rgba(241, 104, 122, 0.18);
+}
+.nut-searchbar-leftin {
+  margin-right: 12rpx;
+}
+.nut-searchbar-input {
+  font-size: 27rpx;
+}
+
+/* ---------- 按钮：矮胖、粗描边、按下沉一格 ---------- */
+.nut-button {
+  font-family: var(--round);
+  font-weight: 700;
+  box-shadow: 0 6rpx 0 rgba(240, 220, 212, 0.6);
+}
+.nut-button:active:not(.nut-button-disabled):not(.nut-button-loading) {
+  transform: translateY(3rpx);
+  box-shadow: 0 3rpx 0 rgba(240, 220, 212, 0.6);
+}
+.nut-button-primary.nut-button-solid {
+  box-shadow: 0 6rpx 0 #e8b7be;
+}
+.nut-button-success.nut-button-solid {
+  box-shadow: 0 6rpx 0 #b3e3d6;
+}
+
+/* ---------- 描边按钮：按类纠正文字色 ---------- */
 .btn-line-danger {
   color: var(--red) !important;
   border-color: var(--red) !important;
 }
 .btn-line-default {
   color: var(--ink-soft) !important;
-  border-color: var(--line) !important;
+  border-color: var(--outline) !important;
 }
 
 /* ---------- 分组标题右侧动作 ---------- */
@@ -214,7 +298,7 @@ body {
 .sec-head__more {
   display: flex;
   align-items: center;
-  gap: 4rpx;
+  gap: 6rpx;
   font-size: 24rpx;
   font-weight: 400;
   color: var(--ink-faint);
@@ -227,14 +311,14 @@ body {
   flex-shrink: 0;
 }
 .cute-icon--xs { width: 22rpx; height: 22rpx; }
-.cute-icon--sm { width: 30rpx; height: 30rpx; }
-.cute-icon--md { width: 38rpx; height: 38rpx; }
-.cute-icon--lg { width: 50rpx; height: 50rpx; }
-.cute-icon--xl { width: 64rpx; height: 64rpx; }
+.cute-icon--sm { width: 32rpx; height: 32rpx; }
+.cute-icon--md { width: 40rpx; height: 40rpx; }
+.cute-icon--lg { width: 52rpx; height: 52rpx; }
+.cute-icon--xl { width: 68rpx; height: 68rpx; }
 
 /* 按钮内图标与文字留一点呼吸 */
 .nut-button-wrap > .cute-icon {
-  margin-right: 8rpx;
+  margin-right: 10rpx;
 }
 
 /* ---------- 通用 ---------- */

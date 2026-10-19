@@ -3,28 +3,66 @@
   padding-bottom: 60rpx;
 
   &__search {
-    margin: 0 32rpx 8rpx;
+    margin: 0 28rpx 12rpx;
     --nutui-searchbar-background: transparent;
   }
 
   &__filters {
     display: flex;
     align-items: center;
-    gap: 28rpx;
-    margin: 0 36rpx 20rpx;
+    gap: 16rpx;
+    margin: 0 28rpx 12rpx;
   }
 
+  /* 分段筛选：奶油底槽 + 纸白滑块 */
+  &__chips {
+    display: flex;
+    padding: 6rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 100rpx;
+    background: var(--butter-soft);
+  }
   &__chip {
-    font-size: 27rpx;
-    color: var(--ink-faint);
+    padding: 18rpx 24rpx;
+    border-radius: 100rpx;
+    font-family: var(--round);
+    font-size: 25rpx;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink-soft);
   }
   &__chip--on {
+    background: var(--card);
     color: var(--red);
-    font-weight: 600;
-    border-bottom: 3rpx solid var(--red);
-    padding-bottom: 6rpx;
+    box-shadow: 0 4rpx 0 rgba(240, 220, 212, 0.7);
   }
 
-  &__sum { font-size: 25rpx; }
-  &__total { font-size: 23rpx; color: var(--ink-faint); margin-left: auto; }
+  &__year {
+    margin-left: auto;
+    padding: 18rpx 22rpx;
+    border: 4rpx solid var(--outline);
+    border-radius: 100rpx;
+    background: var(--card);
+    font-family: var(--round);
+    font-size: 24rpx;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    box-shadow: 0 4rpx 0 rgba(240, 220, 212, 0.6);
+  }
+  &__year--on {
+    border-color: var(--red-bright);
+    background: var(--red-soft);
+    color: var(--red);
+  }
+
+  &__summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 34rpx 12rpx;
+  }
+  &__count { font-size: 23rpx; color: var(--ink-faint); }
+  &__net { font-size: 26rpx; }
+  &__sum { font-size: 24rpx; }
 }
