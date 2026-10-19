@@ -7,12 +7,14 @@ import { ledgerByPerson, formatYuan, relationVerdict } from '../../utils/calc'
 import EmptyState from '../../components/EmptyState'
 import CuteIcon from '../../components/CuteIcon'
 import PersonAvatar from '../../components/PersonAvatar'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 type SortKey = 'balance' | 'count' | 'recent'
 
 export default function People() {
   const { entries, persons } = useLedger()
+  const theme = useTheme()
   const [keyword, setKeyword] = useState('')
   const [sort, setSort] = useState<SortKey>('balance')
 
@@ -25,7 +27,7 @@ export default function People() {
   }, [entries, persons, keyword, sort])
 
   return (
-    <View className='pp py-safe'>
+    <View className={`pp py-safe ${themeClass(theme)}`}>
       <View className='pp__search'>
         <SearchBar
           shape='round'

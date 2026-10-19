@@ -7,10 +7,12 @@ import { groupGatheringsByYear, formatYuan, overallStats, eventBadge } from '../
 import { lunarText } from '../../utils/lunar'
 import EmptyState from '../../components/EmptyState'
 import CuteIcon from '../../components/CuteIcon'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function Events() {
   const { entries, events } = useLedger()
+  const theme = useTheme()
   const yearGroups = groupGatheringsByYear(entries, events)
   const gatherings = useMemo(() => yearGroups.flatMap(g => g.gatherings), [yearGroups])
   const stats = useMemo(() => overallStats(entries), [entries])
@@ -22,7 +24,7 @@ export default function Events() {
   )
 
   return (
-    <View className='ev py-safe'>
+    <View className={`ev py-safe ${themeClass(theme)}`}>
       <View className='ev__hero'>
         <View className='ev__tape' />
         <View className='ev__hero-main'>

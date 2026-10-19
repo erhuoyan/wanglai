@@ -6,10 +6,12 @@ import { useLedger } from '../../store/useLedger'
 import { exportAll, importAll, clearAll, seedDemoOnce } from '../../store/data'
 import { overallStats } from '../../utils/calc'
 import CuteIcon from '../../components/CuteIcon'
+import { THEMES, setTheme, themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function Settings() {
   const { entries, persons, reload } = useLedger()
+  const theme = useTheme()
   const stats = overallStats(entries)
   const [importVisible, setImportVisible] = useState(false)
   const [importText, setImportText] = useState('')
@@ -76,7 +78,7 @@ export default function Settings() {
   }
 
   return (
-    <View className='st py-safe'>
+    <View className={`st py-safe ${themeClass(theme)}`}>
       <View className='st__stats'>
         <View className='st__stat'>
           <Text className='st__num num'>{stats.count}</Text>
@@ -87,6 +89,25 @@ export default function Settings() {
           <Text className='faint st__label'>往来人数</Text>
         </View>
       </View>
+
+      <CellGroup title='外观' description='只影响本机显示，随时可换'>
+        {THEMES.map(t => (
+          <Cell
+            key={t.id}
+            clickable
+            leading={
+              <View
+                className='st__swatch'
+                style={{ background: `linear-gradient(140deg, ${t.swatch[0]} 58%, ${t.swatch[1]} 58%)` }}
+              />
+            }
+            title={t.name}
+            description={t.desc}
+            extra={theme === t.id ? <Text className='st__picked'>使用中</Text> : null}
+            onClick={() => setTheme(t.id)}
+          />
+        ))}
+      </CellGroup>
 
       <CellGroup title='数据备份'>
         <Cell

@@ -7,11 +7,13 @@ import { overallStats, overallVerdict, sortEntries, formatYuanGrouped } from '..
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
 import CuteIcon from '../../components/CuteIcon'
+import { themeClass, useTheme } from '../../store/theme'
 import catFace from '../../assets/icons/cat-face.png'
 import './index.scss'
 
 export default function Overview() {
   const { entries } = useLedger()
+  const theme = useTheme()
 
   const stats = useMemo(() => overallStats(entries), [entries])
   const recent = useMemo(() => sortEntries(entries).slice(0, 3), [entries])
@@ -21,7 +23,7 @@ export default function Overview() {
   }
 
   return (
-    <View className='ov py-safe'>
+    <View className={`ov py-safe ${themeClass(theme)}`}>
       {/* 人情总账：贴纸钱包 */}
       <View className='ov__hero'>
         <View className='ov__tape' />

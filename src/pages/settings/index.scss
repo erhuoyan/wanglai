@@ -24,6 +24,19 @@
     margin-top: 8rpx;
   }
 
+  &__swatch {
+    width: 60rpx;
+    height: 60rpx;
+    border: 2rpx solid var(--outline);
+    border-radius: 18rpx;
+    flex-shrink: 0;
+  }
+  &__picked {
+    font-size: 23rpx;
+    font-weight: 600;
+    color: var(--red);
+  }
+
   &__ico {
     width: 68rpx;
     height: 68rpx;

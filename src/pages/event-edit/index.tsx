@@ -6,10 +6,12 @@ import { getEvent, upsertEvent, deleteEventDeep } from '../../store/events'
 import { EVENTS, formatYuan } from '../../utils/calc'
 import { readEntries } from '../../store/data'
 import { lunarText } from '../../utils/lunar'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function EventEdit() {
   const router = useRouter()
+  const theme = useTheme()
   const editId = router.params.id || ''
   const existing = editId ? getEvent(editId) : undefined
 
@@ -58,7 +60,7 @@ export default function EventEdit() {
   }
 
   return (
-    <View className='ee py-safe'>
+    <View className={`ee py-safe ${themeClass(theme)}`}>
       {collected && collected.count > 0 && (
         <View className='ee__hint'>
           <Text className='ee__hint-text'>

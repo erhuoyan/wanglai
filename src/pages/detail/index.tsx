@@ -6,19 +6,21 @@ import { getEntry, deleteEntry } from '../../store/data'
 import { formatYuan } from '../../utils/calc'
 import { lunarText } from '../../utils/lunar'
 import CuteIcon from '../../components/CuteIcon'
+import { themeClass, useTheme } from '../../store/theme'
 import type { Entry } from '../../types'
 import './index.scss'
 
 export default function Detail() {
   const router = useRouter()
   const id = router.params.id || ''
+  const theme = useTheme()
   const [entry, setEntry] = useState<Entry | undefined>(undefined)
 
   useDidShow(() => setEntry(getEntry(id)))
 
   if (!entry) {
     return (
-      <View className='dt py-safe'>
+      <View className={`dt py-safe ${themeClass(theme)}`}>
         <CellGroup>
           <Cell title='这笔往来已不存在' description='可能已被删除' />
         </CellGroup>
@@ -44,7 +46,7 @@ export default function Detail() {
   }
 
   return (
-    <View className={`dt py-safe dt__wrap--${entry.type}`}>
+    <View className={`dt py-safe dt__wrap--${entry.type} ${themeClass(theme)}`}>
       <View className={`dt__hero dt__hero--${entry.type}`}>
         <View className={`seal seal--${entry.type}`}>{isIn ? '收' : '出'}</View>
         <View className='dt__amount num'>

@@ -9,10 +9,12 @@ import {
   solarToLunar, lunarToSolar, lunarMonthsOf, lunarDaysOf,
   lunarDayName, lunarText
 } from '../../utils/lunar'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function Edit() {
   const router = useRouter()
+  const theme = useTheme()
   const editId = router.params.id || ''
   const preType = router.params.type === 'in' ? 'in' : 'out'
   const existing = editId ? getEntry(editId) : undefined
@@ -118,7 +120,7 @@ export default function Edit() {
   }
 
   return (
-    <View className='ed py-safe'>
+    <View className={`ed py-safe ${themeClass(theme)}`}>
       {/* 收 / 出 大开关 */}
       <View className='ed__switch'>
         <View className={`ed__half ${type === 'out' ? 'ed__half--out' : ''}`} onClick={() => setType('out')}>

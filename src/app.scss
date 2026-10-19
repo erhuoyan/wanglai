@@ -1,5 +1,6 @@
-/* 一笔人情 · 主题层（卡通贴纸版）
-   牛奶粉底 + 白卡 + 珊瑚/薄荷；圆体数字，粗描边 + 硬投影 */
+/* 一笔人情 · 基础层
+   默认值 = 卡通皮肤；其余皮肤在 theme.scss 里覆盖 */
+@use './theme';
 :root,
 page {
   /* 基础色板 */
@@ -31,6 +32,29 @@ page {
   --gold-soft: #fdf0d2;
   --round: 'Yuanti SC', 'Hiragino Sans GB', 'PingFang SC', sans-serif;
   --sans: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --serif: 'Songti SC', 'STSong', Georgia, serif;
+
+  /* 主题可换的形状与字体通道（默认=卡通） */
+  --ui-font: var(--sans);
+  --heading-font: var(--round);
+  --button-font: var(--round);
+  --num-font: var(--round);
+  --num-weight: 700;
+  --card-radius: 36rpx;
+  --card-border-width: 4rpx;
+  --card-shadow: 0 10rpx 0 rgba(240, 220, 212, 0.55);
+  --divider-height: 2rpx;
+  --divider-bg: repeating-linear-gradient(
+    90deg,
+    var(--outline) 0,
+    var(--outline) 8rpx,
+    transparent 8rpx,
+    transparent 18rpx
+  );
+  --search-radius: 100rpx;
+  --search-height: 88rpx;
+  --button-shadow: 0 6rpx 0 rgba(240, 220, 212, 0.6);
+  --button-active-shadow: 0 3rpx 0 rgba(240, 220, 212, 0.6);
 
   /* ===== NutUI 主题通道 ===== */
   --nutui-color-primary: #c0394f;
@@ -87,8 +111,8 @@ body {
 /* ---------- 数字（圆体、表格数字） ---------- */
 .num,
 .amt {
-  font-family: var(--round);
-  font-weight: 700;
+  font-family: var(--num-font);
+  font-weight: var(--num-weight);
   font-variant-numeric: tabular-nums lining-nums;
   letter-spacing: -0.01em;
 }
@@ -148,7 +172,7 @@ body {
   min-width: 0;
 }
 .entry-row__name {
-  font-family: var(--round);
+  font-family: var(--heading-font);
   font-size: 31rpx;
   font-weight: 700;
   color: var(--ink);
@@ -184,16 +208,16 @@ body {
   margin: 0 28rpx 28rpx;
   padding: 8rpx 0;
   background: var(--card);
-  border: 4rpx solid var(--outline);
-  border-radius: 36rpx;
+  border: var(--card-border-width) solid var(--outline);
+  border-radius: var(--card-radius);
   overflow: hidden;
-  box-shadow: 0 10rpx 0 rgba(240, 220, 212, 0.55);
+  box-shadow: var(--card-shadow);
 }
 
 .nut-cell-group-title {
   margin: 10rpx 0 0 !important;
   padding: 24rpx 30rpx 8rpx !important;
-  font-family: var(--round);
+  font-family: var(--heading-font);
   font-size: 30rpx !important;
   font-weight: 700 !important;
   color: var(--ink) !important;
@@ -233,14 +257,8 @@ body {
   padding: 0 30rpx !important;
 }
 .nut-cell-divider-inner {
-  height: 2rpx !important;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--outline) 0,
-    var(--outline) 8rpx,
-    transparent 8rpx,
-    transparent 18rpx
-  ) !important;
+  height: var(--divider-height) !important;
+  background: var(--divider-bg) !important;
 }
 
 /* ---------- 搜索：胖胶囊输入框 ---------- */
@@ -248,12 +266,12 @@ body {
   padding: 0 !important;
 }
 .nut-searchbar-content {
-  height: 88rpx !important;
+  height: var(--search-height) !important;
   padding: 0 28rpx !important;
-  border: 4rpx solid var(--outline) !important;
-  border-radius: 100rpx !important;
+  border: var(--card-border-width) solid var(--outline) !important;
+  border-radius: var(--search-radius) !important;
   background: var(--card) !important;
-  box-shadow: 0 6rpx 0 rgba(240, 220, 212, 0.5);
+  box-shadow: var(--card-shadow);
 }
 .nut-searchbar-focus .nut-searchbar-content {
   border-color: var(--red-bright) !important;
@@ -268,19 +286,19 @@ body {
 
 /* ---------- 按钮：矮胖、粗描边、按下沉一格 ---------- */
 .nut-button {
-  font-family: var(--round);
+  font-family: var(--button-font);
   font-weight: 700;
-  box-shadow: 0 6rpx 0 rgba(240, 220, 212, 0.6);
+  box-shadow: var(--button-shadow);
 }
 .nut-button:active:not(.nut-button-disabled):not(.nut-button-loading) {
   transform: translateY(3rpx);
-  box-shadow: 0 3rpx 0 rgba(240, 220, 212, 0.6);
+  box-shadow: var(--button-active-shadow);
 }
 .nut-button-primary.nut-button-solid {
-  box-shadow: 0 6rpx 0 #e8b7be;
+  box-shadow: var(--button-primary-shadow, var(--button-shadow));
 }
 .nut-button-success.nut-button-solid {
-  box-shadow: 0 6rpx 0 #b3e3d6;
+  box-shadow: var(--button-success-shadow, var(--button-shadow));
 }
 
 /* ---------- 描边按钮：按类纠正文字色 ---------- */

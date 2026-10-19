@@ -7,10 +7,12 @@ import { filterEntries, groupByMonth, formatYuan, type Filter } from '../../util
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
 import CuteIcon from '../../components/CuteIcon'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function List() {
   const { entries } = useLedger()
+  const theme = useTheme()
   const [type, setType] = useState<Filter['type']>('all')
   const [range, setRange] = useState<Filter['range']>('all')
   const [keyword, setKeyword] = useState('')
@@ -26,7 +28,7 @@ export default function List() {
   )
 
   return (
-    <View className='ls py-safe'>
+    <View className={`ls py-safe ${themeClass(theme)}`}>
       <View className='ls__search'>
         <SearchBar
           shape='round'

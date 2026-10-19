@@ -6,12 +6,14 @@ import { useLedger } from '../../store/useLedger'
 import { findGathering, formatYuan } from '../../utils/calc'
 import { deleteEventDeep } from '../../store/events'
 import EmptyState from '../../components/EmptyState'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function Gathering() {
   const router = useRouter()
   const key = decodeURIComponent(router.params.key || '')
   const { entries, events } = useLedger()
+  const theme = useTheme()
   const gathering = useMemo(() => findGathering(entries, events, key), [entries, events, key])
 
   // 标题直接用事由（婚宴 / 满月 / 乔迁…），比静态文案信息量大
@@ -21,7 +23,7 @@ export default function Gathering() {
 
   if (!gathering) {
     return (
-      <View className='ga py-safe'>
+      <View className={`ga py-safe ${themeClass(theme)}`}>
         <CellGroup>
           <EmptyState title='这一场已不存在' description='可能相关记录已被删除' />
         </CellGroup>
@@ -30,7 +32,7 @@ export default function Gathering() {
   }
 
   return (
-    <View className='ga py-safe'>
+    <View className={`ga py-safe ${themeClass(theme)}`}>
       <View className='ga__hero'>
         <Text className='ga__event'>{gathering.event}</Text>
         <View className='ga__total num'>+{formatYuan(gathering.total)}</View>

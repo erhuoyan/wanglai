@@ -8,12 +8,14 @@ import { filterEntries, sortEntries, formatYuan, relationVerdict, balanceState }
 import EntryRow from '../../components/EntryRow'
 import EmptyState from '../../components/EmptyState'
 import PersonAvatar from '../../components/PersonAvatar'
+import { themeClass, useTheme } from '../../store/theme'
 import './index.scss'
 
 export default function Person() {
   const router = useRouter()
   const id = router.params.id || ''
   const { entries, persons } = useLedger()
+  const theme = useTheme()
   const person = useMemo(() => persons.find(p => p.id === id), [persons, id])
   const list = useMemo(() => sortEntries(filterEntries(entries, { personId: id })), [entries, id])
   const inSum = useMemo(() => list.filter(e => e.type === 'in').reduce((s, e) => s + e.amount, 0), [list])
@@ -37,7 +39,7 @@ export default function Person() {
   }
 
   return (
-    <View className='pr py-safe'>
+    <View className={`pr py-safe ${themeClass(theme)}`}>
       <View className='pr__hero'>
         <PersonAvatar name={person?.name || '？'} size='44' />
         <View className='flex1 pr__hero-mid'>
