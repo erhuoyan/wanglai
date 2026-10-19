@@ -12,17 +12,17 @@ export default defineAppConfig({
     'pages/person/index'
   ],
   window: {
-    navigationBarBackgroundColor: '#F5F6F7',
+    navigationBarBackgroundColor: '#F3EEE6',
     navigationBarTitleText: '一笔人情',
     navigationBarTextStyle: 'black',
-    backgroundColor: '#F5F6F7'
+    backgroundColor: '#F3EEE6'
   },
   // 扫码/进首页只加载所需组件，提升打开速度并减少初始体积
   lazyCodeLoading: 'requiredComponents',
   tabBar: {
-    color: '#8F949B',
+    color: '#8F857C',
     selectedColor: '#A93226',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFFCF7',
     borderStyle: 'white',
     list: [
       { pagePath: 'pages/overview/index', text: '账本', iconPath: 'assets/tab/ledger.png', selectedIconPath: 'assets/tab/ledger-on.png' },

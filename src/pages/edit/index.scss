@@ -2,45 +2,66 @@
   padding-top: 24rpx;
   padding-bottom: 80rpx;
 
+  /* 收 / 出 分段开关：底槽 + 纸白滑块 */
   &__switch {
     display: flex;
-    gap: 16rpx;
     margin: 0 32rpx 24rpx;
+    padding: 6rpx;
+    border-radius: 100rpx;
+    background: rgba(60, 42, 30, 0.06);
   }
   &__half {
     flex: 1;
-    height: 88rpx;
-    border-radius: 16rpx;
+    height: 80rpx;
+    border-radius: 100rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 31rpx;
-    background: var(--card);
-    border: 1rpx solid var(--line);
+    font-size: 30rpx;
     color: var(--ink-soft);
   }
   &__half--out {
-    background: var(--red-soft);
-    border-color: var(--red);
+    background: var(--card);
     color: var(--red);
     font-weight: 600;
+    box-shadow: 0 2rpx 10rpx rgba(60, 42, 30, 0.1);
   }
   &__half--in {
-    background: var(--jade-soft);
-    border-color: var(--jade);
+    background: var(--card);
     color: var(--jade);
     font-weight: 600;
+    box-shadow: 0 2rpx 10rpx rgba(60, 42, 30, 0.1);
   }
 
   &__amount {
     margin: 0 32rpx 24rpx;
-    padding: 32rpx;
+    padding: 30rpx 32rpx 26rpx;
     background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    border-radius: 28rpx;
+    box-shadow:
+      0 1rpx 2rpx rgba(60, 42, 30, 0.03),
+      0 12rpx 32rpx rgba(60, 42, 30, 0.05);
   }
-  &__amount-label { font-size: 24rpx; color: var(--ink-soft); display: block; margin-bottom: 8rpx; }
+  &__amount-label {
+    font-size: 23rpx;
+    letter-spacing: 2rpx;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 4rpx;
+  }
+  &__amount-row {
+    display: flex;
+    align-items: center;
+    gap: 10rpx;
+  }
+  &__currency {
+    font-family: var(--serif);
+    font-size: 42rpx;
+    color: var(--ink-faint);
+    line-height: 1;
+  }
   &__amount-input {
+    flex: 1;
     --nutui-input-font-size: 72rpx;
     --nutui-input-color: var(--ink);
     --nutui-input-padding: 0;

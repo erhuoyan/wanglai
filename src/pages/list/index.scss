@@ -3,28 +3,61 @@
   padding-bottom: 60rpx;
 
   &__search {
-    margin: 0 32rpx 8rpx;
+    margin: 0 32rpx 10rpx;
     --nutui-searchbar-background: transparent;
   }
 
   &__filters {
     display: flex;
     align-items: center;
-    gap: 28rpx;
-    margin: 0 36rpx 20rpx;
+    gap: 16rpx;
+    margin: 0 32rpx 12rpx;
   }
 
+  /* 分段式筛选：底槽 + 白色选中块 */
+  &__chips {
+    display: flex;
+    padding: 6rpx;
+    border-radius: 100rpx;
+    background: rgba(60, 42, 30, 0.06);
+  }
   &__chip {
-    font-size: 27rpx;
-    color: var(--ink-faint);
+    padding: 18rpx 24rpx;
+    border-radius: 100rpx;
+    font-size: 25rpx;
+    line-height: 1.4;
+    color: var(--ink-soft);
   }
   &__chip--on {
+    background: var(--card);
     color: var(--red);
     font-weight: 600;
-    border-bottom: 3rpx solid var(--red);
-    padding-bottom: 6rpx;
+    box-shadow: 0 2rpx 8rpx rgba(60, 42, 30, 0.09);
   }
 
-  &__sum { font-size: 25rpx; }
-  &__total { font-size: 23rpx; color: var(--ink-faint); margin-left: auto; }
+  &__year {
+    margin-left: auto;
+    padding: 18rpx 22rpx;
+    border: 1rpx solid var(--line);
+    border-radius: 100rpx;
+    font-size: 24rpx;
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+  &__year--on {
+    border-color: transparent;
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  &__summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 36rpx 10rpx;
+  }
+  &__count { font-size: 23rpx; color: var(--ink-faint); }
+  &__net { font-size: 25rpx; }
+  &__sum { font-size: 24rpx; }
 }

@@ -38,23 +38,29 @@ export default function List() {
       </View>
 
       <View className='ls__filters'>
-        {([
-          ['all', '全部'],
-          ['in', '收礼'],
-          ['out', '随礼']
-        ] as [Filter['type'], string][]).map(([k, label]) => (
-          <Text
-            key={k}
-            className={`ls__chip ${type === k ? 'ls__chip--on' : ''}`}
-            onClick={() => setType(k)}
-          >{label}</Text>
-        ))}
+        <View className='ls__chips'>
+          {([
+            ['all', '全部'],
+            ['in', '收礼'],
+            ['out', '随礼']
+          ] as [Filter['type'], string][]).map(([k, label]) => (
+            <Text
+              key={k}
+              className={`ls__chip ${type === k ? 'ls__chip--on' : ''}`}
+              onClick={() => setType(k)}
+            >{label}</Text>
+          ))}
+        </View>
         <Text
-          className={`ls__chip ${range === 'year' ? 'ls__chip--on' : ''}`}
+          className={`ls__year ${range === 'year' ? 'ls__year--on' : ''}`}
           onClick={() => setRange(range === 'year' ? 'all' : 'year')}
         >今年</Text>
-        <Text className='ls__total'>
-          {filtered.length} 笔 · 净{total >= 0 ? '收' : '出'} {formatYuan(Math.abs(total))}
+      </View>
+
+      <View className='ls__summary'>
+        <Text className='ls__count'>共 {filtered.length} 笔</Text>
+        <Text className={`amt ls__net ${total >= 0 ? 'amt--in' : 'amt--out'}`}>
+          净{total >= 0 ? '收' : '出'} {formatYuan(Math.abs(total))}
         </Text>
       </View>
 

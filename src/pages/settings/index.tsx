@@ -124,9 +124,10 @@ export default function Settings() {
       </View>
 
       <View className='st__about'>
+        <View className='st__mark'>礼</View>
         <Text className='st__about-name'>一笔人情</Text>
-        <Text className='faint'>人情往来，有来有往，账目两清</Text>
-        <Text className='faint'>数据只存本机，不上传任何服务器</Text>
+        <Text className='st__about-line'>人情往来，有来有往，账目两清</Text>
+        <Text className='st__about-note'>数据只存本机，不上传任何服务器</Text>
       </View>
 
       <Dialog

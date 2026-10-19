@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { Cell, CellGroup, Avatar, SearchBar } from '@nutui/nutui-react-taro'
+import { Cell, CellGroup, SearchBar } from '@nutui/nutui-react-taro'
 import { useLedger } from '../../store/useLedger'
 import { ledgerByPerson, formatYuan, relationVerdict } from '../../utils/calc'
 import EmptyState from '../../components/EmptyState'
 import CuteIcon from '../../components/CuteIcon'
+import PersonAvatar from '../../components/PersonAvatar'
 import './index.scss'
 
 type SortKey = 'balance' | 'count' | 'recent'
@@ -55,11 +56,7 @@ export default function People() {
             <Cell
               key={r.person.id}
               clickable
-              leading={
-                <Avatar size='40' background='var(--red-soft)' color='var(--red)'>
-                  {r.person.name.slice(0, 1)}
-                </Avatar>
-              }
+              leading={<PersonAvatar name={r.person.name} />}
               title={r.person.name}
               description={
                 <View className='row' style={{ gap: '12rpx' }}>

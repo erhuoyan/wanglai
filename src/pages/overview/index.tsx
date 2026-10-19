@@ -21,7 +21,7 @@ export default function Overview() {
 
   return (
     <View className='ov py-safe'>
-      {/* 人情总账 hero */}
+      {/* 人情总账：礼簿封面 */}
       <View className='ov__hero'>
         <Text className='ov__label'>人情总账</Text>
         <View className='ov__balance num'>{formatYuanGrouped(stats.balance)}</View>
@@ -37,12 +37,25 @@ export default function Overview() {
             <Text className='num ov__stat-num ov__stat-out'>-{formatYuanGrouped(stats.outSum)}</Text>
           </View>
         </View>
+        <View className='ov__stamp'>礼</View>
       </View>
 
       {/* 一键记两笔 */}
       <View className='ov__actions'>
-        <Button type='primary' block onClick={() => goAdd('out')}>随礼</Button>
-        <Button type='success' block onClick={() => goAdd('in')}>收礼</Button>
+        <Button
+          className='ov__action ov__action--out'
+          fill='outline'
+          icon={<View className='ov__mark ov__mark--out'>出</View>}
+          description='我送出去的'
+          onClick={() => goAdd('out')}
+        >随礼</Button>
+        <Button
+          className='ov__action ov__action--in'
+          fill='outline'
+          icon={<View className='ov__mark ov__mark--in'>收</View>}
+          description='我收到的'
+          onClick={() => goAdd('in')}
+        >收礼</Button>
       </View>
 
       {/* 最近往来 */}

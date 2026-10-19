@@ -3,31 +3,48 @@
   padding-bottom: 80rpx;
 
   &__hero {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 24rpx;
-    padding: 32rpx;
-    margin: 0 32rpx 24rpx;
+    padding: 34rpx 30rpx;
+    margin: 0 32rpx 20rpx;
     background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    border-radius: 28rpx;
+    overflow: hidden;
+    box-shadow:
+      0 1rpx 2rpx rgba(60, 42, 30, 0.03),
+      0 12rpx 32rpx rgba(60, 42, 30, 0.05);
   }
   &__hero-mid { display: flex; flex-direction: column; }
-  &__name { font-size: 34rpx; font-weight: 600; }
+  &__name {
+    font-family: var(--serif);
+    font-size: 36rpx;
+    font-weight: 600;
+  }
   &__sub { font-size: 24rpx; margin-top: 4rpx; }
-  &__verdict { font-size: 26rpx; font-weight: 600; }
+  &__verdict { font-size: 25rpx; font-weight: 600; }
 
   &__sums {
     display: flex;
-    margin: 0 32rpx 16rpx;
+    margin: 0 32rpx 20rpx;
+    padding: 26rpx 0;
     background: var(--card);
-    border: 1rpx solid var(--line);
-    border-radius: 20rpx;
-    padding: 24rpx 0;
+    border-radius: 24rpx;
+    box-shadow:
+      0 1rpx 2rpx rgba(60, 42, 30, 0.03),
+      0 10rpx 26rpx rgba(60, 42, 30, 0.04);
   }
   &__sum { flex: 1; display: flex; flex-direction: column; align-items: center; }
-  &__sum--mid { border-left: 1rpx solid var(--line); border-right: 1rpx solid var(--line); }
-  &__sum-label { font-size: 24rpx; margin-bottom: 6rpx; }
+  &__sum--mid {
+    border-left: 1rpx solid var(--line);
+    border-right: 1rpx solid var(--line);
+  }
+  &__sum-label {
+    font-size: 23rpx;
+    letter-spacing: 1rpx;
+    margin-bottom: 6rpx;
+  }
 
   &__danger { margin: 32rpx 32rpx 0; }
 }

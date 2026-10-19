@@ -2,24 +2,62 @@
   padding-top: 24rpx;
   padding-bottom: 60rpx;
 
+  /* 事件簿封面：玉色，与账本的红封面成对 */
   &__hero {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 0 32rpx 24rpx;
-    padding: 40rpx 32rpx 32rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    overflow: hidden;
+    margin: 0 32rpx 32rpx;
+    padding: 42rpx 36rpx 32rpx;
+    border-radius: 32rpx;
+    color: #f4faf5;
+    background: linear-gradient(155deg, #237254 0%, #18563e 62%, #124632 100%);
+    box-shadow:
+      0 2rpx 0 rgba(255, 255, 255, 0.14) inset,
+      0 22rpx 46rpx rgba(18, 70, 50, 0.24);
   }
-  &__hero-main { display: flex; flex-direction: column; }
-  &__hero-label { display: block; font-size: 24rpx; color: var(--ink-soft); margin-bottom: 8rpx; }
+  &__hero::before {
+    content: '';
+    position: absolute;
+    top: 12rpx;
+    right: 12rpx;
+    bottom: 12rpx;
+    left: 12rpx;
+    border: 1rpx solid rgba(223, 240, 226, 0.2);
+    border-radius: 22rpx;
+    pointer-events: none;
+  }
+  &__hero::after {
+    content: '宴';
+    position: absolute;
+    right: 22rpx;
+    bottom: -26rpx;
+    font-family: var(--serif);
+    font-size: 168rpx;
+    line-height: 1;
+    color: rgba(240, 250, 242, 0.07);
+    transform: rotate(-8deg);
+    pointer-events: none;
+  }
+  &__hero-main { display: flex; flex-direction: column; position: relative; z-index: 1; }
+  &__hero-label {
+    display: block;
+    font-size: 23rpx;
+    letter-spacing: 4rpx;
+    color: rgba(244, 250, 245, 0.76);
+    margin-bottom: 8rpx;
+  }
   &__hero-num {
-    font-size: 76rpx;
-    line-height: 1.15;
-    color: var(--jade);
+    font-size: 78rpx;
+    line-height: 1.12;
+    color: #f6fcf7;
+    text-shadow: 0 2rpx 0 rgba(6, 34, 24, 0.16);
   }
   &__hero-side {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -27,10 +65,18 @@
   }
   &__hero-in {
     font-size: 34rpx;
-    color: var(--jade);
+    color: #f2dfb6;
   }
-  &__hero-sub { font-size: 24rpx; color: var(--ink-soft); margin-top: 4rpx; }
-  &__hero-count { font-size: 22rpx; color: var(--ink-faint); margin-top: 10rpx; }
+  &__hero-sub {
+    font-size: 23rpx;
+    color: rgba(244, 250, 245, 0.72);
+    margin-top: 4rpx;
+  }
+  &__hero-count {
+    font-size: 22rpx;
+    color: rgba(244, 250, 245, 0.62);
+    margin-top: 10rpx;
+  }
 
   &__task {
     display: flex;
@@ -70,8 +116,8 @@
     color: var(--red);
   }
   &__badge--gold {
-    background: #f9f2e0;
-    color: #a98537;
+    background: var(--gold-soft);
+    color: #8f6a2c;
   }
   &__badge--ink {
     background: #eceef1;
@@ -90,7 +136,7 @@
     font-variant-numeric: tabular-nums;
   }
 
-  &__amt { font-size: 32rpx; flex-shrink: 0; padding-left: 12rpx; }
+  &__amt { font-size: 33rpx; flex-shrink: 0; padding-left: 12rpx; }
 
   &__year-head {
     display: flex;
@@ -116,10 +162,10 @@
   justify-content: center;
   gap: 10rpx;
   margin: 8rpx 32rpx 40rpx;
-  padding: 26rpx 0;
+  padding: 28rpx 0;
   border: 1rpx dashed var(--line);
-  border-radius: 20rpx;
-  background: rgba(255, 255, 255, 0.55);
+  border-radius: 24rpx;
+  background: rgba(255, 252, 247, 0.62);
   text-align: center;
 }
 .ev__add-text {

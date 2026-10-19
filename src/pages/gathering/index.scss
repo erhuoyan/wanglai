@@ -3,27 +3,34 @@
   padding-bottom: 80rpx;
 
   &__hero {
+    position: relative;
     margin: 0 32rpx 24rpx;
-    padding: 40rpx 32rpx 32rpx;
-    background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    padding: 42rpx 34rpx 34rpx;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f5faf7 0%, var(--card) 62%);
+    border-radius: 28rpx;
+    box-shadow:
+      0 1rpx 2rpx rgba(60, 42, 30, 0.03),
+      0 12rpx 32rpx rgba(60, 42, 30, 0.05);
   }
   &__event {
     display: block;
     font-family: var(--serif);
-    font-size: 34rpx;
+    font-size: 36rpx;
     font-weight: 600;
   }
   &__total {
-    font-size: 76rpx;
+    font-size: 78rpx;
     line-height: 1.15;
-    margin-top: 8rpx;
+    margin-top: 10rpx;
     color: var(--jade);
   }
-  &__meta { font-size: 26rpx; color: var(--ink-soft); }
+  &__meta {
+    font-size: 25rpx;
+    color: var(--ink-soft);
+  }
 
-  &__amt { font-size: 32rpx; }
+  &__amt { font-size: 33rpx; }
 
   &__foot {
     margin: 8rpx 36rpx 0;

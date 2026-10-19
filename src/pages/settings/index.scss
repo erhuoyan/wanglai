@@ -3,12 +3,25 @@
   padding-bottom: 80rpx;
 
   &__stats {
+    position: relative;
     display: flex;
-    margin: 0 32rpx 24rpx;
-    padding: 36rpx 0;
+    margin: 0 32rpx 28rpx;
+    padding: 34rpx 0 30rpx;
     background: var(--card);
-    border-radius: 24rpx;
-    box-shadow: 0 2rpx 16rpx rgba(20, 20, 30, 0.04);
+    border-radius: 28rpx;
+    overflow: hidden;
+    box-shadow:
+      0 1rpx 2rpx rgba(60, 42, 30, 0.03),
+      0 12rpx 32rpx rgba(60, 42, 30, 0.05);
+  }
+  &__stats::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 6rpx;
+    background: linear-gradient(90deg, var(--red-soft), var(--butter-soft), var(--jade-soft));
   }
   &__stat {
     flex: 1;
@@ -17,8 +30,12 @@
     align-items: center;
   }
   &__stat:first-child { border-right: 1rpx solid var(--line); }
-  &__num { font-size: 52rpx; }
-  &__label { font-size: 24rpx; margin-top: 6rpx; }
+  &__num { font-size: 56rpx; line-height: 1.1; }
+  &__label {
+    font-size: 23rpx;
+    letter-spacing: 1rpx;
+    margin-top: 8rpx;
+  }
 
   &__ico {
     width: 64rpx;
@@ -48,14 +65,31 @@
 
   &__about {
     text-align: center;
-    margin-top: 64rpx;
+    margin-top: 72rpx;
     display: flex;
     flex-direction: column;
-    gap: 6rpx;
+    align-items: center;
+    gap: 8rpx;
+  }
+  &__mark {
+    width: 68rpx;
+    height: 68rpx;
+    margin-bottom: 10rpx;
+    border-radius: 20rpx 16rpx 18rpx 15rpx;
+    background: var(--red);
+    color: #fff6ec;
+    font-family: var(--serif);
+    font-size: 36rpx;
+    font-weight: 700;
+    line-height: 68rpx;
+    transform: rotate(-4deg);
+    box-shadow: 0 8rpx 20rpx rgba(169, 50, 38, 0.22);
   }
   &__about-name {
     font-family: var(--serif);
-    font-size: 32rpx;
+    font-size: 33rpx;
     font-weight: 600;
   }
+  &__about-line { font-size: 24rpx; color: var(--ink-soft); }
+  &__about-note { font-size: 22rpx; color: var(--ink-faint); }
 }
