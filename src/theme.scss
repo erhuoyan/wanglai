@@ -442,7 +442,11 @@
   top: 0;
   width: 132rpx;
   height: 176rpx;
-  background: var(--card);
+  background:
+    linear-gradient(var(--line), var(--line)) 16rpx 46rpx / 88rpx 3rpx no-repeat,
+    linear-gradient(var(--line), var(--line)) 16rpx 64rpx / 88rpx 3rpx no-repeat,
+    linear-gradient(var(--line), var(--line)) 16rpx 82rpx / 64rpx 3rpx no-repeat,
+    var(--card);
   border: 1rpx solid var(--line);
   border-radius: 10rpx;
   box-shadow: 0 2rpx 12rpx rgba(60, 42, 30, 0.05);
